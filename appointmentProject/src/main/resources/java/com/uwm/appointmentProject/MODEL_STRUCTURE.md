@@ -19,7 +19,7 @@ public class example{
 //overridded toString method for debugging purposes that will display the variable name and what is assigned to it.
 
 
-##Builder Pattern Example##
+Builder Pattern Example
 -----------------------------------------------
 
 Here is an example of a car model that requests the user to give required and optional information:
@@ -87,6 +87,16 @@ public class Car{
 	</ul>
 	}
 </ul>}<br /><br />
+
+
+<h2>How To Call the Constructor</h2>
+
+<br />
+<ul>
+	Car car1 = new Car.Builder("Honda", "Fit", "Blue").build(); 
+</ul>
+<br />
+
 Let me know if you have any questions!
 
 
