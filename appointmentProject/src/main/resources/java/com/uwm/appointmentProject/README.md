@@ -29,5 +29,6 @@ Combinations Between Tables:
       
     Typical Flow:
    Controller -> Service -> Repository -> Database
+
    Model is present throughout all layers.
       
