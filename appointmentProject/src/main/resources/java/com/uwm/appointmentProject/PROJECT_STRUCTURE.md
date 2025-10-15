@@ -1,8 +1,12 @@
 Combinations Between Tables:
- - manufacturers holds both medications and manufacturer files
- - staff holds both provider and nurse files
- - common holds abstract classes, interfaces, helper methods, and the user-type related files (the stuff that limits who can see/use what).
+-----------------------------
+ - manufacturers holds both medications and manufacturer files                                                                                              
+ - staff holds both provider and nurse files                                                                                                                
+ - common holds abstract classes, interfaces, helper methods, and the user-type related files (the stuff that limits who can see/use what).                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Format Instructions:
+-----------------------
  - In each of these labeled directories and the sub-folders of the common directory, there will be four additional directories:
 
    1. controller
@@ -31,4 +35,9 @@ Combinations Between Tables:
    Controller -> Service -> Repository -> Database
 
    Model is present throughout all layers.
+
+-----------------------------------------------------------------------------------------------
+
+
+
       
