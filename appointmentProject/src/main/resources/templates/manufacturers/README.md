@@ -1,1 +1,0 @@
-# manufacturers HTML templates

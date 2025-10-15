@@ -1,1 +1,0 @@
-# appointments HTML templates
