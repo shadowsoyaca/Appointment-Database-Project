@@ -86,8 +86,8 @@ public class Car{
 		}
 	</ul>
 	}
-</ul><br /><br />
+</ul>}<br /><br />
 Let me know if you have any questions!
-}  
+
 
     
