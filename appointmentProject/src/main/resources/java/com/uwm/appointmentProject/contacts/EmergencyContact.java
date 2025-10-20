@@ -11,11 +11,11 @@
  *              record. This is immutable and leads with an "EC". This is
  *              created by MySQL's auto-increment feature.
  *     - "first_name", "last_name", "phone", and "email" are originating from Person
- *     - "address": (optional) the contact's preferred address of contact
+ *     - "address": (optional) the contact's address
  *      - "email" is an optional field for this subclass
  *
  *     Design Notes: Builder pattern is utilized in this model to handle optional
- *     variables.
+ *          variables.
  *
  * @author Matthew Kiyono
  * @version 1.0
