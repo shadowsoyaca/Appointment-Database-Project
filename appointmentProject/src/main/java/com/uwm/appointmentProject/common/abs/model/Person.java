@@ -13,6 +13,7 @@
  *
  *      Depending on the Person subclass, phone and email could be
  *      optional; but nulls can still pass through the Parent class.
+ *      - The import for NullString is applied to display nulls as "N/A".
  *
  * @author Matthew Kiyono
  * @version 1.0
@@ -20,6 +21,8 @@
  ****************************************************************************************/
 
 
+
+import com.uwm.appointmentProject.common.helper.NullString;
 
 public abstract class Person {
 
@@ -48,7 +51,7 @@ public abstract class Person {
         return "first name: " + first_name +
                 "\nlast name: " + last_name +
                 "\nphone: " + phone +
-                "\nemail: " + email;
+                "\nemail: " + NullString.check(email);
     }
 
 }

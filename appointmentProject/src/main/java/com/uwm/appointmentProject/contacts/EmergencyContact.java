@@ -16,11 +16,13 @@
  *
  *     Design Notes: Builder pattern is utilized in this model to handle optional
  *          variables.
+ *          - Imported NullString checker for displying the toString as a "N/A"
  *
  * @author Matthew Kiyono
  * @version 1.0
  * @since 10/16/2025
  ********************************************************************************/
+import com.uwm.appointmentProject.common.helper.NullString;
 
 public class EmergencyContact extends Person {
 
@@ -47,7 +49,7 @@ public class EmergencyContact extends Person {
         return "Emergency Contact:\n\n" +
                 "EC id: " + this.id + "\n" +
                 super.toString() +
-                "address: " + this.address + "\n";
+                "address: " + NullString.check(this.address) + "\n";
     }
 
     public static class Builder{

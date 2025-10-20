@@ -25,6 +25,7 @@
  *      Designer Note: As email, gender, insurance_id, and emergency_contact_id are optional,
  *              the builder pattern constructor is used over the traditional constructor.
  *              - In addition, the import of LocalDate is used for defining the Date of Birth.
+ *              - Import for NullString applied for displaying nulls as "N/A"
  *
  * @author Matthew Kiyono
  * @version 1.0
@@ -32,7 +33,7 @@
  *
  ********************************************************************************************/
 
-import java.lang.module.ModuleDescriptor;
+import com.uwm.appointmentProject.common.helper.NullString;
 import java.time.LocalDate;
 
 public class Patient extends Person {
@@ -105,9 +106,9 @@ public class Patient extends Person {
                 "age: " + age + "\n" +
                 "weight: " + weight + "\n" +
                 "height: " + height + "\n" +
-                "gender: " + gender + "\n" +
-                "in_id: " + in_id + "\n" +
-                "ec_id: " + ec_id;
+                "gender: " + NullString.check(gender) + "\n" +
+                "in_id: " + NullString.check(in_id) + "\n" +
+                "ec_id: " + NullString.check(ec_id);
     }
 
     public static class Builder {

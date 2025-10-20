@@ -17,12 +17,14 @@
  * @since 10/20/2025
  * ************************************************************************************/
 
+package com.uwm.appointmentProject.common.helper;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public final class NullString{
 
-    public static Object <T> check(T value){
+    public static <T> Object check(T value){
         if(value == null){return "N/A";}
         return value;
     }
