@@ -2,7 +2,7 @@
  * Nurse.java
  *
  *      This is the blueprint for storing information related to Nurses and acts as a
- *      model to transfer information of the Nurse between the backend and the frontend.
+ *      model to transfer information between the backend and the frontend.
  *
  *      Contains identifying variables of the Nurse and is used by the service layer for
  *      retrieval and updates.

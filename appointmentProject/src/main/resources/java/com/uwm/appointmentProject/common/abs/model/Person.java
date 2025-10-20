@@ -20,6 +20,7 @@
  ****************************************************************************************/
 
 
+
 public abstract class Person {
 
     protected String first_name;
@@ -44,7 +45,10 @@ public abstract class Person {
 
     //common toString
     public String toString(){
-        return "first name: " + first_name + "\nlast name: " + last_name + "\nphone: " + phone + "\nemail: " + email;
+        return "first name: " + first_name +
+                "\nlast name: " + last_name +
+                "\nphone: " + phone +
+                "\nemail: " + email;
     }
 
 }
