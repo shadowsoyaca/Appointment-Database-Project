@@ -23,7 +23,7 @@
 
 public abstract class Person {
 
-    protected String first_name;
+    private String first_name;
     protected String last_name;
     protected int phone;
     protected String email;
