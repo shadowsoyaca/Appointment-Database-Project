@@ -62,12 +62,12 @@ public class Medication {
     @Override
     public String toString() {
         return "Medication:" +
-                "\nMed ID: " +
-                "\nMed Name: " +
-                "\nManufacturer id: " +
-                "\nStrength: " +
-                "\nType of Medication: " +
-                "\nConsumption Method: " +
+                "\nMed ID: " + this.id +
+                "\nMed Name: " + this.medication_name +
+                "\nManufacturer id: " +  this.manufacturer_id +
+                "\nStrength: " +  this.strength +
+                "\nType of Medication: " +  this.type_of_med +
+                "\nConsumption Method: " +   this.consumption +
                 "\n";
     }
 }
