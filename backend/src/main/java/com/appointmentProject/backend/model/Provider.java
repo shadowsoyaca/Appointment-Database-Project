@@ -8,7 +8,7 @@
  *      layer for retrieval and updates.
  *      - "id": a unique identifier to differentiate between Providers. It is also the
  *           primary way of accessing specific Provider records. This is immutable and
- *           leads with a "PR". The number combination is created using the
+ *           leads with a "PV". The number combination is created using the
  *           auto-increment feature in MySQL.
  *      - "first_name", "last_name", "phone", and "email" are inherited from Person.java.
  *      - "specialty": the area of expertise of the provider. For example, one provider
