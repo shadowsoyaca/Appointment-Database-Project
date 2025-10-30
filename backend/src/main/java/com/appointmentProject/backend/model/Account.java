@@ -1,6 +1,8 @@
 /******************************************************************************
  * Account.java
  *
+ *  *****THE TABLE NAME IT WILL REFERENCE WILL BE CALLED USER_ACCOUNT.
+ *
  *     Represents an Account entity from the database in object
  *     format for transferring from the database to the frontend.
  *
@@ -16,7 +18,6 @@
  *                  - Provider
  *                  - Nurse
  *                  - Receptionist
- *
  *
  * @author Matthew Kiyono
  * @version 1.0
@@ -59,7 +60,7 @@ public class Account {
     //toString
     @Override
     public String toString() {
-        return "Account: " +
+        return "User Account: " +
                 "\nUsername: " + this.username +
                 "\nPassword: " + this.password +
                 "\nEmail: " + this.email +
