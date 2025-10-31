@@ -19,6 +19,8 @@ import com.appointmentProject.backend.util.NullString;
  *      - "medication_id": the "MD" id for the medication prescribed.
  *      - "pharmacy_id": the "PR" id for the pharmacy the medication was sent to.
  *      - "insurance_id": (nullable) the "IN" id for the insurance that could be covering it.
+ *          - If the insurance is NULL, it is assumed that either the patient does not
+ *          have any insurance OR the insurance does not cover the prescription.
  *      - "quantity": the amount of pills/liquid/etc. is given to the patient.
  *      - "frequency": the number of times a day they are required to take the medication.
  *      - "start_date": the date that they are prescribed the medication

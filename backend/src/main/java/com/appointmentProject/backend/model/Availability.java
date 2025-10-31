@@ -69,4 +69,6 @@ public class Availability {
                 "\nstart_time: " + start_time +
                 "\nend_time: " + end_time + "\n";
     }
+
+
 }

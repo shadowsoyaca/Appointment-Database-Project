@@ -8,13 +8,11 @@
  *      retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Nurses. It is also the
  *          primary way of accessing specific nurse records. This is immutable and leads
- *          with a "NE". The number combination is created by the auto-increment feature
+ *          with a "NR". The number combination is created by the auto-increment feature
  *          in MySQL.
  *      - "first_name", "last_name", "phone", and "email" are inherited from Person.java.
  *      - "address": the Nurse's address.
  *
- *      Designer Note: As there are no optional parameters, this is created through a
- *          traditional constructor.
  *
  * @author Matthew Kiyono
  * @version 1.0
