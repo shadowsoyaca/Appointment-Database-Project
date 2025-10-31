@@ -1,24 +1,44 @@
+<!-- Parent project POM: acts as a manager of submodules (backend, frontend, etc.) -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 1️⃣ Maven standard version -->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>myproject</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <!-- 2️⃣ Coordinates: identifies the overall project group -->
+    <groupId>com.uwm</groupId>
+    <artifactId>appointmentProject</artifactId> <!-- renamed for consistency -->
+    <version>1.0.0</version>
 
+    <!-- 3️⃣ Marks this as a parent (not a JAR or WAR) -->
+    <packaging>pom</packaging>
+
+    <!-- 4️⃣ Declares all submodules -->
+    <modules>
+        <module>backend</module> <!-- backend folder contains its own pom.xml -->
+        <!-- Add frontend later if needed -->
+    </modules>
+
+    <!-- 5️⃣ Optional: define global properties (inherited by submodules) -->
     <properties>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <java.version>17</java.version>
+        <spring.boot.version>3.3.6</spring.boot.version> <!-- patched version -->
     </properties>
 
-    <dependencies>
-        <!-- Spring Boot Core starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>3.3.5</version>
-        </dependency>
-    </dependencies>
+    <!-- 6️⃣ Optional: manage dependency versions globally -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Import Spring Boot dependency management -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

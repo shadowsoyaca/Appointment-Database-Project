@@ -1,4 +1,4 @@
-MODEL STRUCTURE
+BUILDER MODEL STRUCTURE
 ----------------------------------------------------------------------------------------------
 
 - Depending on which model you choose, you may realize that some of the variables in the object class are __OPTIONAL__.

@@ -1,8 +1,8 @@
 Combinations Between Tables:
 -----------------------------
- - manufacturers holds both medications and manufacturer files                                                                                              
- - staff holds both provider and nurse files                                                                                                                
- - common holds abstract classes, interfaces, helper methods, and the user-type related files (the stuff that limits who can see/use what).                 
+ - abstractmodel holds every abstract model utilized in the models.
+ - util holds helper methods that can be utilized across the entire backend directory
+ - security involves the management of the users, views, privileges, and other account factors.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Format Instructions:
@@ -16,7 +16,7 @@ Format Instructions:
       - returns a response - rendered template, redirect, JSON file, etc.
      
     2. service
-       - contains rules, validations, computations, and coordinating actions between mulitple repositories
+       - contains rules, validations, computations, and coordinating actions between multiple repositories
        - NEVER directly interacts with front end
        - Talks to the repository layer for database access
        - Can call other services if needed.
@@ -24,7 +24,7 @@ Format Instructions:
     3. model
        - represents the data structure (usually mapping database tables)
        - each module usually has one model class per table (we have a few exceptions due to how related some of the tables are)
-       - defines fields, relationships, and sometimes validation rules
+       - defines fields and relationships
       
     4. repository
        - provides create, read, update, delete operations
