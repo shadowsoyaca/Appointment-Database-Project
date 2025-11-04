@@ -19,7 +19,7 @@
  *      Designer Note: As there are no optional fields, the standard constructor is used.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/20/2025
  *
  *****************************************************************************************/
@@ -46,6 +46,11 @@ public class Provider extends Person {
     public String getId() {return id;}
     public String getSpecialty() {return specialty;}
     public String getAddress() {return address;}
+
+    //setter methods
+    public void setId(String id) {this.id = id;}
+    public void setSpecialty(String specialty) {this.specialty = specialty;}
+    public void setAddress(String address) {this.address = address;}
 
     //toString
     public String toString(){

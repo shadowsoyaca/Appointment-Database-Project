@@ -44,7 +44,7 @@
  *                  on the current billing. This will be handled in a separate service class.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/30/2026
  *******************************************************************************************/
 package com.appointmentProject.backend.model;
@@ -76,6 +76,13 @@ public class Billing {
     public String getStatus_of_payment() {return status_of_payment;}
     public String getPayment_type() {return payment_type;}
     public String getInsurance_id() {return insurance_id;}
+
+    //setter method
+    public void setId(String id) {this.id = id;}
+    public void setCost(double cost) {this.cost = cost;}
+    public void setStatus_of_payment(String status_of_payment) {this.status_of_payment = status_of_payment;}
+    public void setPayment_type(String payment_type) {this.payment_type = payment_type;}
+    public void setInsurance_id(String insurance_id) {this.insurance_id = insurance_id;}
 
     //toString method
     @Override

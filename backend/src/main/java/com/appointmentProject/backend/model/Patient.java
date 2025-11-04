@@ -28,7 +28,7 @@
  *              - Import for NullString applied for displaying nulls as "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/20/2025
  *
  ********************************************************************************************/
@@ -51,6 +51,7 @@ public class Patient extends Person {
     private String gender;
     private String in_id;
     private String ec_id;
+
 
     //private constructor used only by builder
     private Patient(Builder builder) {
@@ -98,6 +99,16 @@ public class Patient extends Person {
     public String getEC_id() {
         return ec_id;
     }
+
+    //setter methods
+    public void setId(String id) {this.id = id;}
+    public void setDoB(LocalDate  DoB) {this.DoB = DoB;}
+    public void setAge(int age) {this.age = age;}
+    public void setWeight(double weight) {this.weight = weight;}
+    public void setHeight(double height) {this.height = height;}
+    public void setGender(String gender) {this.gender = gender;}
+    public void setIN_id(String in_id) {this.in_id = in_id;}
+    public void setEC_id(String ec_id) {this.ec_id = ec_id;}
 
     //toString
     public String toString() {

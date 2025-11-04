@@ -15,7 +15,7 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/20/2025
  ****************************************************************************************/
 
@@ -39,6 +39,10 @@ public class Nurse extends Person {
     //getter method
     public String getId() {return id;}
     public String getAddress() {return address;}
+
+    //setter method
+    public void setId(String id) {this.id = id;}
+    public void setAddress(String address) {this.address = address;}
 
     //toString
     public String toString(){

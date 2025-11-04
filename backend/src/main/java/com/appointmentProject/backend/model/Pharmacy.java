@@ -22,7 +22,7 @@ import java.time.LocalTime;
  *      - "closing_time": the time the pharmacy closes to the public.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/29/2026
  *******************************************************************************************/
 
@@ -56,6 +56,15 @@ public class Pharmacy {
     public String getAddress(){return address;}
     public LocalTime getStartTime(){return start_time;}
     public LocalTime getEndTime(){return end_time;}
+
+    //setters
+    public void setId(String id){this.id = id;}
+    public void setName(String name){this.pharmacy_name = name;}
+    public void setPhone(int phone){this.phone = phone;}
+    public void setEmail(String email){this.email = email;}
+    public void setAddress(String address){this.address = address;}
+    public void setStartTime(LocalTime  start_time){this.start_time = start_time;}
+    public void setEndTime(LocalTime  end_time){this.end_time = end_time;}
 
     //toString
     @Override

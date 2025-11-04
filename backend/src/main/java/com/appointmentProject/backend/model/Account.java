@@ -20,7 +20,7 @@
  *                  - Receptionist
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/29/2025
  ********************************************************************************/
 
@@ -56,6 +56,12 @@ public class Account {
     public String getPassword() {return password;}
     public String getEmail() {return email;}
     public authorization getUser_type() {return user_type;}
+
+    //setters
+    public void setUsername(String username) {this.username = username;}
+    public void setPassword(String password) {this.password = password;}
+    public void setEmail(String email) {this.email = email;}
+    public void setUser_type(authorization user_type) {this.user_type = user_type;}
 
     //toString
     @Override

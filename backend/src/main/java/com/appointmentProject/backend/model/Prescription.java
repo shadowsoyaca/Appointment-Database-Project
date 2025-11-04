@@ -35,7 +35,7 @@ import com.appointmentProject.backend.util.NullString;
  *      - "date_picked_up": (nullable) the date and time the prescription is picked up.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/30/2026
  *******************************************************************************************/
 public class Prescription {
@@ -81,6 +81,18 @@ public class Prescription {
     public String getStatus() {return status;}
     public String getINID() {return insurance_id;}
     public LocalDate getEndDate() {return end_date;}
+
+    //setters
+    public void setId(String id) {this.id = id;}
+    public void setMedID(String medication_id) {this.medication_id = medication_id;}
+    public void setQuantity(int quantity) {this.quantity = quantity;}
+    public void setFrequency(int frequency) {this.frequency = frequency;}
+    public void setPID(String pharmacy_id) {this.pharmacy_id = pharmacy_id;}
+    public void setStartDate(LocalDate start_date) {this.start_date = start_date;}
+    public void setPrice(double price) {this.price = price;}
+    public void setStatus(String status) {this.status = status;}
+    public void setINID(String insurance_id) {this.insurance_id = insurance_id;}
+    public void setEndDate(LocalDate  end_date) {this.end_date = end_date;}
 
     //toString
     @Override

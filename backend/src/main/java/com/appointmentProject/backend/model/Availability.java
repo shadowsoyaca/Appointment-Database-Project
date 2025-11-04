@@ -16,7 +16,7 @@
  *      - "end_time": the end time of the Availability in military time.
  *
  * @author Jack Mitchell
- * @version 1.0
+ * @version 1.1
  * @since 10/30/2025
  *******************************************************************************************/
 
@@ -59,6 +59,13 @@ public class Availability {
     public String getDay_of_week() {return day_of_week;}
     public LocalTime getStart_time() {return start_time;}
     public LocalTime getEnd_time() {return end_time;}
+
+    //setter methods
+    public void setStaff_id(String staff_id) {this.staff_id = staff_id;}
+    public void setStaff_type(String staff_type) {this.staff_type = staff_type;}
+    public void setDay_of_week(String day_of_week) {this.day_of_week = day_of_week;}
+    public void setStart_time(LocalTime start_time) {this.start_time = start_time;}
+    public void setEnd_time(LocalTime  end_time) {this.end_time = end_time;}
 
     // toString method
     public String toString() {

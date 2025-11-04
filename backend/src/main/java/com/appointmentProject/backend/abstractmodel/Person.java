@@ -45,6 +45,12 @@ public abstract class Person {
     public int getPhone() {return phone;}
     public String getEmail() {return email;}
 
+    //common setters
+    public void setFirst_name(String first_name) {this.first_name = first_name;}
+    public void setLast_name(String last_name) {this.last_name = last_name;}
+    public void setPhone(int phone) {this.phone = phone;}
+    public void setEmail(String email) {this.email = email;}
+
     //common toString
     public String toString(){
         return "first name: " + first_name +

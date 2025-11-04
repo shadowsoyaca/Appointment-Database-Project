@@ -16,7 +16,7 @@
  *      - "address": the insurance's address.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/20/2026
  *******************************************************************************************/
 
@@ -46,6 +46,14 @@ public class Insurance{
     public int getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
+
+    //setter methods
+    public void setId(String id) {this.id = id;}
+    public void setAddress(String address) {this.address = address;}
+    public void setInsurance_name(String insurance_name) {this.insurance_name = insurance_name;}
+    public void setPhone(int phone) {this.phone = phone;}
+    public void setEmail(String email) {this.email = email;}
+
 
     //toString method
     public String toString(){

@@ -19,7 +19,7 @@
  *          - Imported NullString checker for displying the toString as a "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/16/2025
  ********************************************************************************/
 
@@ -47,6 +47,10 @@ public class EmergencyContact extends Person {
     //getter methods
     public String getId(){return id;}
     public String getAddress(){return address;}
+
+    //setter methods
+    public void setId(String id){this.id = id;}
+    public void setAddress(String address){this.address = address;}
 
     //toString
     @Override

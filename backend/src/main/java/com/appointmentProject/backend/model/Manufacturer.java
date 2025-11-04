@@ -16,7 +16,7 @@
  *      - "address": the manufacturer's address.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/20/2026
  *******************************************************************************************/
 
@@ -46,6 +46,13 @@ public class Manufacturer{
     public int getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
+
+    //setter methods
+    public void setId(String id) {this.id = id;}
+    public void setManufacturer_name(String manufacturer_name) {this.manufacturer_name = manufacturer_name;}
+    public void setPhone(int phone) {this.phone = phone;}
+    public void setEmail(String email) {this.email = email;}
+    public void setAddress(String address) {this.address = address;}
 
     //toString method
     public String toString(){

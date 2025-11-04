@@ -21,7 +21,7 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/29/2025
  ********************************************************************************/
 package com.appointmentProject.backend.model;
@@ -57,6 +57,14 @@ public class Medication {
     public double getStrength() {return strength;}
     public String getType() {return type_of_med;}
     public String getConsumption() {return consumption;}
+
+    //setter method
+    public void setId(String id) {this.id = id;}
+    public void setMedName(String medication_name) {this.medication_name = medication_name;}
+    public void setStrength(double strength) {this.strength = strength;}
+    public void setType(String type_of_med) {this.type_of_med = type_of_med;}
+    public void setMNID(String manufacturer_id) {this.manufacturer_id = manufacturer_id;}
+    public void setConsumption(String consumption) {this.consumption = consumption;}
 
     //toString
     @Override

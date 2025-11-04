@@ -9,7 +9,7 @@ package com.appointmentProject.backend.model;
  *
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/4/2025
  ********************************************************************************/
 public class Room {
@@ -27,6 +27,10 @@ public class Room {
     //getter methods
     public int getRoom_number() {return room_number;}
     public int getFloor_number() {return floor_number;}
+
+    //setter methods
+    public void setRoom_number(int room_number) {this.room_number = room_number;}
+    public void setFloor_number(int floor_number) {this.floor_number = floor_number;}
 
     //toString method
     @Override

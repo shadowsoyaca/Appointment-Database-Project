@@ -30,7 +30,7 @@ import java.time.Duration;
  *      - "reason_for_visiting": the purpose of the appointment
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/30/2026
  *******************************************************************************************/
 public class Appointment {
@@ -84,6 +84,20 @@ public class Appointment {
     public String getLB_id() {return lab_order_id;}
     public LocalTime getStart_time() {return start_time;}
     public LocalTime getEnd_time() {return end_time;}
+
+    //setter methods
+    public void setAppointment_date(LocalDateTime appointment_date) {this.appointment_date = appointment_date;}
+    public void setId(String id) {this.id = id;}
+    public void setPT_id(String pT_id) {this.patient_id = pT_id;}
+    public void setPV_id(String pV_id) {this.provider_id = pV_id;}
+    public void setBL_id(String bL_id) {this.billing_id = bL_id;}
+    public void setRoom(String room) {this.room_number = room;}
+    public void setPurpose(String purpose) {this.reason_for_visiting = purpose;}
+    public void setNR_id(String nR_id) {this.nurse_id = nR_id;}
+    public void setPR_id(String PR_id) {this.prescription_id = PR_id;}
+    public void setLB_id(String LB_id) {this.lab_order_id = LB_id;}
+    public void setStart_time(LocalTime  start_time) {this.start_time = start_time;}
+    public void setEnd_time(LocalTime end_time) {this.end_time = end_time;}
 
     //toString
     @Override
