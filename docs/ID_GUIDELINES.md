@@ -23,7 +23,6 @@ ID Compass
 -------------------------------------------------------------------------
 Here is the list of ids that are being utilized in the project:
 
-- Account >> AC 
 - Appointment >> AP
 - Billing >> BL
 - EmergencyContact >> EC
