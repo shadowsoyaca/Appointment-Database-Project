@@ -62,6 +62,7 @@
         </dependency>
     </dependencies>
 
+
     <!-- 5️⃣ Build configuration -->
     <build>
         <plugins>

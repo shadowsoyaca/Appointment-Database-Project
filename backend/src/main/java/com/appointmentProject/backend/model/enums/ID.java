@@ -37,10 +37,30 @@ public enum ID {
         this.table = table;
     }
 //getter methods
-    //method to get the table (can also be used as a way to check for validity?)
+
+    /**********************************************************************
+     * getTable
+     *
+     *      A getter method that returns the Table Name associated to the
+     *      provided ID abbreviation. If a user writes the call:
+     *          AP.getTable();
+     *      The user will be given "Appointment".
+     *      NOTE: The "AP" in front cannot be a String, it needs to be an
+     *      ID variable.
+     * @return table name (String)
+     ***********************************************************************/
     public String getTable(){return this.table;}
 
-    //method for getting the abbreviation from the table name
+
+    /************************************************************************
+     * getFromTable
+     *
+     *      A getter method that provides the enumerated ID variable when
+     *      it is provided a table name. If the parameter provided is null
+     *      or it does not exist, a null value is returned.
+     * @param tableName - (String) name of an existing table.
+     * @return abbreviation - (ID) enumerated ID or null.
+     ************************************************************************/
     public static ID getFromTable(String tableName){
         if(tableName == null) return null;
         tableName = tableName.trim();
@@ -52,6 +72,16 @@ public enum ID {
         return null;
     }
 
+
+    /***************************************************************************
+     * stringToEnum
+     *
+     *      A getter method that provides the enumerated ID variable when it
+     *      is provided a String formatted abbreviation. If the parameter
+     *      is null or does not exist, a null value is returned.
+     * @param id - (String) The name of the abbreviation in String format.
+     * @return abbreviation - (ID) enumerated ID or null.
+     ***************************************************************************/
     //method for converting a String abbreviation into the enum ID returns null for null and invalid entries
     public static ID stringToEnum(String id){
         if(id == null)return null;
