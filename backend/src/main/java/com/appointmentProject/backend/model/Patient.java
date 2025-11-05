@@ -28,7 +28,7 @@
  *              - Import for NullString applied for displaying nulls as "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/20/2025
  *
  ********************************************************************************************/
@@ -133,7 +133,7 @@ public class Patient extends Person {
         private int age;
         private double weight;
         private double height;
-        private int phone;
+        private String phone;
 
         //optional
         private String gender;
@@ -142,7 +142,7 @@ public class Patient extends Person {
         private String ec_id;
 
         //constructor that utilizes only the required variables.
-        public Builder(String first_name, String last_name, int phone, LocalDate DoB, int age, double weight, double height) {
+        public Builder(String first_name, String last_name, String phone, LocalDate DoB, int age, double weight, double height) {
             this.id = id;
             this.first_name = first_name;
             this.last_name = last_name;

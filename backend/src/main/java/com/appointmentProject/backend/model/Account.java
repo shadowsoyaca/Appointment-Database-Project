@@ -31,10 +31,10 @@ public class Account {
 
     //User Types
     public enum authorization{
-        Admin,
-        Provider,
-        Nurse,
-        Receptionist
+        ADMIN,
+        PROVIDER,
+        NURSE,
+        RECEPTIONIST
     }
 
     //Variables

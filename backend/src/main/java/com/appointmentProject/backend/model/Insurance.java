@@ -16,7 +16,7 @@
  *      - "address": the insurance's address.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/20/2026
  *******************************************************************************************/
 
@@ -27,12 +27,12 @@ public class Insurance{
     //variables
     private String id;
     private String insurance_name;
-    private int phone;
+    private String phone;
     private String email;
     private String address;
 
     //constructor
-    public Insurance(String id, String insurance_name, int phone, String email, String address) {
+    public Insurance(String id, String insurance_name, String phone, String email, String address) {
         this.id = id;
         this.insurance_name = insurance_name;
         this.phone = phone;
@@ -43,7 +43,7 @@ public class Insurance{
     //getter methods
     public String getId() {return id;}
     public String getInsurance_name() {return insurance_name;}
-    public int getPhone() {return phone;}
+    public String getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
 
@@ -51,7 +51,7 @@ public class Insurance{
     public void setId(String id) {this.id = id;}
     public void setAddress(String address) {this.address = address;}
     public void setInsurance_name(String insurance_name) {this.insurance_name = insurance_name;}
-    public void setPhone(int phone) {this.phone = phone;}
+    public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}
 
 

@@ -35,7 +35,7 @@ public class Provider extends Person {
     private String address;
 
     //constructor
-    public Provider(String id, String first_name, String last_name, int phone, String email, String specialty, String address) {
+    public Provider(String id, String first_name, String last_name, String phone, String email, String specialty, String address) {
         super(first_name, last_name, phone, email);
         this.id = id;
         this.specialty = specialty;

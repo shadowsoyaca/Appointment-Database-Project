@@ -16,7 +16,7 @@
  *      - The import for NullString is applied to display nulls as "N/A".
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 10/16/2025
  ****************************************************************************************/
 
@@ -27,11 +27,11 @@ public abstract class Person {
 
     private String first_name;
     protected String last_name;
-    protected int phone;
+    protected String phone;
     protected String email;
 
     //Parent Constructor
-    public Person(String first_name, String last_name, int phone, String email) {
+    public Person(String first_name, String last_name, String phone, String email) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone = phone;
@@ -42,13 +42,13 @@ public abstract class Person {
     //common getters
     public String getFirst_name() {return first_name;}
     public  String getLast_name() {return last_name;}
-    public int getPhone() {return phone;}
+    public String getPhone() {return phone;}
     public String getEmail() {return email;}
 
     //common setters
     public void setFirst_name(String first_name) {this.first_name = first_name;}
     public void setLast_name(String last_name) {this.last_name = last_name;}
-    public void setPhone(int phone) {this.phone = phone;}
+    public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}
 
     //common toString

@@ -15,7 +15,7 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/20/2025
  ****************************************************************************************/
 
@@ -30,7 +30,7 @@ public class Nurse extends Person {
     private String address;
 
     //Constructor
-    public Nurse(String id, String first_name, String last_name, int phone, String email, String address) {
+    public Nurse(String id, String first_name, String last_name, String phone, String email, String address) {
         super(first_name, last_name, phone, email);
         this.id = id;
         this.address = address;

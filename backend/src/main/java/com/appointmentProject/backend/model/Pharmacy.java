@@ -22,7 +22,7 @@ import java.time.LocalTime;
  *      - "closing_time": the time the pharmacy closes to the public.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/29/2026
  *******************************************************************************************/
 
@@ -31,14 +31,14 @@ public class Pharmacy {
     //variables
     private String id;
     private String pharmacy_name;
-    private int phone;
+    private String phone;
     private String email;
     private String address;
     private LocalTime  start_time;
     private LocalTime end_time;
 
     //constructor
-    public Pharmacy(String id, String name, int phone, String email, String address, LocalTime start_time, LocalTime end_time){
+    public Pharmacy(String id, String name, String phone, String email, String address, LocalTime start_time, LocalTime end_time){
         this.id = id;
         this.pharmacy_name = name;
         this.phone = phone;
@@ -51,7 +51,7 @@ public class Pharmacy {
     //getters
     public String getId(){return id;}
     public String getName(){return pharmacy_name;}
-    public int getPhone(){return phone;}
+    public String getPhone(){return phone;}
     public String getEmail(){return email;}
     public String getAddress(){return address;}
     public LocalTime getStartTime(){return start_time;}
@@ -60,7 +60,7 @@ public class Pharmacy {
     //setters
     public void setId(String id){this.id = id;}
     public void setName(String name){this.pharmacy_name = name;}
-    public void setPhone(int phone){this.phone = phone;}
+    public void setPhone(String phone){this.phone = phone;}
     public void setEmail(String email){this.email = email;}
     public void setAddress(String address){this.address = address;}
     public void setStartTime(LocalTime  start_time){this.start_time = start_time;}

@@ -1,5 +1,6 @@
 package com.appointmentProject.backend.util;
 import com.appointmentProject.backend.model.enums.ID;
+import org.springframework.stereotype.Component;
 /**********************************************************************************************
  * IDFormatter.java
  *
@@ -21,15 +22,16 @@ import com.appointmentProject.backend.model.enums.ID;
  * @version 1.0
  * @since 11/04/2026
  *******************************************************************************************/
+@Component
 public class IDFormatter {
 
     //FORMATTER METHOD
 
 
     /***************************************************************************
-     * simplifyID
+     * formatRecord
      *         A main method where a Pre-fixed ID is converted into a
-     *         simplified ID. It needs multiple checks and helper methods for
+     *         query. It needs multiple checks and helper methods for
      *         it to function.
      * - @param: prefix-id - String (can be null)
      * - @return: String - a skeleton query containing the table and the
@@ -39,7 +41,7 @@ public class IDFormatter {
      *
      *
      ***************************************************************************/
-    public String simplifyID(String id) {
+    public String formatRecord(String id) {
 
         //Separate prefix from sequence
         String prefix = id.substring(0, 2);
@@ -58,7 +60,7 @@ public class IDFormatter {
         int num = Integer.parseInt(number);
 
         //Format and Return the Skeleton Query
-        return "FROM " + table + " WHERE id IS " + number;
+        return "FROM " + table + " WHERE id IS " + num;
 
     }
 
@@ -72,11 +74,11 @@ public class IDFormatter {
      ******************************************************************************************/
     public String formatPrefix(String prefix, int id){
         //convert the id into an 8-digit number
-        String number = String.format("%8d", id);
+        String number = String.format("%08d", id);
         String abbreviation;
 
         //Helper Method Validity Check
-        if(check(prefix, number)){
+        if(!check(prefix, number)){
             return null;
         }
         //getting the enum value to determine if prefix is a table or an abbreviation

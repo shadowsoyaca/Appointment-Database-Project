@@ -7,7 +7,8 @@
     <!-- Standard Maven model version -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 1️⃣ Parent POM linkage -->
+
+    <!--  Parent POM linkage -->
     <parent>
         <groupId>com.uwm</groupId>           <!-- group ID of the outer project -->
         <artifactId>appointmentProject</artifactId> <!-- outer project artifactId -->
@@ -15,19 +16,21 @@
         <relativePath>../pom.xml</relativePath> <!-- tells Maven where to find the parent -->
     </parent>
 
-    <!-- 2️⃣ Module coordinates -->
+    <!--  Module coordinates -->
     <groupId>com.appointmentProject</groupId>   <!-- backend-specific group ID -->
     <artifactId>backend</artifactId>          <!-- backend module name -->
     <version>1.0.0-SNAPSHOT</version>         <!-- version for this module -->
     <packaging>jar</packaging>                <!-- builds as a JAR -->
 
-    <!-- 3️⃣ Project properties -->
+    <!--  Project properties -->
     <properties>
         <java.version>17</java.version>       <!-- inherits Java version for compilation -->
         <spring.boot.version>3.3.6</spring.boot.version> <!-- Spring Boot version explicitly declared -->
     </properties>
 
-    <!-- 4️⃣ Dependencies -->
+
+
+                        <!--  Dependencies -->
     <dependencies>
         <!-- Core Spring Boot starter (logging, basic features) -->
         <dependency>
@@ -51,19 +54,44 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope> <!-- only needed at runtime, not for compilation -->
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Testing utilities (JUnit, Spring Test) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope> <!-- used only for test compilation/execution -->
+            <scope>test</scope>
         </dependency>
+
+        <!-- Junit5 API-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Junit5 Engine-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito (Provides a framework to test repositories and services separately)-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.12.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
-    <!-- 5️⃣ Build configuration -->
+    <!--  Build configuration -->
     <build>
         <plugins>
             <!-- Spring Boot Maven plugin: enables packaging, running, and repackage goals -->
@@ -72,7 +100,19 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version> <!-- explicitly declared to remove warning -->
             </plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target></configuration></plugin>
+
+            <!--Maven Surefire Plugin (runs classes under src/test/java, avoids issues with Java17+) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
         </plugins>
+
     </build>
 
 </project>

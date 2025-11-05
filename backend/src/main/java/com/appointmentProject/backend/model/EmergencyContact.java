@@ -19,7 +19,7 @@
  *          - Imported NullString checker for displying the toString as a "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/16/2025
  ********************************************************************************/
 
@@ -66,13 +66,13 @@ public class EmergencyContact extends Person {
         private String id;
         private String first_name;
         private String last_name;
-        private int  phone;
+        private String  phone;
         //optional
         private String email;
         private String address;
 
         //this constructor only utilizes the required variables
-        public Builder(String id, String first_name, String last_name, int phone){
+        public Builder(String id, String first_name, String last_name, String phone){
             this.id = id;
             this.first_name = first_name;
             this.last_name = last_name;
