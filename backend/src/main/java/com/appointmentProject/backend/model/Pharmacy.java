@@ -70,13 +70,13 @@ public class Pharmacy {
     @Override
     public String toString(){
         return "Pharmacy:" +
-                "\nPH id: " + this.id +
+                "\nPharmacy id: " + this.id +
                 "\nName: " + this.pharmacy_name +
                 "\nPhone: " + this.phone +
                 "\nEmail: " + this.email +
                 "\nAddress: " + this.address +
                 "\nOpens: " + this.start_time +
-                "\nEnds: " + this.end_time +
+                "\nCloses: " + this.end_time +
                 "\n";
     }
 
