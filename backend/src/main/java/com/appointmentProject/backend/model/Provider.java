@@ -54,10 +54,10 @@ public class Provider extends Person {
 
     //toString
     public String toString(){
-        return "Provider:\n\n" +
-                "PR id: " + id + "\n" +
+        return "Provider:" +
+                "\nProvider id: " + id + "\n" +
                 super.toString() +
-                "Specialty: \n" + specialty + "\n" +
-                "Address: \n" + address + "\n";
+                "\nSpecialty: " + specialty +
+                "\nAddress: " + address + "\n";
     }
 }
