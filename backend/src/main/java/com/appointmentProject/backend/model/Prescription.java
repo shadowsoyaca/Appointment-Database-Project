@@ -57,42 +57,44 @@ public class Prescription {
 
     //private constructor
     private Prescription(Builder builder) {
-        this.id = id;
-        this.medication_id = medication_id;
-        this.pharmacy_id = pharmacy_id;
-        this.quantity = quantity;
-        this.frequency = frequency;
-        this.start_date = start_date;
-        this.price = price;
-        this.status = status;
-        this.insurance_id = insurance_id;
-        this.end_date = end_date;
-        this.date_picked_up = date_picked_up;
+        this.id = builder.id;
+        this.medication_id = builder.medication_id;
+        this.pharmacy_id = builder.pharmacy_id;
+        this.quantity = builder.quantity;
+        this.frequency = builder.frequency;
+        this.start_date = builder.start_date;
+        this.price = builder.price;
+        this.status = builder.status;
+        this.insurance_id = builder.insurance_id;
+        this.end_date = builder.end_date;
+        this.date_picked_up = builder.date_picked_up;
     }
 
     //getters
     public String getId() {return id;}
-    public String getMedID() {return medication_id;}
-    public String getPID() {return pharmacy_id;}
+    public String getMedication_id() {return medication_id;}
+    public String getPharmacy_id() {return pharmacy_id;}
     public int getQuantity() {return quantity;}
     public int getFrequency() {return frequency;}
     public LocalDate getStartDate() {return start_date;}
     public double getPrice() {return price;}
     public String getStatus() {return status;}
-    public String getINID() {return insurance_id;}
+    public String getInsurance_id() {return insurance_id;}
     public LocalDate getEndDate() {return end_date;}
+    public  LocalDateTime getDatePickedUp() {return date_picked_up;}
 
     //setters
     public void setId(String id) {this.id = id;}
-    public void setMedID(String medication_id) {this.medication_id = medication_id;}
+    public void setMedication_id(String medication_id) {this.medication_id = medication_id;}
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void setFrequency(int frequency) {this.frequency = frequency;}
-    public void setPID(String pharmacy_id) {this.pharmacy_id = pharmacy_id;}
+    public void setPharmacy_id(String pharmacy_id) {this.pharmacy_id = pharmacy_id;}
     public void setStartDate(LocalDate start_date) {this.start_date = start_date;}
     public void setPrice(double price) {this.price = price;}
     public void setStatus(String status) {this.status = status;}
-    public void setINID(String insurance_id) {this.insurance_id = insurance_id;}
+    public void setInsurance_id(String insurance_id) {this.insurance_id = insurance_id;}
     public void setEndDate(LocalDate  end_date) {this.end_date = end_date;}
+    public void setDate_picked_up(LocalDateTime picked_up) {this.date_picked_up = picked_up;}
 
     //toString
     @Override
@@ -102,7 +104,7 @@ public class Prescription {
                "\nMedication ID: " + medication_id +
                "\nPharmacy ID: " + pharmacy_id +
                "\nQuantity: " + quantity +
-               "\nFrequency: " + frequency +
+               "\nFrequency: " + frequency + " daily" +
                "\nPrescribed Date: " + start_date +
                "\nPrice: " + price +
                "\nStatus: " + status +
