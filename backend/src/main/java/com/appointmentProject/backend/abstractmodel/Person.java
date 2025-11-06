@@ -53,10 +53,10 @@ public abstract class Person {
 
     //common toString
     public String toString(){
-        return "first name: " + first_name +
-                "\nlast name: " + last_name +
-                "\nphone: " + phone +
-                "\nemail: " + NullString.check(email);
+        return "First name: " + first_name +
+                "\nLast name: " + last_name +
+                "\nPhone: " + phone +
+                "\nEmail: " + NullString.check(email);
     }
 
 }

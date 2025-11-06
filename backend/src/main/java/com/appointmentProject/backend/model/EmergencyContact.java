@@ -55,10 +55,10 @@ public class EmergencyContact extends Person {
     //toString
     @Override
     public String toString(){
-        return "Emergency Contact:\n\n" +
+        return "Emergency Contact:\n" +
                 "EC id: " + this.id + "\n" +
                 super.toString() +
-                "address: " + NullString.check(this.address) + "\n";
+                "\nAddress: " + NullString.check(this.address) + "\n";
     }
 
     public static class Builder{
