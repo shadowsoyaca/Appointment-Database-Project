@@ -46,9 +46,9 @@ public class Nurse extends Person {
 
     //toString
     public String toString(){
-        return "Nurse:\n\n" +
-                "NE id: " + this.id + "\n" +
+        return "Nurse:\n" +
+                "Nurse id: " + this.id + "\n" +
                 super.toString() +
-                "Address: " + this.address + "\n";
+                "\nAddress: " + this.address + "\n";
     }
 }
