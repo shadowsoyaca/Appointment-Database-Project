@@ -17,9 +17,9 @@
  *      - "age": patient's age, can be 0 if they are only a few months old.
  *      - "weight": patient's weight in pounds in the format of a double.
  *      - "height": patient's height in feet in the format of a double.
- *      - "in_id": the patient's insurance provider. Can be null if they do not have
+ *      - "insurance_id": the patient's insurance provider. Can be null if they do not have
  *              one. The id must have a "IN" lead before the number sequence. (Optional)
- *      - "ec_id": the patient's emergency contact. Can be null if they do not
+ *      - "emergencyContact_id": the patient's emergency contact. Can be null if they do not
  *              have one. The id must start with "EC" before the number sequence. (Optional)
  *
  *      Designer Note: As email, gender, insurance_id, and emergency_contact_id are optional,
@@ -49,21 +49,21 @@ public class Patient extends Person {
 
     //optional variables
     private String gender;
-    private String in_id;
-    private String ec_id;
+    private String insurance_id;
+    private String emergencyContact_id;
 
 
     //private constructor used only by builder
     private Patient(Builder builder) {
         super(builder.first_name, builder.last_name, builder.phone, builder.email);
-        this.id = id;
-        this.DoB = DoB;
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-        this.gender = gender;
-        this.in_id = in_id;
-        this.ec_id = ec_id;
+        this.id = builder.id;
+        this.DoB = builder.DoB;
+        this.age = builder.age;
+        this.weight = builder.weight;
+        this.height = builder.height;
+        this.gender = builder.gender;
+        this.insurance_id = builder.insurance_id;
+        this.emergencyContact_id = builder.emergencyContact_id;
 
     }
 
@@ -92,12 +92,12 @@ public class Patient extends Person {
         return gender;
     }
 
-    public String getIN_id() {
-        return in_id;
+    public String getInsurance_id() {
+        return insurance_id;
     }
 
-    public String getEC_id() {
-        return ec_id;
+    public String getEmergencyContact_id() {
+        return emergencyContact_id;
     }
 
     //setter methods
@@ -107,21 +107,22 @@ public class Patient extends Person {
     public void setWeight(double weight) {this.weight = weight;}
     public void setHeight(double height) {this.height = height;}
     public void setGender(String gender) {this.gender = gender;}
-    public void setIN_id(String in_id) {this.in_id = in_id;}
-    public void setEC_id(String ec_id) {this.ec_id = ec_id;}
+    public void setInsurance_id(String in_id) {this.insurance_id = in_id;}
+    public void setEmergencyContact_id(String ec_id) {this.emergencyContact_id = ec_id;}
 
     //toString
     public String toString() {
-        return "Patient:\n\n" +
-                "PT id: " + id + "\n" +
+        return "Patient:\n" +
+                "Patient ID: " + id + "\n" +
                 super.toString() +
-                "DoB: " + DoB + "\n" +
-                "age: " + age + "\n" +
-                "weight: " + weight + "\n" +
-                "height: " + height + "\n" +
-                "gender: " + NullString.check(gender) + "\n" +
-                "in_id: " + NullString.check(in_id) + "\n" +
-                "ec_id: " + NullString.check(ec_id);
+                "\nDoB: " + DoB + "\n" +
+                "Age: " + age + "\n" +
+                "Weight: " + weight + "\n" +
+                "Height: " + height + "\n" +
+                "Gender: " + NullString.check(gender) + "\n" +
+                "Insurance Id: " + NullString.check(insurance_id) + "\n" +
+                "Emergency Contact ID: " + NullString.check(emergencyContact_id) +
+                "\n";
     }
 
     public static class Builder {
@@ -138,11 +139,11 @@ public class Patient extends Person {
         //optional
         private String gender;
         private String email;
-        private String in_id;
-        private String ec_id;
+        private String insurance_id;
+        private String emergencyContact_id;
 
         //constructor that utilizes only the required variables.
-        public Builder(String first_name, String last_name, String phone, LocalDate DoB, int age, double weight, double height) {
+        public Builder(String id, String first_name, String last_name, LocalDate DoB, int age, double weight, double height, String phone) {
             this.id = id;
             this.first_name = first_name;
             this.last_name = last_name;
@@ -164,13 +165,13 @@ public class Patient extends Person {
             return this;
         }
 
-        public Builder in_id(String in_id) {
-            this.in_id = in_id;
+        public Builder insurance_id(String in_id) {
+            this.insurance_id = in_id;
             return this;
         }
 
-        public Builder ec_id(String ec_id) {
-            this.ec_id = ec_id;
+        public Builder emergencyContact_id(String ec_id) {
+            this.emergencyContact_id = ec_id;
             return this;
         }
         //combining provided variables
