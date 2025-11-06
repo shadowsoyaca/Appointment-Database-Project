@@ -40,7 +40,7 @@ public class Availability {
             throw new IllegalArgumentException("staff_type must be either 'Provider' or 'Nurse'.");
         }
         if (!(day_of_week.equals("Mon") || day_of_week.equals("Tue") || day_of_week.equals("Wed") || day_of_week.equals("Thu") || day_of_week.equals("Fri") || day_of_week.equals("Sat") || day_of_week.equals("Sun"))) {
-            throw new IllegalArgumentException("day_of_week must be either 'Mon', 'Tue', 'Wed', 'Fri', 'Sat', or 'Sun'.");
+            throw new IllegalArgumentException("day_of_week must be either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.");
         }
         if (start_time.isAfter(end_time)) {
             throw new IllegalArgumentException("start_time must be before end_time");

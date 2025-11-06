@@ -87,15 +87,15 @@ public class Appointment {
     //setter methods
     public void setAppointment_date(LocalDateTime appointment_date) {this.appointment_date = appointment_date;}
     public void setId(String id) {this.id = id;}
-    public void setPT_id(String pT_id) {this.patient_id = pT_id;}
-    public void setPV_id(String pV_id) {this.provider_id = pV_id;}
-    public void setBL_id(String bL_id) {this.billing_id = bL_id;}
-    public void setLength(Duration length) {this.appointment_length = length;}
-    public void setRoom(int room) {this.room_number = room;}
-    public void setPurpose(String purpose) {this.reason_for_visiting = purpose;}
-    public void setNR_id(String nR_id) {this.nurse_id = nR_id;}
-    public void setPR_id(String PR_id) {this.prescription_id = PR_id;}
-    public void setLB_id(String LB_id) {this.lab_order_id = LB_id;}
+    public void setPatient_id(String pT_id) {this.patient_id = pT_id;}
+    public void setProvider_id(String pV_id) {this.provider_id = pV_id;}
+    public void setBilling_id(String bL_id) {this.billing_id = bL_id;}
+    public void setAppointment_length(Duration length) {this.appointment_length = length;}
+    public void setRoom_number(int room) {this.room_number = room;}
+    public void setReason_for_visiting(String purpose) {this.reason_for_visiting = purpose;}
+    public void setNurse_id(String nR_id) {this.nurse_id = nR_id;}
+    public void setPrescription_id(String PR_id) {this.prescription_id = PR_id;}
+    public void setLab_order_id(String LB_id) {this.lab_order_id = LB_id;}
     public void setStart_time(LocalTime  start_time) {this.start_time = start_time;}
     public void setEnd_time(LocalTime end_time) {this.end_time = end_time;}
 

@@ -13,7 +13,7 @@ public class PhoneNumberFormatter {
 	     * @return true if valid, false otherwise
 	     */
 	    public static boolean isValidPhoneNumber(String phoneNumber) {
-            
+
 
 	        // Check for exactly 10 digits
 	        if (phoneNumber.length() != 10) {

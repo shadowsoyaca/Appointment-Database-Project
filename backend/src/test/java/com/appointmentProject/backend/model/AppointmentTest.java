@@ -1,13 +1,9 @@
 package com.appointmentProject.backend.model;
-import com.appointmentProject.backend.util.NullString;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import com.appointmentProject.backend.model.Appointment;
-import com.appointmentProject.backend.model.Appointment.Builder;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.Duration;
-import java.time.format.DateTimeFormatter;
 
 /***************************************************************************
  *   AppointmentTest.java
@@ -24,8 +20,6 @@ public class AppointmentTest {
 
     @Test
     void testGetterAndSetter(){
-
-
 
         //Test Model
             //REQUIRED
@@ -79,16 +73,16 @@ public class AppointmentTest {
 
         //Setter Test
         appt.setId(id2);
-        appt.setPT_id(patient_id2);
-        appt.setPV_id(provider_id2);
-        appt.setBL_id(billing_id2);
+        appt.setPatient_id(patient_id2);
+        appt.setProvider_id(provider_id2);
+        appt.setBilling_id(billing_id2);
         appt.setAppointment_date(date2);
-        appt.setLength(time2);
-        appt.setRoom(room2);
-        appt.setPurpose(purpose2);
-        appt.setNR_id(nurse2);
-        appt.setPR_id(prescipt2);
-        appt.setLB_id(lab2);
+        appt.setAppointment_length(time2);
+        appt.setRoom_number(room2);
+        appt.setReason_for_visiting(purpose2);
+        appt.setNurse_id(nurse2);
+        appt.setPrescription_id(prescipt2);
+        appt.setLab_order_id(lab2);
         appt.setStart_time(start2);
         appt.setEnd_time(end2);
 
@@ -167,9 +161,9 @@ public class AppointmentTest {
         assertEquals(expectedA, appt.toString());
 
         //Null String Involved Print
-        appt.setNR_id(nurse2);
-        appt.setPR_id(prescipt2);
-        appt.setLB_id(lab2);
+        appt.setNurse_id(nurse2);
+        appt.setPrescription_id(prescipt2);
+        appt.setLab_order_id(lab2);
         appt.setStart_time(start2);
         appt.setEnd_time(end2);
 
