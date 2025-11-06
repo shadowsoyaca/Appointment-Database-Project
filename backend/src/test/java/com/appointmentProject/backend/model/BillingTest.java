@@ -1,5 +1,4 @@
 package com.appointmentProject.backend.model;
-import com.appointmentProject.backend.util.NullString;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 /***************************************************************************
