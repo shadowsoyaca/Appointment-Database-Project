@@ -36,6 +36,7 @@
  *              - "CASH": cash
  *              - "DIGITAL": digital wallet
  *              - "INSURANCE": insurance covers the full thing
+ *              - "N/A": Only Available if Waived or Incomplete is the current status.
  *          - Additional NOTE: if the Insurance ID is not null and the acceptable payment
  *                  type is anything but INSURANCE, this implies that the Insurance will
  *                  be covering a portion of it. Also, if there is no Insurance ID in the
@@ -44,7 +45,7 @@
  *                  on the current billing. This will be handled in a separate service class.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/30/2026
  *******************************************************************************************/
 package com.appointmentProject.backend.model;
@@ -63,11 +64,11 @@ public class Billing {
 
     //constructor
     private Billing(Builder builder){
-        this.id = id;
-        this.cost = cost;
-        this.status_of_payment = status_of_payment;
-        this.payment_type = payment_type;
-        this.insurance_id = insurance_id;
+        this.id = builder.id;
+        this.cost = builder.cost;
+        this.status_of_payment = builder.status_of_payment;
+        this.payment_type = builder.payment_type;
+        this.insurance_id = builder.insurance_id;
     }
 
     //getter method
@@ -92,7 +93,7 @@ public class Billing {
                 "\nTotal Cost: " + cost +
                 "\nPayment Status: " + status_of_payment +
                 "\nPayment Type: " + payment_type +
-                "\nInsurance ID: " + NullString.check(insurance_id);
+                "\nInsurance ID: " + NullString.check(insurance_id) + "\n";
     }
 
     //builder constructor
@@ -107,7 +108,7 @@ public class Billing {
         private String insurance_id;
 
         //required parameter constructor
-        public Builder(String id){
+        public Builder(String id, double cost,String status_of_payment,String payment_type){
             this.id = id;
             this.cost = cost;
             this.status_of_payment = status_of_payment;
