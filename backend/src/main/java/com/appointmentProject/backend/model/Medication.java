@@ -53,7 +53,7 @@ public class Medication {
     //getter
     public String getId() {return id;}
     public String getMedName() {return medication_name;}
-    public String getMNID() {return manufacturer_id;}
+    public String getManufacturer_id() {return manufacturer_id;}
     public double getStrength() {return strength;}
     public String getType() {return type_of_med;}
     public String getConsumption() {return consumption;}
@@ -63,7 +63,7 @@ public class Medication {
     public void setMedName(String medication_name) {this.medication_name = medication_name;}
     public void setStrength(double strength) {this.strength = strength;}
     public void setType(String type_of_med) {this.type_of_med = type_of_med;}
-    public void setMNID(String manufacturer_id) {this.manufacturer_id = manufacturer_id;}
+    public void setManufacturer_id(String manufacturer_id) {this.manufacturer_id = manufacturer_id;}
     public void setConsumption(String consumption) {this.consumption = consumption;}
 
     //toString
