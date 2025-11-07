@@ -66,7 +66,7 @@ public class AvailabilityTest {
                             "\nAV id: PR00000003" +
                             "\nstaff_type: Provider" +
                             "\nday_of_week: Thu" +
-                            "\nstart_time: 8:45" +
+                            "\nstart_time: 08:45" +
                             "\nend_time: 16:45" + "\n";
 
             assertEquals(expected, availability.toString());

@@ -1,36 +1,35 @@
-<!-- Parent project POM: acts as a manager of submodules (backend, frontend, etc.) -->
+<!-- Parent Project POM: Appointment Database Project -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- 1️⃣ Maven standard version -->
+    <!-- Standard Maven version -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 2️⃣ Coordinates: identifies the overall project group -->
+    <!-- Coordinates identifying this as the parent project -->
     <groupId>com.uwm</groupId>
-    <artifactId>appointmentProject</artifactId> <!-- renamed for consistency -->
+    <artifactId>appointmentProject</artifactId>
     <version>1.0.0</version>
-
-    <!-- 3️⃣ Marks this as a parent (not a JAR or WAR) -->
     <packaging>pom</packaging>
+    <name>Appointment Database Project (Parent)</name>
 
-    <!-- 4️⃣ Declares all submodules -->
+    <!-- Submodules included in this build -->
     <modules>
-        <module>backend</module> <!-- backend folder contains its own pom.xml -->
-        <!-- Add frontend later if needed -->
+        <module>backend</module>
+        <!-- Add more modules later (frontend, database, etc.) -->
     </modules>
 
-    <!-- 5️⃣ Optional: define global properties (inherited by submodules) -->
+    <!-- Global properties shared by all modules -->
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>3.3.6</spring.boot.version> <!-- patched version -->
+        <spring.boot.version>3.3.6</spring.boot.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- 6️⃣ Optional: manage dependency versions globally -->
+    <!-- Let Spring Boot manage dependency versions automatically -->
     <dependencyManagement>
         <dependencies>
-            <!-- Import Spring Boot dependency management -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -40,41 +39,35 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
-    </dependencies>
+
+    <!-- Centralized plugin management for all modules -->
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Compiler plugin (Java 17) -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <!-- Surefire plugin (runs JUnit 5 tests) -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.5</version>
+                    <configuration>
+                        <useModulePath>false</useModulePath>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

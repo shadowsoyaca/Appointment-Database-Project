@@ -1,0 +1,14 @@
+com\appointmentProject\backend\model\PharmacyTest.class
+com\appointmentProject\backend\model\EmergencyContactTest.class
+com\appointmentProject\backend\model\AvailabilityTest.class
+com\appointmentProject\backend\model\MedicationTest.class
+com\appointmentProject\backend\model\PatientTest.class
+com\appointmentProject\backend\model\InsuranceTest.class
+com\appointmentProject\backend\model\AccountTest.class
+com\appointmentProject\backend\model\AppointmentTest.class
+com\appointmentProject\backend\model\BillingTest.class
+com\appointmentProject\backend\model\NurseTest.class
+com\appointmentProject\backend\model\ManufacturerTest.class
+com\appointmentProject\backend\model\PrescriptionTest.class
+com\appointmentProject\backend\model\RoomTest.class
+com\appointmentProject\backend\model\ProviderTest.class
