@@ -37,7 +37,7 @@ public class Room {
     public String toString() {
         return "Room:" +
                 "\nNumber: " +  room_number +
-                "\nFloor: " + floor_number;
+                "\nFloor: " + floor_number + "\n";
     }
 
 }
