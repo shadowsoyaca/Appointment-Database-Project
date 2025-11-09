@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 
@@ -22,7 +22,7 @@ public class AvailabilityTest {
 
             //Test Model
                 //Required
-            String staff1 = "PV12309874", staff2 = "NR43507611";
+            int staff1 = 12309874, staff2 = 43507611;
             String type1 = "Provider", type2 = "Nurse";
             String day1 = "Mon", day2 = "Tue";
             LocalTime start1 = LocalTime.of(5, 0), start2 = LocalTime.of(17,20);
@@ -57,13 +57,13 @@ public class AvailabilityTest {
 
         @Test
         void testToString(){
-            Availability availability = new Availability("PR00000003", "Provider",
+            Availability availability = new Availability(3, "Provider",
                     "Thu", LocalTime.of(8,45), LocalTime.of(16, 45));
 
 
             String expected =
                     "Availability:\n" +
-                            "\nAV id: PR00000003" +
+                            "\nAV id: 3" +
                             "\nstaff_type: Provider" +
                             "\nday_of_week: Thu" +
                             "\nstart_time: 08:45" +

@@ -8,33 +8,40 @@
  *      for retrieval and updates.
  *      - "staff_id": is a unique identifier that differentiates between Availabilities. It is
  *          also the primary way of accessing specific Availability records. This is
- *          immutable and leads with an "AV". The number combination is created by the
- *          auto-increment feature in MySQL.
+ *          immutable. The number combination is created by the auto-increment feature in MySQL.
  *      - "staff_type": specifies the type of staff member. Either "Provider" or "Nurse".
  *      - "day_of_week": specifies the day of week.
  *      - "start_time": the start time of the Availability in military time.
  *      - "end_time": the end time of the Availability in military time.
  *
  * @author Jack Mitchell
- * @version 1.1
+ * @version 1.2
  * @since 10/30/2025
  *******************************************************************************************/
 
 package com.appointmentProject.backend.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalTime;
 import java.lang.IllegalArgumentException;
 
+@Entity
 public class Availability {
 
     // variables
-    private String staff_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int staff_id;
     private String staff_type;
     private String day_of_week;
     private LocalTime start_time;
     private LocalTime end_time;
 
     // constructor
-    public Availability(String staff_id, String staff_type, String day_of_week, LocalTime start_time, LocalTime end_time) {
+    public Availability(int staff_id, String staff_type, String day_of_week, LocalTime start_time, LocalTime end_time) {
         //input validation
         if (!(staff_type.equals("Provider") || staff_type.equals("Nurse"))) {
             throw new IllegalArgumentException("staff_type must be either 'Provider' or 'Nurse'.");
@@ -54,14 +61,14 @@ public class Availability {
     }
 
     // getter methods
-    public String getStaff_id() {return staff_id;}
+    public int getStaff_id() {return staff_id;}
     public String getStaff_type() {return staff_type;}
     public String getDay_of_week() {return day_of_week;}
     public LocalTime getStart_time() {return start_time;}
     public LocalTime getEnd_time() {return end_time;}
 
     //setter methods
-    public void setStaff_id(String staff_id) {this.staff_id = staff_id;}
+    public void setStaff_id(int staff_id) {this.staff_id = staff_id;}
     public void setStaff_type(String staff_type) {this.staff_type = staff_type;}
     public void setDay_of_week(String day_of_week) {this.day_of_week = day_of_week;}
     public void setStart_time(LocalTime start_time) {this.start_time = start_time;}

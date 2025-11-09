@@ -13,7 +13,7 @@ import java.time.Duration;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class AppointmentTest {
@@ -23,18 +23,18 @@ public class AppointmentTest {
 
         //Test Model
             //REQUIRED
-        String id1 = "AP12345678", id2 = "AP98765432";
-        String patient_id1 = "PT12345098", patient_id2 = "PT98700000";
-        String provider_id1 = "PR12345432",  provider_id2 = "PR78659401";
-        String billing_id1 = "BL00000009",  billing_id2 = "BL00000010";
+        int id1 = 12345678, id2 = 98765432;
+        int patient_id1 = 12345098, patient_id2 = 98700000;
+        int provider_id1 = 12345432,  provider_id2 = 78659401;
+        int billing_id1 = 9,  billing_id2 = 10;
         LocalDateTime date1 = LocalDateTime.now(), date2 = LocalDateTime.parse("1996-03-22T12:30");
         Duration time1 =Duration.ofHours(1), time2 = Duration.ofMinutes(30);
         int room1 = 123, room2 = 456;
         String purpose1 = "Physical", purpose2 = "Flu Shot";
             //OPTIONAL
-        String nurse1 = "NR54328099", nurse2 = null;
-        String prescipt1 = "PR55603944",  prescipt2 = null;
-        String lab1 = "LB43216789", lab2 = null;
+        Integer nurse1 = 54328099, nurse2 = null;
+        Integer prescipt1 = 55603944,  prescipt2 = null;
+        Integer lab1 = 43216789, lab2 = null;
         LocalTime start1 =  LocalTime.parse("12:30"), start2 = null;
         LocalTime end1 =  LocalTime.parse("13:30"), end2 = null;
 
@@ -110,18 +110,18 @@ public class AppointmentTest {
 
         //Test Model
         //REQUIRED
-        String id1 = "AP12345678", id2 = "AP98765432";
-        String patient_id1 = "PT12345098", patient_id2 = "PT98700000";
-        String provider_id1 = "PR12345432", provider_id2 = "PR78659401";
-        String billing_id1 = "BL00000009", billing_id2 = "BL00000010";
+        int id1 = 12345678, id2 = 98765432;
+        int patient_id1 = 12345098, patient_id2 = 98700000;
+        int provider_id1 = 12345432, provider_id2 = 78659401;
+        int billing_id1 = 9, billing_id2 = 10;
         LocalDateTime date1 = LocalDateTime.now(), date2 = LocalDateTime.parse("1996-03-22T12:30");
         Duration time1 = Duration.ofHours(1), time2 = Duration.ofMinutes(30);
         int room1 = 123, room2 = 456;
         String purpose1 = "Physical", purpose2 = "Flu Shot";
         //OPTIONAL
-        String nurse1 = "NR54328099", nurse2 = null;
-        String prescipt1 = "PR55603944", prescipt2 = null;
-        String lab1 = "LB43216789", lab2 = null;
+        Integer nurse1 = 54328099, nurse2 = null;
+        Integer prescipt1 = 55603944, prescipt2 = null;
+        Integer lab1 = 43216789, lab2 = null;
         LocalTime start1 = LocalTime.parse("12:30"), start2 = null;
         LocalTime end1 = LocalTime.parse("13:30"), end2 = null;
 
@@ -144,18 +144,18 @@ public class AppointmentTest {
         //Normal Print
         String expectedA =
                 "Appointment: " +
-                        "\nAppointment ID: AP12345678" +
-                        "\nPatient ID: PT12345098" +
-                        "\nProvider ID: PR12345432" +
-                        "\nNurse ID: NR54328099" +
-                        "\nBilling ID: BL00000009" +
+                        "\nAppointment ID: 12345678" +
+                        "\nPatient ID: 12345098" +
+                        "\nProvider ID: 12345432" +
+                        "\nNurse ID: 54328099" +
+                        "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
                         "\nLength of Appointment: PT1H" +
                         "\nAppointment Start Time: 12:30" +
                         "\nAppointment End Time: 13:30" +
                         "\nRoom Number: 123" +
-                        "\nPrescription ID: PR55603944" +
-                        "\nLab Order ID: LB43216789" +
+                        "\nPrescription ID: 55603944" +
+                        "\nLab Order ID: 43216789" +
                         "\nPurpose of Appointment: Physical" + "\n";
 
         assertEquals(expectedA, appt.toString());
@@ -169,11 +169,11 @@ public class AppointmentTest {
 
         String expectedB =
                 "Appointment: " +
-                        "\nAppointment ID: AP12345678" +
-                        "\nPatient ID: PT12345098" +
-                        "\nProvider ID: PR12345432" +
+                        "\nAppointment ID: 12345678" +
+                        "\nPatient ID: 12345098" +
+                        "\nProvider ID: 12345432" +
                         "\nNurse ID: N/A" +
-                        "\nBilling ID: BL00000009" +
+                        "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
                         "\nLength of Appointment: PT1H" +
                         "\nAppointment Start Time: N/A" +

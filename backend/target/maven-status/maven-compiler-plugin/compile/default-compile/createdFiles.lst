@@ -6,7 +6,6 @@ com\appointmentProject\backend\util\NullString.class
 com\appointmentProject\backend\model\Account.class
 com\appointmentProject\backend\model\Billing$Builder.class
 com\appointmentProject\backend\model\Prescription$Builder.class
-com\appointmentProject\backend\util\IDFormatter.class
 com\appointmentProject\backend\abstractmodel\Person.class
 com\appointmentProject\backend\model\Patient$Builder.class
 com\appointmentProject\backend\model\Provider.class
@@ -22,7 +21,6 @@ com\appointmentProject\backend\service\TotalCost.class
 com\appointmentProject\backend\util\DatabaseConnection.class
 com\appointmentProject\backend\model\Prescription.class
 com\appointmentProject\backend\model\Availability.class
-com\appointmentProject\backend\model\enums\ID.class
 com\appointmentProject\backend\model\Billing.class
 com\appointmentProject\backend\model\Patient.class
 com\appointmentProject\backend\model\Room.class

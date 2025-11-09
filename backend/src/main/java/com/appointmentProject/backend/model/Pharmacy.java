@@ -1,5 +1,10 @@
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalTime;
 
 /***************************************************************************************
@@ -12,7 +17,7 @@ import java.time.LocalTime;
  *      for retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Pharmacies. It is
  *          also the primary way of accessing specific Pharmacy records. This is
- *          immutable and leads with an "PH". The number combination is created by the
+ *          immutable. The number combination is created by the
  *          auto-increment feature in MySQL.
  *      - "pharmacy_name": the name of the pharmacy company.
  *      - "phone": the pharmacy's phone number.
@@ -22,14 +27,16 @@ import java.time.LocalTime;
  *      - "closing_time": the time the pharmacy closes to the public.
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/29/2026
  *******************************************************************************************/
-
+@Entity
 public class Pharmacy {
 
     //variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String pharmacy_name;
     private String phone;
     private String email;
@@ -38,7 +45,7 @@ public class Pharmacy {
     private LocalTime end_time;
 
     //constructor
-    public Pharmacy(String id, String name, String phone, String email, String address, LocalTime start_time, LocalTime end_time){
+    public Pharmacy(int id, String name, String phone, String email, String address, LocalTime start_time, LocalTime end_time){
         this.id = id;
         this.pharmacy_name = name;
         this.phone = phone;
@@ -49,7 +56,7 @@ public class Pharmacy {
     }
 
     //getters
-    public String getId(){return id;}
+    public int getId(){return id;}
     public String getName(){return pharmacy_name;}
     public String getPhone(){return phone;}
     public String getEmail(){return email;}
@@ -58,7 +65,7 @@ public class Pharmacy {
     public LocalTime getEndTime(){return end_time;}
 
     //setters
-    public void setId(String id){this.id = id;}
+    public void setId(int id){this.id = id;}
     public void setName(String name){this.pharmacy_name = name;}
     public void setPhone(String phone){this.phone = phone;}
     public void setEmail(String email){this.email = email;}

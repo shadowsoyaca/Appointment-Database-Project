@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class NurseTest {
@@ -19,7 +19,7 @@ public class NurseTest {
     void testGetterAndSetter() {
 
         //Test Object
-        String id1 = "NR45539449", id2 = "NR45535349";
+        int id1 = 45539449, id2 = 45535349;
         String  first1 = "Jerry", first2 = "Connor";
         String last1 = "Goldman", last2 = "Bellsworth";
         String phone1 = "3335998049", phone2 = "29287766468";
@@ -58,12 +58,12 @@ public class NurseTest {
 
     @Test
     void testToString() {
-        Nurse nurse = new Nurse("NR00001025", "Paige", "Joy",
+        Nurse nurse = new Nurse(1025, "Paige", "Joy",
                 "5553296664", "nurseJoy@pokemonCenter.com", "33 Pallet Town");
 
         String expectation =
                 "Nurse:\n" +
-                        "Nurse id: NR00001025" +
+                        "Nurse id: 1025" +
                         "\nFirst name: Paige" +
                         "\nLast name: Joy" +
                         "\nPhone: 5553296664" +

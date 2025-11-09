@@ -9,9 +9,8 @@
  *      for retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Billing transactions.
  *          It is also the primary way of accessing specific Billing records. This is
- *          immutable and leads with an "BL". The number combination is created by the
- *          auto-increment feature in MySQL.
- *      - "insurance_id": (nullable) the "IN" id for the insurance that could be covering it.
+ *          immutable. The number combination is created by the auto-increment feature in MySQL.
+ *      - "insurance_id": (nullable) the id for the insurance that could be covering it.
  *          If it"s NULL, it is assumed that the Patient receiving this bill does not have
  *          insurance OR the insurance company will not cover anything in the bill. This
  *          means that as long as the insurance covers something, then the insurance will
@@ -45,22 +44,29 @@
  *                  on the current billing. This will be handled in a separate service class.
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/30/2026
  *******************************************************************************************/
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Billing {
 
     //required variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private double cost;
     private String status_of_payment;
     private String payment_type;
 
     //optional variables
-    private String insurance_id;
+    private Integer insurance_id;
 
     //constructor
     private Billing(Builder builder){
@@ -72,18 +78,18 @@ public class Billing {
     }
 
     //getter method
-    public String getId() {return id;}
+    public int getId() {return id;}
     public double getCost() {return cost;}
     public String getStatus_of_payment() {return status_of_payment;}
     public String getPayment_type() {return payment_type;}
-    public String getInsurance_id() {return insurance_id;}
+    public Integer getInsurance_id() {return insurance_id;}
 
     //setter method
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setCost(double cost) {this.cost = cost;}
     public void setStatus_of_payment(String status_of_payment) {this.status_of_payment = status_of_payment;}
     public void setPayment_type(String payment_type) {this.payment_type = payment_type;}
-    public void setInsurance_id(String insurance_id) {this.insurance_id = insurance_id;}
+    public void setInsurance_id(Integer insurance_id) {this.insurance_id = insurance_id;}
 
     //toString method
     @Override
@@ -100,15 +106,15 @@ public class Billing {
     public static class Builder{
 
         //required variables
-        private String id;
+        private int id;
         private double cost;
         private String status_of_payment;
         private String payment_type;
         //optional variables
-        private String insurance_id;
+        private Integer insurance_id;
 
         //required parameter constructor
-        public Builder(String id, double cost,String status_of_payment,String payment_type){
+        public Builder(int id, double cost,String status_of_payment,String payment_type){
             this.id = id;
             this.cost = cost;
             this.status_of_payment = status_of_payment;
@@ -116,7 +122,7 @@ public class Billing {
         }
 
         //optional parameter checks
-        public Builder insurance_id(String insurance_id){
+        public Builder insurance_id(Integer insurance_id){
             this.insurance_id = insurance_id;
             return this;
         }

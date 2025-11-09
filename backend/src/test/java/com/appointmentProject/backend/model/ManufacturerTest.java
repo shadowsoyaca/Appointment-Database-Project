@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 
@@ -19,7 +19,7 @@ public class ManufacturerTest {
     void testGetterAndSetter() {
 
         //Object Model
-        String id1 = "MN45677654", id2 = "MN76544567";
+        int id1 = 45677654, id2 = 76544567;
         String name1 = "Bayer", name2 = "Johnson & Johnson";
         String phone1 = "5763229421", phone2 = "8845723398";
         String email1 = "frontDesk@bayer.com", email2 = "j&jmeds@johnson.org";
@@ -54,12 +54,12 @@ public class ManufacturerTest {
 
     @Test
     void testToString() {
-        Manufacturer company = new Manufacturer("MN65783399", "Roche",
+        Manufacturer company = new Manufacturer(65783399, "Roche",
                 "5990972939", "rcompany@roche.org", "910 W Navy Ave");
 
         String expected =
                 "Manufacturer:\n" +
-                        "\nMN id: MN65783399" +
+                        "\nMN id: 65783399" +
                         "\n manufacturer name: Roche" +
                         "\n phone: 5990972939" +
                         "\n email: rcompany@roche.org" +

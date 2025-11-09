@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class EmergencyContactTest {
@@ -19,7 +19,7 @@ public class EmergencyContactTest {
     void testGetterAndSetter() {
 
         //Test Object
-        String id1 = "EC88877766", id2 = "EC55440394";
+        int id1 = 88877766, id2 = 55440394;
         String first1 = "John", first2 = "Katie";
         String last1 = "Doe", last2 = "Smith";
         String phone1 = "4249990923", phone2 = "6269762302";
@@ -61,12 +61,12 @@ public class EmergencyContactTest {
     void testToString() {
         //Test Object
         EmergencyContact ec = new EmergencyContact.Builder(
-                "EC55567832", "Zoey", "White", "4145763388")
+                55567832, "Zoey", "White", "4145763388")
                 .email("zwhite@uwm.edu").address("733 Bluemound Rd").build();
 
         String expectedA =
                 "Emergency Contact:\n" +
-                        "EC id: EC55567832" +
+                        "EC id: 55567832" +
                         "\nFirst name: Zoey" +
                         "\nLast name: White" +
                         "\nPhone: 4145763388" +
@@ -80,7 +80,7 @@ public class EmergencyContactTest {
 
         String expectedB =
                 "Emergency Contact:\n" +
-                        "EC id: EC55567832" +
+                        "EC id: 55567832" +
                         "\nFirst name: Zoey" +
                         "\nLast name: White" +
                         "\nPhone: 4145763388" +

@@ -11,7 +11,7 @@ import java.time.LocalTime;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/06/2025
  ****************************************************************************/
 public class PharmacyTest {
@@ -20,7 +20,7 @@ public class PharmacyTest {
     void testGettersAndSetters() {
 
         //Test Object
-        String id1 = "PH73849502", id2 = "PH73849900";
+        int id1 = 73849502, id2 = 73849900;
         String name1 = "CVS", name2 = "Wallgreens";
         String phone1 = "3445678399", phone2 = "5746379950";
         String email1 = "pharmacy@cvs.org", email2 = "wallmeds@wallgreens.net";
@@ -64,13 +64,13 @@ public class PharmacyTest {
     @Test
     void testToString() {
         //Test Object
-        Pharmacy pharmacy = new Pharmacy("PH09338940", "Pokemon Center", "3294485748",
+        Pharmacy pharmacy = new Pharmacy(9338940, "Pokemon Center", "3294485748",
                 "frontnurse@pkcenter.net", "234 Pewter Rd", LocalTime.of(3,0),
                 LocalTime.of(23,0));
 
         String expectation =
                 "Pharmacy:" +
-                        "\nPharmacy id: PH09338940" +
+                        "\nPharmacy id: 9338940" +
                         "\nName: Pokemon Center" +
                         "\nPhone: 3294485748" +
                         "\nEmail: frontnurse@pkcenter.net" +

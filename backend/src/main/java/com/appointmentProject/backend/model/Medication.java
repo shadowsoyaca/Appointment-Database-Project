@@ -9,10 +9,9 @@
  *     service layer for retrieval and updates.
  *     - "id": is a unique identifier that differentiates between Medications. It
  *              also is the primary way to get access to the Medication's
- *              record. This is immutable and leads with an "MD". This is
- *              created by MySQL's auto-increment feature.
+ *              record. This is immutable. This is created by MySQL's auto-increment feature.
  *     - "medication_name": the name of the given medication.
- *     - "manufacturer_id": the id number of the manufacturer, (starts with "MN")
+ *     - "manufacturer_id": the id number of the manufacturer
  *     - "strength": the dosage amount of the medication.
  *     - "type_of_med": the form of the medication (tablet, liquid, pill, etc.)
  *     - "consumption": how the medication is consumed by the patient (orally,
@@ -21,27 +20,31 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/29/2025
  ********************************************************************************/
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-
-
-
+@Entity
 public class Medication {
 
     //variables
-        private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
         private String medication_name;
-        private String manufacturer_id;
+        private int manufacturer_id;
         private double strength;
         private String type_of_med;
         private String consumption;
 
     //constructor
-    public Medication(String id, String name, String mn_id, double str, String type, String con){
+    public Medication(int id, String name, int mn_id, double str, String type, String con){
         this.id = id;
         this.medication_name = name;
         this.manufacturer_id = mn_id;
@@ -51,19 +54,19 @@ public class Medication {
     }
 
     //getter
-    public String getId() {return id;}
+    public int getId() {return id;}
     public String getMedName() {return medication_name;}
-    public String getManufacturer_id() {return manufacturer_id;}
+    public int getManufacturer_id() {return manufacturer_id;}
     public double getStrength() {return strength;}
     public String getType() {return type_of_med;}
     public String getConsumption() {return consumption;}
 
     //setter method
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setMedName(String medication_name) {this.medication_name = medication_name;}
     public void setStrength(double strength) {this.strength = strength;}
     public void setType(String type_of_med) {this.type_of_med = type_of_med;}
-    public void setManufacturer_id(String manufacturer_id) {this.manufacturer_id = manufacturer_id;}
+    public void setManufacturer_id(int manufacturer_id) {this.manufacturer_id = manufacturer_id;}
     public void setConsumption(String consumption) {this.consumption = consumption;}
 
     //toString

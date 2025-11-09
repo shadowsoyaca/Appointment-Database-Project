@@ -1,4 +1,8 @@
 package com.appointmentProject.backend.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /******************************************************************************
  * Room.java
  *
@@ -12,9 +16,11 @@ package com.appointmentProject.backend.model;
  * @version 1.1
  * @since 11/4/2025
  ********************************************************************************/
+@Entity
 public class Room {
 
     //variables
+    @Id
     private int room_number;
     private int floor_number;
 

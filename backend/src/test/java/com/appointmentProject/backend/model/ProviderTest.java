@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/06/2025
  ****************************************************************************/
 public class ProviderTest {
@@ -20,7 +20,7 @@ public class ProviderTest {
     void testGettersAndSetters() {
 
         //Test Object
-        String id1 = "PV55440093", id2 = "PV23495888";
+        int id1 = 55440093, id2 = 23495888;
         String first1 = "Sarah", first2 = "Kathryn";
         String last1 = "Kimono", last2 = "Brewer";
         String phone1 = "3342039921", phone2 = "7749480032";
@@ -63,12 +63,12 @@ public class ProviderTest {
 
     @Test
     void testToString() {
-        Provider doc = new Provider("PV63462783", "Lauren", "Mayson", "2449309433",
+        Provider doc = new Provider(63462783, "Lauren", "Mayson", "2449309433",
                 "lmayson@aurora.org", "Pediatrician", "123 S Sunny Ln");
 
         String expected =
                 "Provider:" +
-                        "\nProvider id: PV63462783" +
+                        "\nProvider id: 63462783" +
                         "\nFirst name: Lauren" +
                         "\nLast name: Mayson" +
                         "\nPhone: 2449309433" +

@@ -11,7 +11,7 @@ import com.appointmentProject.backend.model.Insurance;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class InsuranceTest {
@@ -19,7 +19,7 @@ public class InsuranceTest {
     @Test
     void testGettersAndSetters(){
         //Test Objects
-        String id1 = "IN23050708", id2 = "IN00000009", id3 = "IN11111111", id4 = "IN22222222";
+        int id1 = 23050708, id2 = 9, id3 = 11111111, id4 = 22222222;
         String insuranceName1 = "Medicade",insuranceName2 = "BlueCross BlueShield", insuranceName3 = "UnitedHealthcare";
         String phone1 = "4140023400", phone2 = "2620107798", phone3 = "8882054567";
         String email1 = "medicade@gmail.com", email2 = "CrossShield@uwm.edu", email3 = "uHealth@yahoo.org";
@@ -71,11 +71,11 @@ public class InsuranceTest {
     void testToString(){
         //Test Object
         Insurance ins = new Insurance
-                ("IN54678000","Aetna", "4140093359",
+                (54678000,"Aetna", "4140093359",
                         "recep@Aetna.org", "4439 W Talent LN");
         String expected =
                 "Insurance:\n"+
-                "\nIN id: IN54678000"+
+                "\nIN id: 54678000"+
                 "\ninsurance_name: Aetna"+
                 "\nphone: 4140093359"+
                 "\nemail: recep@Aetna.org"+

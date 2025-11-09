@@ -1,5 +1,10 @@
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Duration;
@@ -14,10 +19,9 @@ import java.time.Duration;
  *      for retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Appointments. It is
  *          also the primary way of accessing specific Appointment records. This is
- *          immutable and leads with an "AP". The number combination is created by the
- *          auto-increment feature in MySQL.
- *      - "patient_id": the id of the patient in the appointment (must have PT in front)
- *      - "provider_id": the id of the provider of the appointment (must have PV in front)
+ *          immutable. The number combination is created by the auto-increment feature in MySQL.
+ *      - "patient_id": the id of the patient in the appointment
+ *      - "provider_id": the id of the provider of the appointment
  *      - "nurse_id": (nullable) the id of the nurse involved in the appointment
  *      - "prescription_id": (nullable) the prescription written in the appointment
  *      - "billing_id": the id of the transaction resulting from the appointment
@@ -30,25 +34,28 @@ import java.time.Duration;
  *      - "reason_for_visiting": the purpose of the appointment
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/30/2026
  *******************************************************************************************/
+@Entity
 public class Appointment {
 
     //required variables
-    private String id;
-    private String patient_id;
-    private String provider_id;
-    private String billing_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int patient_id;
+    private int provider_id;
+    private int billing_id;
     private LocalDateTime appointment_date;
     private Duration appointment_length;
     private int room_number;
     private String reason_for_visiting;
 
     //optional variables
-    private String nurse_id;
-    private String prescription_id;
-    private String lab_order_id;
+    private Integer nurse_id;
+    private Integer prescription_id;
+    private Integer lab_order_id;
     private LocalTime  start_time;
     private LocalTime end_time;
 
@@ -70,32 +77,32 @@ public class Appointment {
     }
 
     //getter methods
-    public String getId() {return id;}
-    public String getPatient_id() {return patient_id;}
-    public String getProvider_id() {return provider_id;}
-    public String getBilling_id() {return billing_id;}
+    public int getId() {return id;}
+    public int getPatient_id() {return patient_id;}
+    public int getProvider_id() {return provider_id;}
+    public int getBilling_id() {return billing_id;}
     public LocalDateTime getAppointment_date() {return appointment_date;}
     public Duration getAppointment_length() {return appointment_length;}
     public int getRoom_number() {return room_number;}
     public String getReason_for_visiting() {return reason_for_visiting;}
-    public String getNurse_id() {return nurse_id;}
-    public String getPrescription_id() {return prescription_id;}
-    public String getLab_order_id() {return lab_order_id;}
+    public Integer getNurse_id() {return nurse_id;}
+    public Integer getPrescription_id() {return prescription_id;}
+    public Integer getLab_order_id() {return lab_order_id;}
     public LocalTime getStart_time() {return start_time;}
     public LocalTime getEnd_time() {return end_time;}
 
     //setter methods
     public void setAppointment_date(LocalDateTime appointment_date) {this.appointment_date = appointment_date;}
-    public void setId(String id) {this.id = id;}
-    public void setPatient_id(String pT_id) {this.patient_id = pT_id;}
-    public void setProvider_id(String pV_id) {this.provider_id = pV_id;}
-    public void setBilling_id(String bL_id) {this.billing_id = bL_id;}
+    public void setId(int id) {this.id = id;}
+    public void setPatient_id(int pT_id) {this.patient_id = pT_id;}
+    public void setProvider_id(int pV_id) {this.provider_id = pV_id;}
+    public void setBilling_id(int bL_id) {this.billing_id = bL_id;}
     public void setAppointment_length(Duration length) {this.appointment_length = length;}
     public void setRoom_number(int room) {this.room_number = room;}
     public void setReason_for_visiting(String purpose) {this.reason_for_visiting = purpose;}
-    public void setNurse_id(String nR_id) {this.nurse_id = nR_id;}
-    public void setPrescription_id(String PR_id) {this.prescription_id = PR_id;}
-    public void setLab_order_id(String LB_id) {this.lab_order_id = LB_id;}
+    public void setNurse_id(Integer nR_id) {this.nurse_id = nR_id;}
+    public void setPrescription_id(Integer PR_id) {this.prescription_id = PR_id;}
+    public void setLab_order_id(Integer LB_id) {this.lab_order_id = LB_id;}
     public void setStart_time(LocalTime  start_time) {this.start_time = start_time;}
     public void setEnd_time(LocalTime end_time) {this.end_time = end_time;}
 
@@ -122,24 +129,24 @@ public class Appointment {
     public static class Builder {
 
         //required variables
-        private String id;
-        private String patient_id;
-        private String provider_id;
-        private String billing_id;
+        private int id;
+        private int patient_id;
+        private int provider_id;
+        private int billing_id;
         private LocalDateTime appointment_date;
         private Duration appointment_length;
         private int room_number;
         private String reason_for_visiting;
 
         //optional variables
-        private String nurse_id;
-        private String prescription_id;
-        private String lab_order_id;
+        private Integer nurse_id;
+        private Integer prescription_id;
+        private Integer lab_order_id;
         private LocalTime start_time;
         private LocalTime end_time;
 
         //required constructor only
-        public Builder(String id, String patient_id, String provider_id, String billing_id, LocalDateTime appointment_date, Duration appointment_length, int room_number, String purpose) {
+        public Builder(int id, int patient_id, int provider_id, int billing_id, LocalDateTime appointment_date, Duration appointment_length, int room_number, String purpose) {
             this.id = id;
             this.patient_id = patient_id;
             this.provider_id = provider_id;
@@ -151,15 +158,15 @@ public class Appointment {
         }
 
         //method checks for optional variables
-        public Builder nurse_id(String nurse_id) {
+        public Builder nurse_id(Integer nurse_id) {
             this.nurse_id = nurse_id;
             return this;
         }
-        public Builder prescription_id(String prescription_id) {
+        public Builder prescription_id(Integer prescription_id) {
             this.prescription_id = prescription_id;
             return this;
         }
-        public Builder lab_order_id(String lab_order_id) {
+        public Builder lab_order_id(Integer lab_order_id) {
             this.lab_order_id = lab_order_id;
             return this;
         }

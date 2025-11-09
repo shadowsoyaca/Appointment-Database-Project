@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class MedicationTest {
@@ -18,9 +18,9 @@ public class MedicationTest {
     void testGetterAndSetter() {
 
         //Test Object
-        String id1 = "MD24798653", id2 = "MD35689742";
+        int id1 = 24798653, id2 = 35689742;
         String name1 = "Advil", name2 = "Tylenol";
-        String manufacturer1 = "MN44557700", manufacturer2 = "MN00000003";
+        int manufacturer1 = 44557700, manufacturer2 = 3;
         double strength1 = 2.5,  strength2 = 1.5;
         String type1 = "Pill", type2 = "Tablet";
         String method1 = "Oral", method2 = "Oral";
@@ -59,14 +59,14 @@ public class MedicationTest {
     void testToString() {
 
         //Test Object
-        Medication med = new Medication("MD35579904", "Motelukast",
-                "MN23098732", 5.5, "Tablet", "Oral" );
+        Medication med = new Medication(35579904, "Motelukast",
+                23098732, 5.5, "Tablet", "Oral" );
 
         String expectation =
             "Medication:" +
-                "\nMed ID: MD35579904" +
+                "\nMed ID: 35579904" +
                 "\nMed Name: Motelukast" +
-                "\nManufacturer id: MN23098732" +
+                "\nManufacturer id: 23098732" +
                 "\nStrength: 5.5" +
                 "\nType of Medication: Tablet" +
                 "\nConsumption Method: Oral"  +

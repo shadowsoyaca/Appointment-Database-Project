@@ -24,9 +24,12 @@
  * @since 10/29/2025
  ********************************************************************************/
 
-
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Account {
 
     //User Types
@@ -38,6 +41,7 @@ public class Account {
     }
 
     //Variables
+        @Id
         private String username;
         private String password;
         private String email;

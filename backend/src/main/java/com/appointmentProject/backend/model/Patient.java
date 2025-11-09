@@ -7,8 +7,8 @@
  *      Contains the identifying variables of the Patient and is used by the service layer
  *      for retrieval and updates.
  *      - "id": the unique identifier to differentiate between Patients. It is also the
- *             primary way of accessing specific Patient records. This is immutable and
- *             leads with a "PT". The number combination is created from the
+ *             primary way of accessing specific Patient records. This is immutable.
+ *             The number combination is created from the
  *             auto-increment feature from MySQL.
  *      - "first_name", "last_name", "phone", and (Optional) "email"  are inherited from
  *              Person.java.
@@ -28,7 +28,7 @@
  *              - Import for NullString applied for displaying nulls as "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/20/2025
  *
  ********************************************************************************************/
@@ -36,12 +36,20 @@ package com.appointmentProject.backend.model;
 
 import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class Patient extends Person {
 
     //required variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private LocalDate DoB;
     private int age;
     private double weight;
@@ -49,8 +57,8 @@ public class Patient extends Person {
 
     //optional variables
     private String gender;
-    private String insurance_id;
-    private String emergencyContact_id;
+    private Integer insurance_id;
+    private Integer emergencyContact_id;
 
 
     //private constructor used only by builder
@@ -68,7 +76,7 @@ public class Patient extends Person {
     }
 
     //getter methods
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -92,23 +100,23 @@ public class Patient extends Person {
         return gender;
     }
 
-    public String getInsurance_id() {
+    public Integer getInsurance_id() {
         return insurance_id;
     }
 
-    public String getEmergencyContact_id() {
+    public Integer getEmergencyContact_id() {
         return emergencyContact_id;
     }
 
     //setter methods
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setDoB(LocalDate  DoB) {this.DoB = DoB;}
     public void setAge(int age) {this.age = age;}
     public void setWeight(double weight) {this.weight = weight;}
     public void setHeight(double height) {this.height = height;}
     public void setGender(String gender) {this.gender = gender;}
-    public void setInsurance_id(String in_id) {this.insurance_id = in_id;}
-    public void setEmergencyContact_id(String ec_id) {this.emergencyContact_id = ec_id;}
+    public void setInsurance_id(Integer in_id) {this.insurance_id = in_id;}
+    public void setEmergencyContact_id(Integer ec_id) {this.emergencyContact_id = ec_id;}
 
     //toString
     public String toString() {
@@ -127,7 +135,7 @@ public class Patient extends Person {
 
     public static class Builder {
         //required
-        private String id;
+        private int id;
         private String first_name;
         private String last_name;
         private LocalDate DoB;
@@ -139,11 +147,11 @@ public class Patient extends Person {
         //optional
         private String gender;
         private String email;
-        private String insurance_id;
-        private String emergencyContact_id;
+        private Integer insurance_id;
+        private Integer emergencyContact_id;
 
         //constructor that utilizes only the required variables.
-        public Builder(String id, String first_name, String last_name, LocalDate DoB, int age, double weight, double height, String phone) {
+        public Builder(int id, String first_name, String last_name, LocalDate DoB, int age, double weight, double height, String phone) {
             this.id = id;
             this.first_name = first_name;
             this.last_name = last_name;
@@ -165,12 +173,12 @@ public class Patient extends Person {
             return this;
         }
 
-        public Builder insurance_id(String in_id) {
+        public Builder insurance_id(Integer in_id) {
             this.insurance_id = in_id;
             return this;
         }
 
-        public Builder emergencyContact_id(String ec_id) {
+        public Builder emergencyContact_id(Integer ec_id) {
             this.emergencyContact_id = ec_id;
             return this;
         }

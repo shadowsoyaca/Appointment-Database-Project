@@ -3,6 +3,10 @@ package com.appointmentProject.backend.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 /***************************************************************************************
  * Prescription.java
@@ -14,11 +18,11 @@ import com.appointmentProject.backend.util.NullString;
  *      for retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Prescriptions. It is
  *          also the primary way of accessing specific Prescription records. This is
- *          immutable and leads with an "PR". The number combination is created by the
+ *          immutable. The number combination is created by the
  *          auto-increment feature in MySQL.
- *      - "medication_id": the "MD" id for the medication prescribed.
- *      - "pharmacy_id": the "PR" id for the pharmacy the medication was sent to.
- *      - "insurance_id": (nullable) the "IN" id for the insurance that could be covering it.
+ *      - "medication_id": the id for the medication prescribed.
+ *      - "pharmacy_id": the id for the pharmacy the medication was sent to.
+ *      - "insurance_id": (nullable) the id for the insurance that could be covering it.
  *          - If the insurance is NULL, it is assumed that either the patient does not
  *          have any insurance OR the insurance does not cover the prescription.
  *      - "quantity": the amount of pills/liquid/etc. is given to the patient.
@@ -35,15 +39,18 @@ import com.appointmentProject.backend.util.NullString;
  *      - "date_picked_up": (nullable) the date and time the prescription is picked up.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.3
  * @since 10/30/2026
  *******************************************************************************************/
+@Entity
 public class Prescription {
 
     //required
-    private String id;
-    private String medication_id;
-    private String pharmacy_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int medication_id;
+    private int pharmacy_id;
     private int quantity;
     private int frequency;
     private LocalDate start_date;
@@ -51,7 +58,7 @@ public class Prescription {
     private String status;
 
     //optional
-    private String insurance_id;
+    private Integer insurance_id;
     private LocalDate end_date;
     private LocalDateTime date_picked_up;
 
@@ -71,28 +78,28 @@ public class Prescription {
     }
 
     //getters
-    public String getId() {return id;}
-    public String getMedication_id() {return medication_id;}
-    public String getPharmacy_id() {return pharmacy_id;}
+    public int getId() {return id;}
+    public int getMedication_id() {return medication_id;}
+    public int getPharmacy_id() {return pharmacy_id;}
     public int getQuantity() {return quantity;}
     public int getFrequency() {return frequency;}
     public LocalDate getStartDate() {return start_date;}
     public double getPrice() {return price;}
     public String getStatus() {return status;}
-    public String getInsurance_id() {return insurance_id;}
+    public Integer getInsurance_id() {return insurance_id;}
     public LocalDate getEndDate() {return end_date;}
     public  LocalDateTime getDatePickedUp() {return date_picked_up;}
 
     //setters
-    public void setId(String id) {this.id = id;}
-    public void setMedication_id(String medication_id) {this.medication_id = medication_id;}
+    public void setId(int id) {this.id = id;}
+    public void setMedication_id(int medication_id) {this.medication_id = medication_id;}
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void setFrequency(int frequency) {this.frequency = frequency;}
-    public void setPharmacy_id(String pharmacy_id) {this.pharmacy_id = pharmacy_id;}
+    public void setPharmacy_id(int pharmacy_id) {this.pharmacy_id = pharmacy_id;}
     public void setStartDate(LocalDate start_date) {this.start_date = start_date;}
     public void setPrice(double price) {this.price = price;}
     public void setStatus(String status) {this.status = status;}
-    public void setInsurance_id(String insurance_id) {this.insurance_id = insurance_id;}
+    public void setInsurance_id(Integer insurance_id) {this.insurance_id = insurance_id;}
     public void setEndDate(LocalDate  end_date) {this.end_date = end_date;}
     public void setDate_picked_up(LocalDateTime picked_up) {this.date_picked_up = picked_up;}
 
@@ -118,9 +125,9 @@ public class Prescription {
     public static class Builder {
 
         //required
-        private String id;
-        private String medication_id;
-        private String pharmacy_id;
+        private int id;
+        private int medication_id;
+        private int pharmacy_id;
         private int quantity;
         private int frequency;
         private LocalDate start_date;
@@ -128,11 +135,11 @@ public class Prescription {
         private String status;
 
         //optional
-        private String insurance_id;
+        private Integer insurance_id;
         private LocalDate end_date;
         private LocalDateTime date_picked_up;
 
-        public Builder(String id, String med_id, String ph_id, int quan, int freq, LocalDate start, double price, String status){
+        public Builder(int id, int med_id, int ph_id, int quan, int freq, LocalDate start, double price, String status){
             this.id = id;
             this.medication_id = med_id;
             this.pharmacy_id = ph_id;
@@ -144,7 +151,7 @@ public class Prescription {
         }
 
         //optional additions
-        public Builder insurance_id(String insurance_id){
+        public Builder insurance_id(Integer insurance_id){
             this.insurance_id = insurance_id;
             return this;
         }

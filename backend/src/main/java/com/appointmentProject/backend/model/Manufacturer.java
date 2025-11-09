@@ -8,7 +8,7 @@
  *      for retrieval and updates.
  *      - "id": is a unique identifier that differentiates between Manufacturers. It is
  *          also the primary way of accessing specific Manufacturer records. This is
- *          immutable and leads with an "MN". The number combination is created by the
+ *          immutable. The number combination is created by the
  *          auto-increment feature in MySQL.
  *      - "manufacturer_name": the name of the manufacturer company.
  *      - "phone": the manufacturer's phone number.
@@ -16,23 +16,31 @@
  *      - "address": the manufacturer's address.
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/20/2026
  *******************************************************************************************/
 
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Manufacturer{
 
     //variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String manufacturer_name;
     private String phone;
     private String email;
     private String address;
 
     //constructor
-    public Manufacturer(String id, String manufacturer_name, String phone, String email, String address) {
+    public Manufacturer(int id, String manufacturer_name, String phone, String email, String address) {
         this.id = id;
         this.manufacturer_name = manufacturer_name;
         this.phone = phone;
@@ -41,14 +49,14 @@ public class Manufacturer{
     }
 
     //getter methods
-    public String getId() {return id;}
+    public int getId() {return id;}
     public String getManufacturer_name() {return manufacturer_name;}
     public String getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
 
     //setter methods
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setManufacturer_name(String manufacturer_name) {this.manufacturer_name = manufacturer_name;}
     public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/05/2025
  ****************************************************************************/
 public class PatientTest {
@@ -20,7 +20,7 @@ public class PatientTest {
     void testGetterAndSetter() {
 
         //Test Model
-        String id1 = "PT88773344", id2 = "PT42327887";
+        int id1 = 88773344, id2 = 42327887;
         String first1 = "Anthony", first2 = "Bobby";
         String last1 = "Fiveuss", last2 = "Preyeski";
         LocalDate dob1 = LocalDate.of(2000, 4, 13),
@@ -31,8 +31,8 @@ public class PatientTest {
         String phone1 = "4140992839", phone2 = "4142445983";
         String gender1 = "Male", gender2 = null;
         String email1 = "afive@uwm.edu", email2 = null;
-        String IN_id1 = "IN00330022",  IN_id2 = null;
-        String EC_id1 = "EC00490222", EC_id2 = null;
+        Integer IN_id1 = 330022,  IN_id2 = null;
+        Integer EC_id1 = 490222, EC_id2 = null;
 
         Patient patient = new Patient.Builder(
                 id1, first1, last1, dob1, age1, weight1, height1, phone1).gender(gender1)
@@ -91,14 +91,14 @@ public class PatientTest {
         //Test Object
 
         Patient patient = new Patient.Builder(
-                "PT23948805", "Leon", "Kennedy", LocalDate.of(1988,5, 22),
+                23948805, "Leon", "Kennedy", LocalDate.of(1988,5, 22),
                 38, 173.48, 5.8, "3210034897").gender("Male")
-                .email("lkennedy@R4evil.com").insurance_id("IN31908744")
-                .emergencyContact_id("EC69229700").build();
+                .email("lkennedy@R4evil.com").insurance_id(31908744)
+                .emergencyContact_id(69229700).build();
 
         String expectedA =
                 "Patient:" +
-                        "\nPatient ID: PT23948805" +
+                        "\nPatient ID: 23948805" +
                         "\nFirst name: Leon" +
                         "\nLast name: Kennedy" +
                         "\nPhone: 3210034897" +
@@ -108,8 +108,8 @@ public class PatientTest {
                         "\nWeight: 173.48" +
                         "\nHeight: 5.8" +
                         "\nGender: Male" +
-                        "\nInsurance Id: IN31908744" +
-                        "\nEmergency Contact ID: EC69229700" + "\n";
+                        "\nInsurance Id: 31908744" +
+                        "\nEmergency Contact ID: 69229700" + "\n";
 
         assertEquals(expectedA, patient.toString());
 
@@ -121,7 +121,7 @@ public class PatientTest {
 
         String expectedB =
                 "Patient:" +
-                        "\nPatient ID: PT23948805" +
+                        "\nPatient ID: 23948805" +
                         "\nFirst name: Leon" +
                         "\nLast name: Kennedy" +
                         "\nPhone: 3210034897" +

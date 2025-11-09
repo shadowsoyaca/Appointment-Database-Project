@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 11/06/2025
  ****************************************************************************/
 public class PrescriptionTest {
@@ -22,16 +22,16 @@ public class PrescriptionTest {
     void testGetterAndSetter() {
 
         //Test Object
-        String id1 = "PR23456098", id2 = "34958304";
-        String MD_id1 = "MD23894738", MD_id2 = "MD21199338";
-        String PH_id1 = "PH24848990", PH_id2 = "PH24848991";
+        int id1 = 23456098, id2 = 34958304;
+        int MD_id1 = 23894738, MD_id2 = 21199338;
+        int PH_id1 = 24848990, PH_id2 = 24848991;
         int quantity1 = 30, quantity2 = 14;
         int freq1 = 1, freq2 = 2;
         LocalDate start1 = LocalDate.of(2024, 1, 23),
                 start2 = LocalDate.of(2024, 2, 20);
         double price1 = 60.30, price2 = 125.00;
         String status1 = "Received", status2 = "Processing";
-        String IN_id1 = "IN22443300",  IN_id2 = null;
+        Integer IN_id1 = 22443300,  IN_id2 = null;
         LocalDate end1 = LocalDate.of(2024, 2, 23),
                 end2 = null;
         LocalDateTime receive1 = LocalDateTime.of(2024, 1, 23, 11, 20),
@@ -90,23 +90,23 @@ public class PrescriptionTest {
 
         //Test Object
         Prescription order = new Prescription.Builder(
-                "PR33578400", "MD23122332", "PH11122345", 52,
+                33578400, 23122332, 11122345, 52,
                 2, LocalDate.of(2025, 10, 12), 200.00,
-                "RECEIVED").insurance_id("IN57648802")
+                "RECEIVED").insurance_id(57648802)
                 .end_date(LocalDate.of(2025, 11, 7))
                 .date_picked_up(LocalDateTime.of(2025, 10, 12, 13, 22)).build();
 
         String expectedA =
                 "Prescription: " +
-                        "\nPrescription ID: PR33578400" +
-                        "\nMedication ID: MD23122332" +
-                        "\nPharmacy ID: PH11122345" +
+                        "\nPrescription ID: 33578400" +
+                        "\nMedication ID: 23122332" +
+                        "\nPharmacy ID: 11122345" +
                         "\nQuantity: 52" +
                         "\nFrequency: 2 daily" +
                         "\nPrescribed Date: 2025-10-12" +
                         "\nPrice: 200.0" +
                         "\nStatus: RECEIVED" +
-                        "\nInsurance ID: IN57648802" +
+                        "\nInsurance ID: 57648802" +
                         "\nEnd Date: 2025-11-07" +
                         "\nDate Picked Up: 2025-10-12T13:22" +
                         "\n";
@@ -121,9 +121,9 @@ public class PrescriptionTest {
 
         String expectedB =
                 "Prescription: " +
-                        "\nPrescription ID: PR33578400" +
-                        "\nMedication ID: MD23122332" +
-                        "\nPharmacy ID: PH11122345" +
+                        "\nPrescription ID: 33578400" +
+                        "\nMedication ID: 23122332" +
+                        "\nPharmacy ID: 11122345" +
                         "\nQuantity: 52" +
                         "\nFrequency: 2 daily" +
                         "\nPrescribed Date: 2025-10-12" +

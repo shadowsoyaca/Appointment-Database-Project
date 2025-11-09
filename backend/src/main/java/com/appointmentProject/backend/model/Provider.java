@@ -7,8 +7,8 @@
  *      Contains the identifying variables of the Provider and is used by the service
  *      layer for retrieval and updates.
  *      - "id": a unique identifier to differentiate between Providers. It is also the
- *           primary way of accessing specific Provider records. This is immutable and
- *           leads with a "PV". The number combination is created using the
+ *           primary way of accessing specific Provider records. This is immutable.
+ *           The number combination is created using the
  *           auto-increment feature in MySQL.
  *      - "first_name", "last_name", "phone", and "email" are inherited from Person.java.
  *      - "specialty": the area of expertise of the provider. For example, one provider
@@ -19,23 +19,30 @@
  *      Designer Note: As there are no optional fields, the standard constructor is used.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.3
  * @since 10/20/2025
  *
  *****************************************************************************************/
 
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.abstractmodel.Person;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Provider extends Person {
 
     //non-inherited variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String specialty;
     private String address;
 
     //constructor
-    public Provider(String id, String first_name, String last_name, String phone, String email, String specialty, String address) {
+    public Provider(int id, String first_name, String last_name, String phone, String email, String specialty, String address) {
         super(first_name, last_name, phone, email);
         this.id = id;
         this.specialty = specialty;
@@ -43,12 +50,12 @@ public class Provider extends Person {
     }
 
     //getter methods
-    public String getId() {return id;}
+    public int getId() {return id;}
     public String getSpecialty() {return specialty;}
     public String getAddress() {return address;}
 
     //setter methods
-    public void setId(String id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setSpecialty(String specialty) {this.specialty = specialty;}
     public void setAddress(String address) {this.address = address;}
 

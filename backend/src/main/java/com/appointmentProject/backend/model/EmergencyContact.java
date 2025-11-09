@@ -8,8 +8,7 @@
  *     used by the service layer for retrieval and updates.
  *     - "id": is a unique identifier that differentiates between contacts. It
  *              also is the primary way to get access to the emergency contact's
- *              record. This is immutable and leads with an "EC". This is
- *              created by MySQL's auto-increment feature.
+ *              record. This is created by MySQL's auto-increment feature.
  *     - "first_name", "last_name", "phone", and "email" are originating from Person
  *     - "address": (optional) the contact's address
  *      - "email" is an optional field for this subclass
@@ -19,7 +18,7 @@
  *          - Imported NullString checker for displying the toString as a "N/A"
  *
  * @author Matthew Kiyono
- * @version 1.2
+ * @version 1.3
  * @since 10/16/2025
  ********************************************************************************/
 
@@ -27,12 +26,18 @@ package com.appointmentProject.backend.model;
 
 import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-
+ @Entity
 public class EmergencyContact extends Person {
 
     //required variables
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     //optional variables (email is also optional)
     private String address;
@@ -45,11 +50,11 @@ public class EmergencyContact extends Person {
     }
 
     //getter methods
-    public String getId(){return id;}
+    public int getId(){return id;}
     public String getAddress(){return address;}
 
     //setter methods
-    public void setId(String id){this.id = id;}
+    public void setId(int id){this.id = id;}
     public void setAddress(String address){this.address = address;}
 
     //toString
@@ -63,7 +68,7 @@ public class EmergencyContact extends Person {
 
     public static class Builder{
         //required
-        private String id;
+        private int id;
         private String first_name;
         private String last_name;
         private String  phone;
@@ -72,7 +77,7 @@ public class EmergencyContact extends Person {
         private String address;
 
         //this constructor only utilizes the required variables
-        public Builder(String id, String first_name, String last_name, String phone){
+        public Builder(int id, String first_name, String last_name, String phone){
             this.id = id;
             this.first_name = first_name;
             this.last_name = last_name;
