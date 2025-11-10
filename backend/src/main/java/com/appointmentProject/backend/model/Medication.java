@@ -17,31 +17,45 @@
  *     - "consumption": how the medication is consumed by the patient (orally,
  *          nasally, injection, etc.)
  *
- *
- *
  * @author Matthew Kiyono
  * @version 1.2
  * @since 10/29/2025
  ********************************************************************************/
 package com.appointmentProject.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
+@Table(name = "medication")
 public class Medication {
 
     //variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
-        private String medication_name;
-        private int manufacturer_id;
-        private double strength;
-        private String type_of_med;
-        private String consumption;
+    @NotNull
+    @Column(name = "id", nullable = false, unique = true)
+    private int id;
+
+    @NotNull
+    @Column(name = "medication_name", nullable = false)
+    private String medication_name;
+
+    @NotNull
+    @Column(name = "manufacturer_id", nullable = false)
+    private int manufacturer_id;
+
+    @NotNull
+    @Column(name = "strength", nullable = false)
+    private double strength;
+
+    @NotNull
+    @Column(name = "type_of_med", nullable = false)
+    private String type_of_med;
+
+    @NotNull
+    @Column(name = "consumption", nullable = false)
+    private String consumption;
 
     //constructor
     public Medication(int id, String name, int mn_id, double str, String type, String con){

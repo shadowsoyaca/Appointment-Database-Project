@@ -1,7 +1,10 @@
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import org.antlr.v4.runtime.misc.NotNull;
 
 /******************************************************************************
  * Room.java
@@ -17,25 +20,31 @@ import jakarta.persistence.Id;
  * @since 11/4/2025
  ********************************************************************************/
 @Entity
+@Table(name = "room")
 public class Room {
 
     //variables
     @Id
-    private int room_number;
+    @NotNull
+    @Column(name = "room_number", unique = true, nullable = false)
+    private String room_number;
+
+    @NotNull
+    @Column(name = "floor_number", nullable = false)
     private int floor_number;
 
     //constructor
-    public Room(int room_number, int floor_number) {
+    public Room(String room_number, int floor_number) {
         this.room_number = room_number;
         this.floor_number = floor_number;
     }
 
     //getter methods
-    public int getRoom_number() {return room_number;}
+    public String getRoom_number() {return room_number;}
     public int getFloor_number() {return floor_number;}
 
     //setter methods
-    public void setRoom_number(int room_number) {this.room_number = room_number;}
+    public void setRoom_number(String room_number) {this.room_number = room_number;}
     public void setFloor_number(int floor_number) {this.floor_number = floor_number;}
 
     //toString method

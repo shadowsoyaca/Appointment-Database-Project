@@ -36,28 +36,48 @@ package com.appointmentProject.backend.model;
 
 import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "patient")
+@AttributeOverride(name = "email", column = @Column(name = "email", nullable = true))
 public class Patient extends Person {
 
     //required variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id", nullable = false, unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "DoB",  nullable = false, columnDefinition = "DATE(0)")
     private LocalDate DoB;
+
+    @NotNull
+    @Column(name = "age", nullable = false)
     private int age;
+
+    @NotNull
+    @Column(name = "weight",  nullable = false)
     private double weight;
+
+    @NotNull
+    @Column(name = "height",  nullable = false)
     private double height;
 
+
     //optional variables
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "insurance_id")
     private Integer insurance_id;
+
+    @Column(name = "emergency_contact_id")
     private Integer emergencyContact_id;
 
 

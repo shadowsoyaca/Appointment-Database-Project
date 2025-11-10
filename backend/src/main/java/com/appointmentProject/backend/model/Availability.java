@@ -20,24 +20,37 @@
  *******************************************************************************************/
 
 package com.appointmentProject.backend.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalTime;
 import java.lang.IllegalArgumentException;
 
 @Entity
+@Table(name = "availability")
 public class Availability {
 
     // variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "staff_id", nullable = false, unique = true)
     private int staff_id;
+
+    @NotNull
+    @Column(name = "staff_type", nullable = false)
     private String staff_type;
+
+    @NotNull
+    @Column(name = "day_of_week", nullable = false)
     private String day_of_week;
+
+    @NotNull
+    @Column(name= "start_time", nullable = false, columnDefinition = "TIME(0)")
     private LocalTime start_time;
+
+    @NotNull
+    @Column(name = "end_time",  nullable = false, columnDefinition = "TIME(0)")
     private LocalTime end_time;
 
     // constructor

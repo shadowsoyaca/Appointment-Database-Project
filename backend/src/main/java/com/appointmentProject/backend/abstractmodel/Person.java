@@ -22,12 +22,23 @@
 
 package com.appointmentProject.backend.abstractmodel;
 import com.appointmentProject.backend.util.NullString;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
+
+@MappedSuperclass
 public abstract class Person {
 
+    @Column(name = "first_name", nullable = false, length = 100)
     private String first_name;
+
+    @Column(name = "last_name", nullable = false, length = 100)
     protected String last_name;
+
+    @Column(name = "phone", nullable = false)
     protected String phone;
+
+    @Column(name = "email", nullable = false)
     protected String email;
 
     //Parent Constructor

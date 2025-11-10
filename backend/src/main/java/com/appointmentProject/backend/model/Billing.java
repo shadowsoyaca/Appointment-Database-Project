@@ -49,10 +49,8 @@
  *******************************************************************************************/
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.util.NullString;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 public class Billing {
@@ -60,12 +58,25 @@ public class Billing {
     //required variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id",  nullable = false, unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "cost", nullable = false)
     private double cost;
+
+    @NotNull
+    @Column(name = "status_of_payment", nullable = false)
     private String status_of_payment;
+
+    @NotNull
+    @Column(name = "payment_type", nullable = false)
     private String payment_type;
 
+
     //optional variables
+    @Column(name = "insurance_id")
     private Integer insurance_id;
 
     //constructor

@@ -25,11 +25,11 @@
  ********************************************************************************/
 
 package com.appointmentProject.backend.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
+@Table(name = "useraccount")
 public class Account {
 
     //User Types
@@ -42,9 +42,21 @@ public class Account {
 
     //Variables
         @Id
+        @NotNull()
+        @Column(name = "username", unique = true, nullable = false)
         private String username;
+
+        @NotNull
+        @Column(name = "password", nullable = false)
         private String password;
+
+        @NotNull
+        @Column(name = "email", nullable = false, unique = true)
         private String email;
+
+        @NotNull
+        @Enumerated(EnumType.STRING)
+        @Column(name = "user_type", nullable = false)
         private authorization user_type;
 
     //Constructor

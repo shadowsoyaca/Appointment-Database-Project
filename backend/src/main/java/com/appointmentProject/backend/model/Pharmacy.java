@@ -1,9 +1,7 @@
 package com.appointmentProject.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalTime;
 
@@ -31,17 +29,38 @@ import java.time.LocalTime;
  * @since 10/29/2026
  *******************************************************************************************/
 @Entity
+@Table(name = "pharmacy")
 public class Pharmacy {
 
     //variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id", nullable = false, unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "pharmacy_name", nullable = false)
     private String pharmacy_name;
+
+    @NotNull
+    @Column(name = "phone", nullable = false)
     private String phone;
+
+    @NotNull
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @NotNull
+    @Column(name = "address", nullable = false)
     private String address;
+
+    @NotNull
+    @Column(name = "opening_time", nullable = false, columnDefinition = "TIME(0)")
     private LocalTime  start_time;
+
+    @NotNull
+    @Column(name = "closing_time",  nullable = false, columnDefinition = "TIME(0)")
     private LocalTime end_time;
 
     //constructor

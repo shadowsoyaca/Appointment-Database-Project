@@ -3,10 +3,8 @@ package com.appointmentProject.backend.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import com.appointmentProject.backend.util.NullString;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 /***************************************************************************************
  * Prescription.java
@@ -43,23 +41,53 @@ import jakarta.persistence.Id;
  * @since 10/30/2026
  *******************************************************************************************/
 @Entity
+@Table(name = "prescription")
 public class Prescription {
 
     //required
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id", nullable = false,  unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "medication_id", nullable = false)
     private int medication_id;
+
+    @NotNull
+    @Column(name = "pharmacy_id",  nullable = false)
     private int pharmacy_id;
+
+    @NotNull
+    @Column(name = "quantity",  nullable = false)
     private int quantity;
+
+    @NotNull
+    @Column(name = "frequency", nullable = false)
     private int frequency;
+
+    @NotNull
+    @Column(name = "start_date",  nullable = false, columnDefinition = "DATE(0)")
     private LocalDate start_date;
+
+    @NotNull
+    @Column(name = "price", nullable = false)
     private double price;
+
+    @NotNull
+    @Column(name = "_status", nullable = false)
     private String status;
 
+
     //optional
+    @Column(name = "insurance_id")
     private Integer insurance_id;
+
+    @Column(name = "end_date", columnDefinition = "DATE(0)")
     private LocalDate end_date;
+
+    @Column(name = "date_picked_up", columnDefinition = "DATETIME(0)")
     private LocalDateTime date_picked_up;
 
     //private constructor

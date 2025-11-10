@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
-import java.time.Duration;
+
 
 /***************************************************************************
  *   AppointmentTest.java
@@ -28,8 +28,7 @@ public class AppointmentTest {
         int provider_id1 = 12345432,  provider_id2 = 78659401;
         int billing_id1 = 9,  billing_id2 = 10;
         LocalDateTime date1 = LocalDateTime.now(), date2 = LocalDateTime.parse("1996-03-22T12:30");
-        Duration time1 =Duration.ofHours(1), time2 = Duration.ofMinutes(30);
-        int room1 = 123, room2 = 456;
+        String room1 = "123", room2 = "456";
         String purpose1 = "Physical", purpose2 = "Flu Shot";
             //OPTIONAL
         Integer nurse1 = 54328099, nurse2 = null;
@@ -44,7 +43,6 @@ public class AppointmentTest {
                 provider_id1,
                 billing_id1,
                 date1,
-                time1,
                 room1,
                 purpose1
         )
@@ -61,7 +59,6 @@ public class AppointmentTest {
                 () -> assertEquals(provider_id1, appt.getProvider_id()),
                 () -> assertEquals(billing_id1, appt.getBilling_id()),
                 () -> assertEquals(date1, appt.getAppointment_date()),
-                () -> assertEquals(time1, appt.getAppointment_length()),
                 () -> assertEquals(room1, appt.getRoom_number()),
                 () -> assertEquals(purpose1, appt.getReason_for_visiting()),
                 () -> assertEquals(nurse1, appt.getNurse_id()),
@@ -77,7 +74,6 @@ public class AppointmentTest {
         appt.setProvider_id(provider_id2);
         appt.setBilling_id(billing_id2);
         appt.setAppointment_date(date2);
-        appt.setAppointment_length(time2);
         appt.setRoom_number(room2);
         appt.setReason_for_visiting(purpose2);
         appt.setNurse_id(nurse2);
@@ -92,7 +88,6 @@ public class AppointmentTest {
                 () -> assertEquals(provider_id2, appt.getProvider_id()),
                 () -> assertEquals(billing_id2, appt.getBilling_id()),
                 () -> assertEquals(date2, appt.getAppointment_date()),
-                () -> assertEquals(time2, appt.getAppointment_length()),
                 () -> assertEquals(room2, appt.getRoom_number()),
                 () -> assertEquals(purpose2, appt.getReason_for_visiting()),
                 () -> assertNull(appt.getNurse_id()),
@@ -115,8 +110,7 @@ public class AppointmentTest {
         int provider_id1 = 12345432, provider_id2 = 78659401;
         int billing_id1 = 9, billing_id2 = 10;
         LocalDateTime date1 = LocalDateTime.now(), date2 = LocalDateTime.parse("1996-03-22T12:30");
-        Duration time1 = Duration.ofHours(1), time2 = Duration.ofMinutes(30);
-        int room1 = 123, room2 = 456;
+        String room1 = "123", room2 = "456";
         String purpose1 = "Physical", purpose2 = "Flu Shot";
         //OPTIONAL
         Integer nurse1 = 54328099, nurse2 = null;
@@ -131,7 +125,6 @@ public class AppointmentTest {
                 provider_id1,
                 billing_id1,
                 date2,
-                time1,
                 room1,
                 purpose1
         )
@@ -150,7 +143,6 @@ public class AppointmentTest {
                         "\nNurse ID: 54328099" +
                         "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
-                        "\nLength of Appointment: PT1H" +
                         "\nAppointment Start Time: 12:30" +
                         "\nAppointment End Time: 13:30" +
                         "\nRoom Number: 123" +
@@ -175,7 +167,6 @@ public class AppointmentTest {
                         "\nNurse ID: N/A" +
                         "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
-                        "\nLength of Appointment: PT1H" +
                         "\nAppointment Start Time: N/A" +
                         "\nAppointment End Time: N/A" +
                         "\nRoom Number: 123" +

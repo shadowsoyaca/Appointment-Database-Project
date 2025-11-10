@@ -22,21 +22,34 @@
 
 package com.appointmentProject.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
+@Table(name = "insurance")
 public class Insurance{
 
     //variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id", nullable = false, unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "insurance_name", nullable = false)
     private String insurance_name;
+
+    @NotNull
+    @Column(name = "phone", nullable = false)
     private String phone;
+
+    @NotNull
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @NotNull
+    @Column(name = "address", nullable = false)
     private String address;
 
     //constructor

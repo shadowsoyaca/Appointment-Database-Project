@@ -18,7 +18,7 @@ public class RoomTest {
     @Test
     void testGetterAndSetters(){
         //Test Object
-        int number1 = 123, number2 = 456;
+        String number1 = "123", number2 = "456";
         int floor1 = 1, floor2 = 4;
 
         Room room = new Room(number1, floor1);
@@ -42,7 +42,7 @@ public class RoomTest {
     @Test
     void testToString(){
         //Test Object
-        Room room = new Room(577, 5);
+        Room room = new Room("577", 5);
 
         String expected =
                 "Room:" +

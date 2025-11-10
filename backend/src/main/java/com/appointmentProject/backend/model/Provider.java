@@ -26,19 +26,26 @@
 
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.abstractmodel.Person;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
+@Table(name = "provider")
 public class Provider extends Person {
 
     //non-inherited variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id",  nullable = false, unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "specialty", nullable = false)
     private String specialty;
+
+    @NotNull
+    @Column(name = "address", nullable = false)
     private String address;
 
     //constructor

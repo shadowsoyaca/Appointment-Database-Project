@@ -26,20 +26,23 @@ package com.appointmentProject.backend.model;
 
 import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
  @Entity
+ @Table(name = "emergencycontact")
+ @AttributeOverride(name = "email", column = @Column(name = "email", nullable = true))
 public class EmergencyContact extends Person {
 
     //required variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "id", nullable = false)
     private int id;
 
     //optional variables (email is also optional)
+    @Column(name = "address")
     private String address;
 
     //private constructor for builder
