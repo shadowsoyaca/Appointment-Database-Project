@@ -90,6 +90,9 @@ public class Prescription {
     @Column(name = "date_picked_up", columnDefinition = "DATETIME(0)")
     private LocalDateTime date_picked_up;
 
+    //Test Constructor ONly!
+    protected Prescription() {}
+
     //private constructor
     private Prescription(Builder builder) {
         this.id = builder.id;

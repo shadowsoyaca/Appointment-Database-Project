@@ -53,6 +53,9 @@ public class Availability {
     @Column(name = "end_time",  nullable = false, columnDefinition = "TIME(0)")
     private LocalTime end_time;
 
+    //Test Constructor Only!
+    protected Availability() {}
+
     // constructor
     public Availability(int staff_id, String staff_type, String day_of_week, LocalTime start_time, LocalTime end_time) {
         //input validation

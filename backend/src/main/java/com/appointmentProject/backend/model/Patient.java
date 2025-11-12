@@ -81,6 +81,11 @@ public class Patient extends Person {
     private Integer emergencyContact_id;
 
 
+    //Test Constructor ONLY!
+    protected Patient() {
+        super();
+    }
+
     //private constructor used only by builder
     private Patient(Builder builder) {
         super(builder.first_name, builder.last_name, builder.phone, builder.email);

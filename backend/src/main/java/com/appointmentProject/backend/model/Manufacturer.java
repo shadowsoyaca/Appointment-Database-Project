@@ -52,6 +52,9 @@ public class Manufacturer{
     @Column(name = "address",  nullable = false)
     private String address;
 
+    //Test Constructor Only!
+    protected Manufacturer() {}
+
     //constructor
     public Manufacturer(int id, String manufacturer_name, String phone, String email, String address) {
         this.id = id;

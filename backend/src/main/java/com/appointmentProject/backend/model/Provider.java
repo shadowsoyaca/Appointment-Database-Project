@@ -48,6 +48,9 @@ public class Provider extends Person {
     @Column(name = "address", nullable = false)
     private String address;
 
+    //Test Constructor ONLY!
+    protected Provider() {}
+
     //constructor
     public Provider(int id, String first_name, String last_name, String phone, String email, String specialty, String address) {
         super(first_name, last_name, phone, email);

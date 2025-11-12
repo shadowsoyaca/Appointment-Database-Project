@@ -59,6 +59,9 @@ public class Account {
         @Column(name = "user_type", nullable = false)
         private authorization user_type;
 
+    //Test constructor only!
+    protected Account() {}
+
     //Constructor
     public Account(String username, String password, String email, authorization user_type){
         this.username = username;

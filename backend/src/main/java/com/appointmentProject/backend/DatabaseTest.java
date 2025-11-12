@@ -21,10 +21,10 @@ public class DatabaseTest implements CommandLineRunner {
 
         try (Connection conn = DriverManager.getConnection(url, user, pass)) {
             if (conn != null && !conn.isClosed()) {
-                System.out.println("✅ Database connected successfully!");
+                System.out.println("Database connected successfully!");
             }
         } catch (Exception e) {
-            System.out.println("❌ Database connection failed: " + e.getMessage());
+            System.out.println("Database connection failed: " + e.getMessage());
         }
     }
 }

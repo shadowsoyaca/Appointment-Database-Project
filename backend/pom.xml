@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- 1️⃣ Link to parent project -->
+    <!-- Link to parent project -->
     <!-- This makes this backend inherit dependency management from your top-level pom.xml -->
     <parent>
         <groupId>com.uwm</groupId>
@@ -13,7 +13,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <!-- 2️⃣ Backend module identity -->
+    <!-- Backend module identity -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.appointmentProject</groupId>
     <artifactId>backend</artifactId>
@@ -22,14 +22,14 @@
     <name>Appointment Project Backend</name>
     <description>Spring Boot backend for Appointment Database Project</description>
 
-    <!-- 3️⃣ Module-specific properties -->
+    <!-- Module-specific properties -->
     <properties>
         <java.version>17</java.version> <!-- Matches your system JDK -->
         <spring.boot.version>3.3.6</spring.boot.version> <!-- inherited but also referenced -->
         <mysql.connector.version>8.3.0</mysql.connector.version> <!-- used manually -->
     </properties>
 
-    <!-- 4️⃣ Dependencies for the backend -->
+    <!-- Dependencies for the backend -->
     <dependencies>
 
         <!-- (a) Core Spring Boot auto-configuration and logging -->
@@ -95,7 +95,7 @@
 
     </dependencies>
 
-    <!-- 5️⃣ Build plugins -->
+    <!-- Build plugins -->
     <build>
         <plugins>
 

@@ -79,6 +79,9 @@ public class Billing {
     @Column(name = "insurance_id")
     private Integer insurance_id;
 
+    //Test Constructor Only!
+    protected Billing() {}
+
     //constructor
     private Billing(Builder builder){
         this.id = builder.id;

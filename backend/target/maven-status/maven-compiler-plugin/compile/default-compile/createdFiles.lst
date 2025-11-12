@@ -1,4 +1,5 @@
 com\appointmentProject\backend\model\EmergencyContact$Builder.class
+com\appointmentProject\backend\util\EmailFormatter.class
 com\appointmentProject\backend\model\Appointment.class
 com\appointmentProject\backend\repository\InsuranceRepository.class
 com\appointmentProject\backend\model\Medication.class

@@ -45,6 +45,11 @@ public class EmergencyContact extends Person {
     @Column(name = "address")
     private String address;
 
+    //Test Constructor ONly!
+     protected EmergencyContact() {
+         super();
+     }
+
     //private constructor for builder
     private EmergencyContact(Builder builder) {
         super(builder.first_name, builder.last_name, builder.phone, builder.email);

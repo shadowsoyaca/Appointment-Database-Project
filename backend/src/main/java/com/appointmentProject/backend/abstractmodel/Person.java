@@ -41,6 +41,9 @@ public abstract class Person {
     @Column(name = "email", nullable = false)
     protected String email;
 
+    //Test Constructor Only!
+    protected Person() {}
+
     //Parent Constructor
     public Person(String first_name, String last_name, String phone, String email) {
         this.first_name = first_name;

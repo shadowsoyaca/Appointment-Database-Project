@@ -33,6 +33,9 @@ public class Room {
     @Column(name = "floor_number", nullable = false)
     private int floor_number;
 
+    //Test Constructor Only!
+    protected Room() {}
+
     //constructor
     public Room(String room_number, int floor_number) {
         this.room_number = room_number;

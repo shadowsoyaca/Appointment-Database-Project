@@ -63,6 +63,9 @@ public class Pharmacy {
     @Column(name = "closing_time",  nullable = false, columnDefinition = "TIME(0)")
     private LocalTime end_time;
 
+    //Test COnstructor only!
+    protected Pharmacy() {}
+
     //constructor
     public Pharmacy(int id, String name, String phone, String email, String address, LocalTime start_time, LocalTime end_time){
         this.id = id;

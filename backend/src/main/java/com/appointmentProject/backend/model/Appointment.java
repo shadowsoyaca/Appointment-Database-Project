@@ -85,6 +85,9 @@ public class Appointment {
     @Column(name = "end_time", columnDefinition = "TIME(0)")
     private LocalTime end_time;
 
+    //Test Constructor ONLY!
+    protected Appointment() {}
+
     //Constructor
     private Appointment(Builder builder) {
         this.id = builder.id;

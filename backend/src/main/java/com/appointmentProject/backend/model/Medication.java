@@ -57,6 +57,9 @@ public class Medication {
     @Column(name = "consumption", nullable = false)
     private String consumption;
 
+    //Test Constructor Only!
+    protected Medication() {}
+
     //constructor
     public Medication(int id, String name, int mn_id, double str, String type, String con){
         this.id = id;

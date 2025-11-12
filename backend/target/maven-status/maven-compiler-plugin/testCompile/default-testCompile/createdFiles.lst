@@ -9,6 +9,7 @@ com\appointmentProject\backend\model\AppointmentTest.class
 com\appointmentProject\backend\model\BillingTest.class
 com\appointmentProject\backend\model\NurseTest.class
 com\appointmentProject\backend\model\ManufacturerTest.class
+com\appointmentProject\backend\repository\InsuranceRepositoryTest.class
 com\appointmentProject\backend\model\PrescriptionTest.class
 com\appointmentProject\backend\model\RoomTest.class
 com\appointmentProject\backend\model\ProviderTest.class
