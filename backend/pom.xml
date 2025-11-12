@@ -57,6 +57,13 @@
             <version>${mysql.connector.version}</version>
             <scope>runtime</scope>
         </dependency>
+             
+        <!-- Email Formatter Helper  -->
+        <dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version> 
+		</dependency>
 
         <!-- (e) Testing stack (JUnit, Spring Boot Test, and Mockito) -->
         <dependency>
