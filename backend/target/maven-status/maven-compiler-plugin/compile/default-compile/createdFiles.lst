@@ -5,6 +5,7 @@ com\appointmentProject\backend\repository\InsuranceRepository.class
 com\appointmentProject\backend\model\Medication.class
 com\appointmentProject\backend\util\NullString.class
 com\appointmentProject\backend\model\Account.class
+com\appointmentProject\backend\model\LabOrder$Builder.class
 com\appointmentProject\backend\model\Billing$Builder.class
 com\appointmentProject\backend\model\Prescription$Builder.class
 com\appointmentProject\backend\abstractmodel\Person.class
@@ -13,12 +14,14 @@ com\appointmentProject\backend\model\Provider.class
 com\appointmentProject\backend\DatabaseTest.class
 com\appointmentProject\backend\model\EmergencyContact.class
 com\appointmentProject\backend\model\Manufacturer.class
+com\appointmentProject\backend\exception\RecordNotFoundException.class
 com\appointmentProject\backend\model\Pharmacy.class
 com\appointmentProject\backend\model\Insurance.class
 com\appointmentProject\backend\util\PhoneNumberFormatter.class
 com\appointmentProject\backend\model\Appointment$Builder.class
 com\appointmentProject\backend\model\Nurse.class
 com\appointmentProject\backend\service\TotalCost.class
+com\appointmentProject\backend\service\InsuranceService.class
 com\appointmentProject\backend\util\DatabaseConnection.class
 com\appointmentProject\backend\model\Prescription.class
 com\appointmentProject\backend\model\Availability.class
@@ -27,3 +30,4 @@ com\appointmentProject\backend\model\Patient.class
 com\appointmentProject\backend\model\Room.class
 com\appointmentProject\backend\Application.class
 com\appointmentProject\backend\model\Account$authorization.class
+com\appointmentProject\backend\model\LabOrder.class
