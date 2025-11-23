@@ -1,6 +1,7 @@
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Pharmacy.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Provider.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Account.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\exception\SimpleErrorResponse.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\util\DatabaseConnection.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Manufacturer.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\Application.java
@@ -10,9 +11,11 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Billing.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\InsuranceService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\util\NullString.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\InsuranceController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Insurance.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\LabOrder.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Medication.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\exception\GlobalExceptionHandler.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\TotalCost.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\EmergencyContact.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Nurse.java

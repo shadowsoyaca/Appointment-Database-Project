@@ -1,5 +1,6 @@
 com\appointmentProject\backend\model\PharmacyTest.class
 com\appointmentProject\backend\model\EmergencyContactTest.class
+com\appointmentProject\backend\controller\InsuranceControllerUnitTest.class
 com\appointmentProject\backend\model\AvailabilityTest.class
 com\appointmentProject\backend\model\MedicationTest.class
 com\appointmentProject\backend\model\PatientTest.class
