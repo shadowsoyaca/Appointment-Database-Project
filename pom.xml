@@ -17,8 +17,9 @@
     <!-- Submodules included in this build -->
     <modules>
         <module>backend</module>
-        <!-- Add more modules later (frontend, database, etc.) -->
+        <module>desktop-client</module>
     </modules>
+
 
     <!-- Global properties shared by all modules -->
     <properties>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER"
+      spacing="20">
+
+    <Label text="Nurse Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <Label text="(Placeholder screen — we will build this soon)"/>
+</VBox>
