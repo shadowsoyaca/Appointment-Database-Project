@@ -40,11 +40,6 @@ public class Nurse extends Person {
     @Column(name = "address", nullable = false)
     private String address;
 
-    //Test Constructor Only!
-    protected Nurse(){
-        super();
-    }
-
     //Constructor
     public Nurse(int id, String first_name, String last_name, String phone, String email, String address) {
         super(first_name, last_name, phone, email);
