@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
  *
  *      These are TRUE unit tests because the AccountService is mocked — no database calls.
  *
- * @author Matthew
+ * @author Matthew Kiyono
  * @version 1.0
  * @since 12/03/2025
  ***************************************************************************************/

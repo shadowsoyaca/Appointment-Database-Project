@@ -21,10 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
  *      The purpose of this test is to ensure that the AccountRepository executes queries
  *      correctly. @Autowired injects the repository and EntityManager managed by Spring.
  *
- *      Note: This test assumes a running MySQL instance and the appointmentproject schema
- *      already created with the UserAccount table.
  *
- * @author Matthew
+ * @author Matthew Kiyono
  * @version 1.0
  * @since 12/03/2025
  *************************************************************************************************/
