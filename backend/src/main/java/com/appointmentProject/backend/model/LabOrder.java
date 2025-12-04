@@ -1,18 +1,60 @@
 package com.appointmentProject.backend.model;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+/****************************************************************************************************
+ * LabOrder.java (JPA ENTITY + Builder Pattern)
+ *
+ *  Represents a lab test order. Uses a Builder pattern while still being fully JPA-compliant.
+ *  ID is auto-generated through MySQL using IDENTITY strategy.
+ *
+ *  NOTE:
+ *      - The Builder includes an ID parameter for compatibility with your existing pattern,
+ *        but JPA will override it during persistence.
+ *
+ * @author Laaibah Ali and Matthew Kiyono
+ * @version 2.0
+ * @since 12/03/2025
+ ****************************************************************************************************/
+@Entity
+@Table(name = "LabOrder")
 public class LabOrder {
 
-    private final int id;            
-    private int appointmentId;                 
-    private int providerRequesterId;   
-    private Integer providerReceiverId;   
-    private Integer nurseId;             
-    private int patientId;                  
-    private LocalDateTime dateOfCompletion;      
-    private String testingPurpose;                
-    private boolean results;                       
+    // -------------------- Fields --------------------
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false)
+    private int appointmentId;
+
+    @Column(nullable = false)
+    private int providerRequesterId;
+
+    @Column
+    private Integer providerReceiverId;
+
+    @Column
+    private Integer nurseId;
+
+    @Column(nullable = false)
+    private int patientId;
+
+    @Column
+    private LocalDateTime dateOfCompletion;
+
+    @Column(nullable = false, length = 255)
+    private String testingPurpose;
+
+    @Column(nullable = false)
+    private boolean results;
+
+    // -------------------- Constructors --------------------
+
+    // Required by JPA
+    public LabOrder() {}
 
     // Private constructor for Builder
     private LabOrder(Builder builder) {
@@ -27,19 +69,37 @@ public class LabOrder {
         this.results = builder.results;
     }
 
-    // Static inner Builder class
+    // -------------------- Builder --------------------
+
     public static class Builder {
-        private final int id;
+
+        private int id;  // JPA will override this if entity is persisted
+
         private int appointmentId;
         private int providerRequesterId;
         private Integer providerReceiverId;
         private Integer nurseId;
         private int patientId;
+
         private LocalDateTime dateOfCompletion;
         private String testingPurpose;
         private boolean results;
 
-        public Builder(int id, int appointmentId, int providerRequesterId, int patientId, String testingPurpose) {
+        /**
+         * Builder constructor for the required fields.
+         *
+         * @param id (ignored by JPA if saving for first time)
+         * @param appointmentId appointment reference
+         * @param providerRequesterId provider who requested the test
+         * @param patientId patient associated with test
+         * @param testingPurpose the purpose of ordering the test
+         */
+        public Builder(int id,
+                       int appointmentId,
+                       int providerRequesterId,
+                       int patientId,
+                       String testingPurpose) {
+
             this.id = id;
             this.appointmentId = appointmentId;
             this.providerRequesterId = providerRequesterId;
@@ -72,7 +132,8 @@ public class LabOrder {
         }
     }
 
-    // Getters
+    // -------------------- Getters --------------------
+
     public int getId() { return id; }
     public int getAppointmentId() { return appointmentId; }
     public int getProviderRequesterId() { return providerRequesterId; }
@@ -83,7 +144,8 @@ public class LabOrder {
     public String getTestingPurpose() { return testingPurpose; }
     public boolean getResults() { return results; }
 
-    // Setters
+    // -------------------- Setters --------------------
+
     public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId; }
     public void setProviderRequesterId(int providerRequesterId) { this.providerRequesterId = providerRequesterId; }
     public void setProviderReceiverId(Integer providerReceiverId) { this.providerReceiverId = providerReceiverId; }
@@ -93,7 +155,8 @@ public class LabOrder {
     public void setTestingPurpose(String testingPurpose) { this.testingPurpose = testingPurpose; }
     public void setResults(boolean results) { this.results = results; }
 
-    
+    // -------------------- toString --------------------
+
     @Override
     public String toString() {
         return "LabOrder{" +

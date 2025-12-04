@@ -20,7 +20,7 @@ import java.util.List;
  *          - Pass the work to the InsuranceService
  *          - Return the service’s results as HTTP responses
  *
- * @author Matthew
+ * @author Matthew Kiyono
  * @version 1.0
  ********************************************************************************************************/
 

@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *      5. Select By ID
  *      6. Select By Insurance Name (custom repo method)
  *
- * @author Matthew K.
+ * @author Matthew Kiyono
  * @version 1.0
  * @since 11/20/2025
  ***************************************************************************************************/
