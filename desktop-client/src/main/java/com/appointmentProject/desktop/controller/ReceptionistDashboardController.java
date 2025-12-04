@@ -1,5 +1,5 @@
 /*************************************************************************
- *  AdminDashboardController.java
+ *  ReceptionistDashboardController.java
  *
  *      This Class acts as the caller to the backend for specific data.
  *      It will first connect each table column to a respective field in
@@ -10,19 +10,18 @@
  *
  * @author Matthew Kiyono
  * @version 1.0
- * @since 12/1/2025
+ * @since 12/3/2025
  **************************************************************************/
-
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
 import javafx.fxml.FXML;
 
-public class AdminDashboardController {
+public class ReceptionistDashboardController {
 
     @FXML
     private void initialize() {
-        System.out.println("Admin Dashboard Loaded.");
+        System.out.println("Receptionist Dashboard Loaded.");
     }
 
     @FXML

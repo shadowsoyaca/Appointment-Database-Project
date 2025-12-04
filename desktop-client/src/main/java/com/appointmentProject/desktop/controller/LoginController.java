@@ -33,15 +33,36 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // TEMPORARY LOGIN LOGIC (until backend login endpoint is added)
-        if (username.equals("admin") && password.equals("admin")) {
-            SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
-            return;
-        }
+        // TEMPORARY: Local Login Simulation
+        switch (username) {
 
-        if (username.equals("nurse") && password.equals("nurse")) {
-            SceneNavigator.switchTo("/fxml/nurse_dashboard.fxml");
-            return;
+            case "admin":
+                if (password.equals("admin")) {
+                    SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
+                    return;
+                }
+                break;
+
+            case "provider":
+                if (password.equals("provider")) {
+                    SceneNavigator.switchTo("/fxml/provider_dashboard.fxml");
+                    return;
+                }
+                break;
+
+            case "nurse":
+                if (password.equals("nurse")) {
+                    SceneNavigator.switchTo("/fxml/nurse_dashboard.fxml");
+                    return;
+                }
+                break;
+
+            case "receptionist":
+                if (password.equals("receptionist")) {
+                    SceneNavigator.switchTo("/fxml/receptionist_dashboard.fxml");
+                    return;
+                }
+                break;
         }
 
         errorLabel.setText("Incorrect username or password.");

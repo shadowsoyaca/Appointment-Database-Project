@@ -6,18 +6,14 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.NurseDashboardController"
+      fx:controller="com.appointmentProject.desktop.controller.ReceptionistDashboardController"
       alignment="CENTER"
-      spacing="20"
-      prefWidth="400"
-      prefHeight="300">
+      spacing="20">
 
-    <Label text="Nurse Dashboard"
+    <Label text="Receptionist Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-    <Label text="(Placeholder — actual actions will be added later)"/>
+    <Label text="(Placeholder — Receptionist tools coming soon)" />
 
-    <Button text="Log Out"
-            onAction="#handleLogout"/>
-
+    <Button text="Log Out" onAction="#handleLogout"/>
 </VBox>
