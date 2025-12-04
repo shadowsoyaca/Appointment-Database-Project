@@ -12,6 +12,5 @@ phone BIGINT NOT NULL,
 email VARCHAR(255) NOT NULL,
 specialty VARCHAR(255) NOT NULL,
 address VARCHAR(255) NOT NULL,
-availability VARCHAR(255) NOT NULL,
 CONSTRAINT uq_provider_name UNIQUE (first_name, last_name)
 );
