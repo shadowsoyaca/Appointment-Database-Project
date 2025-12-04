@@ -1,0 +1,8 @@
+com\appointmentProject\desktop\SceneNavigator.class
+com\appointmentProject\desktop\api\ApiClient.class
+com\appointmentProject\desktop\model\UserDTO.class
+com\appointmentProject\desktop\DesktopApp.class
+com\appointmentProject\desktop\controller\LoginController.class
+com\appointmentProject\desktop\controller\NurseDashboardController.class
+com\appointmentProject\desktop\model\InsuranceDTO.class
+com\appointmentProject\desktop\controller\AdminDashboardController.class
