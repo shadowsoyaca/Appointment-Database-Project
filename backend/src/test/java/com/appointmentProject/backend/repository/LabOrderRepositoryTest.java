@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *  LabOrderRepositoryTest.java
  *
  *      Integration tests to ensure LabOrderRepository queries execute correctly.
- *      Uses the REAL database connection defined in application.properties.
+ *      Uses the REAL database connection.
  *
  * @author Matthew Kiyono
  * @version 1.0

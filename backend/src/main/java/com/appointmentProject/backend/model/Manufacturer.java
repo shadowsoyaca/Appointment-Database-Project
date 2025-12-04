@@ -37,8 +37,8 @@ public class Manufacturer{
     private int id;
 
     @NotNull
-    @Column(name = "manufacturer_name",  nullable = false)
-    private String manufacturer_name;
+    @Column(name = "manufacturerName",  nullable = false)
+    private String manufacturerName;
 
     @NotNull
     @Column(name = "phone", nullable = false)
@@ -56,9 +56,9 @@ public class Manufacturer{
     protected Manufacturer() {}
 
     //constructor
-    public Manufacturer(int id, String manufacturer_name, String phone, String email, String address) {
+    public Manufacturer(int id, String manufacturerName, String phone, String email, String address) {
         this.id = id;
-        this.manufacturer_name = manufacturer_name;
+        this.manufacturerName = manufacturerName;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -66,14 +66,14 @@ public class Manufacturer{
 
     //getter methods
     public int getId() {return id;}
-    public String getManufacturer_name() {return manufacturer_name;}
+    public String getManufacturerName() {return manufacturerName;}
     public String getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
 
     //setter methods
     public void setId(int id) {this.id = id;}
-    public void setManufacturer_name(String manufacturer_name) {this.manufacturer_name = manufacturer_name;}
+    public void setManufacturerName(String manufacturerName) {this.manufacturerName = manufacturerName;}
     public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}
     public void setAddress(String address) {this.address = address;}
@@ -82,7 +82,7 @@ public class Manufacturer{
     public String toString(){
         return "Manufacturer:\n" +
                 "\nMN id: " + id +
-                "\n manufacturer name: " + manufacturer_name +
+                "\n manufacturer name: " + manufacturerName +
                 "\n phone: " + phone +
                 "\n email: " + email +
                 "\n address: " + address + "\n";

@@ -29,11 +29,11 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Person {
 
-    @Column(name = "first_name", nullable = false, length = 100)
-    private String first_name;
+    @Column(name = "firstName", nullable = false, length = 100)
+    private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 100)
-    protected String last_name;
+    @Column(name = "lastName", nullable = false, length = 100)
+    protected String lastName;
 
     @Column(name = "phone", nullable = false)
     protected String phone;
@@ -45,30 +45,30 @@ public abstract class Person {
     protected Person() {}
 
     //Parent Constructor
-    public Person(String first_name, String last_name, String phone, String email) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public Person(String firstName, String lastName, String phone, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.phone = phone;
         this.email = email;
     }
 
 
     //common getters
-    public String getFirst_name() {return first_name;}
-    public  String getLast_name() {return last_name;}
+    public String getFirstName() {return firstName;}
+    public  String getLastName() {return lastName;}
     public String getPhone() {return phone;}
     public String getEmail() {return email;}
 
     //common setters
-    public void setFirst_name(String first_name) {this.first_name = first_name;}
-    public void setLast_name(String last_name) {this.last_name = last_name;}
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
     public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}
 
     //common toString
     public String toString(){
-        return "First name: " + first_name +
-                "\nLast name: " + last_name +
+        return "First name: " + firstName +
+                "\nLast name: " + lastName +
                 "\nPhone: " + phone +
                 "\nEmail: " + NullString.check(email);
     }

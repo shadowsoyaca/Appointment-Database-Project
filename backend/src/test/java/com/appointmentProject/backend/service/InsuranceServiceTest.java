@@ -74,7 +74,7 @@ public class InsuranceServiceTest {
         Insurance result = insService.addInsurance(sampleA);
 
         assertNotNull(result);
-        assertEquals("StateFarm", result.getInsurance_name());
+        assertEquals("StateFarm", result.getInsuranceName());
         verify(insRepo, times(1)).save(sampleA);
     }
 
@@ -145,7 +145,7 @@ public class InsuranceServiceTest {
         Optional<Insurance> result = insService.getInsuranceById(1);
 
         assertTrue(result.isPresent());
-        assertEquals("StateFarm", result.get().getInsurance_name());
+        assertEquals("StateFarm", result.get().getInsuranceName());
         verify(insRepo, times(1)).findById(1);
     }
 
@@ -159,7 +159,7 @@ public class InsuranceServiceTest {
         List<Insurance> results = insService.getByInsuranceName("StateFarm");
 
         assertEquals(1, results.size());
-        assertEquals("StateFarm", results.get(0).getInsurance_name());
+        assertEquals("StateFarm", results.get(0).getInsuranceName());
         verify(insRepo, times(1)).findByInsuranceName("StateFarm");
     }
 }

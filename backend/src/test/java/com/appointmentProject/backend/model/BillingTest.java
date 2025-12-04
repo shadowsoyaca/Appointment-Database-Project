@@ -25,7 +25,7 @@ public class BillingTest {
         Integer insuranceID1 = 35790864, insuranceID2 = null;
 
         Billing bill = new Billing.Builder(
-                id1, cost1, status1, payType1).insurance_id(insuranceID1).build();
+                id1, cost1, status1, payType1).insuranceId(insuranceID1).build();
 
 
         //getter tests
@@ -33,24 +33,24 @@ public class BillingTest {
         assertAll(
                 () -> assertEquals(id1, bill.getId()),
                 () -> assertEquals(cost1,bill.getCost()),
-                () -> assertEquals(status1, bill.getStatus_of_payment()),
-                () -> assertEquals(payType1, bill.getPayment_type()),
-                () -> assertEquals(insuranceID1, bill.getInsurance_id())
+                () -> assertEquals(status1, bill.getStatusOfPayment()),
+                () -> assertEquals(payType1, bill.getPaymentType()),
+                () -> assertEquals(insuranceID1, bill.getInsuranceId())
         );
 
         //setter tests
         bill.setId(id2);
         bill.setCost(cost2);;
-        bill.setStatus_of_payment(status2);
-        bill.setPayment_type(payType2);
-        bill.setInsurance_id(insuranceID2);
+        bill.setStatusOfPayment(status2);
+        bill.setPaymentType(payType2);
+        bill.setInsuranceId(insuranceID2);
 
         assertAll(
                 () -> assertEquals(id2, bill.getId()),
                 () -> assertEquals(cost2,bill.getCost()),
-                () -> assertEquals(status2, bill.getStatus_of_payment()),
-                () -> assertEquals(payType2, bill.getPayment_type()),
-                () -> assertNull(bill.getInsurance_id())
+                () -> assertEquals(status2, bill.getStatusOfPayment()),
+                () -> assertEquals(payType2, bill.getPaymentType()),
+                () -> assertNull(bill.getInsuranceId())
         );
     }
 
@@ -58,7 +58,7 @@ public class BillingTest {
     void testToString() {
         Billing bill = new Billing.Builder(
                 75767877, 320.45, "INCOMPLETE",
-                "N/A").insurance_id(77777777).build();
+                "N/A").insuranceId(77777777).build();
 
         String expectedA =
                 "Billing: " +
@@ -71,7 +71,7 @@ public class BillingTest {
         assertEquals(expectedA, bill.toString());
 
         //NullString Interaction Test
-        bill.setInsurance_id(null);
+        bill.setInsuranceId(null);
 
         String expectedB =
                 "Billing: " +

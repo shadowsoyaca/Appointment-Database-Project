@@ -67,17 +67,17 @@ public class Billing {
     private double cost;
 
     @NotNull
-    @Column(name = "status_of_payment", nullable = false)
-    private String status_of_payment;
+    @Column(name = "statusOfPayment", nullable = false)
+    private String statusOfPayment;
 
     @NotNull
-    @Column(name = "payment_type", nullable = false)
-    private String payment_type;
+    @Column(name = "paymentType", nullable = false)
+    private String paymentType;
 
 
     //optional variables
-    @Column(name = "insurance_id")
-    private Integer insurance_id;
+    @Column(name = "insuranceId")
+    private Integer insuranceId;
 
     //Test Constructor Only!
     protected Billing() {}
@@ -86,24 +86,24 @@ public class Billing {
     private Billing(Builder builder){
         this.id = builder.id;
         this.cost = builder.cost;
-        this.status_of_payment = builder.status_of_payment;
-        this.payment_type = builder.payment_type;
-        this.insurance_id = builder.insurance_id;
+        this.statusOfPayment = builder.statusOfPayment;
+        this.paymentType = builder.paymentType;
+        this.insuranceId = builder.insuranceId;
     }
 
     //getter method
     public int getId() {return id;}
     public double getCost() {return cost;}
-    public String getStatus_of_payment() {return status_of_payment;}
-    public String getPayment_type() {return payment_type;}
-    public Integer getInsurance_id() {return insurance_id;}
+    public String getStatusOfPayment() {return statusOfPayment;}
+    public String getPaymentType() {return paymentType;}
+    public Integer getInsuranceId() {return insuranceId;}
 
     //setter method
     public void setId(int id) {this.id = id;}
     public void setCost(double cost) {this.cost = cost;}
-    public void setStatus_of_payment(String status_of_payment) {this.status_of_payment = status_of_payment;}
-    public void setPayment_type(String payment_type) {this.payment_type = payment_type;}
-    public void setInsurance_id(Integer insurance_id) {this.insurance_id = insurance_id;}
+    public void setStatusOfPayment(String statusOfPayment) {this.statusOfPayment = statusOfPayment;}
+    public void setPaymentType(String paymentType) {this.paymentType = paymentType;}
+    public void setInsuranceId(Integer insuranceId) {this.insuranceId = insuranceId;}
 
     //toString method
     @Override
@@ -111,9 +111,9 @@ public class Billing {
         return "Billing: " +
                 "\nTransaction ID: " + id +
                 "\nTotal Cost: " + cost +
-                "\nPayment Status: " + status_of_payment +
-                "\nPayment Type: " + payment_type +
-                "\nInsurance ID: " + NullString.check(insurance_id) + "\n";
+                "\nPayment Status: " + statusOfPayment +
+                "\nPayment Type: " + paymentType +
+                "\nInsurance ID: " + NullString.check(insuranceId) + "\n";
     }
 
     //builder constructor
@@ -122,22 +122,22 @@ public class Billing {
         //required variables
         private int id;
         private double cost;
-        private String status_of_payment;
-        private String payment_type;
+        private String statusOfPayment;
+        private String paymentType;
         //optional variables
-        private Integer insurance_id;
+        private Integer insuranceId;
 
         //required parameter constructor
-        public Builder(int id, double cost,String status_of_payment,String payment_type){
+        public Builder(int id, double cost,String statusOfPayment,String paymentType){
             this.id = id;
             this.cost = cost;
-            this.status_of_payment = status_of_payment;
-            this.payment_type = payment_type;
+            this.statusOfPayment = statusOfPayment;
+            this.paymentType = paymentType;
         }
 
         //optional parameter checks
-        public Builder insurance_id(Integer insurance_id){
-            this.insurance_id = insurance_id;
+        public Builder insuranceId(Integer insuranceId){
+            this.insuranceId = insuranceId;
             return this;
         }
 

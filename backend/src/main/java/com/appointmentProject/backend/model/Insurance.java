@@ -37,7 +37,7 @@ public class Insurance{
     private int id;
 
     @NotNull
-    @Column(name = "insurance_name", nullable = false)
+    @Column(name = "insuranceName", nullable = false)
     private String insuranceName;
 
     @NotNull
@@ -56,9 +56,9 @@ public class Insurance{
     protected Insurance() {}
 
     //constructor
-    public Insurance(int id, String insurance_name, String phone, String email, String address) {
+    public Insurance(int id, String insuranceName, String phone, String email, String address) {
         this.id = id;
-        this.insuranceName = insurance_name;
+        this.insuranceName = insuranceName;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -66,7 +66,7 @@ public class Insurance{
 
     //getter methods
     public int getId() {return id;}
-    public String getInsurance_name() {return insuranceName;}
+    public String getInsuranceName() {return insuranceName;}
     public String getPhone() {return phone;}
     public String getEmail() {return email;}
     public String getAddress() {return address;}
@@ -74,7 +74,7 @@ public class Insurance{
     //setter methods
     public void setId(int id) {this.id = id;}
     public void setAddress(String address) {this.address = address;}
-    public void setInsurance_name(String insurance_name) {this.insuranceName = insurance_name;}
+    public void setInsuranceName(String insuranceName) {this.insuranceName = insuranceName;}
     public void setPhone(String phone) {this.phone = phone;}
     public void setEmail(String email) {this.email = email;}
 
@@ -83,7 +83,7 @@ public class Insurance{
     public String toString(){
         return "Insurance:\n" +
                 "\nIN id: " + id +
-                "\ninsurance_name: " + insuranceName +
+                "\ninsuranceName: " + insuranceName +
                 "\nphone: " + phone +
                 "\nemail: " + email +
                 "\naddress: " + address + "\n";

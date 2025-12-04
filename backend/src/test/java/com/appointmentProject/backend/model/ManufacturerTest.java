@@ -30,7 +30,7 @@ public class ManufacturerTest {
         //getter tests
         assertAll(
                 () -> assertEquals(id1, company.getId()),
-                () -> assertEquals(name1, company.getManufacturer_name()),
+                () -> assertEquals(name1, company.getManufacturerName()),
                 () -> assertEquals(phone1, company.getPhone()),
                 () -> assertEquals(email1, company.getEmail()),
                 () -> assertEquals(address1, company.getAddress())
@@ -38,14 +38,14 @@ public class ManufacturerTest {
 
         //setter tests
         company.setId(id2);
-        company.setManufacturer_name(name2);
+        company.setManufacturerName(name2);
         company.setPhone(phone2);
         company.setEmail(email2);
         company.setAddress(address2);
 
         assertAll(
                 () -> assertEquals(id2, company.getId()),
-                () -> assertEquals(name2, company.getManufacturer_name()),
+                () -> assertEquals(name2, company.getManufacturerName()),
                 () -> assertEquals(phone2, company.getPhone()),
                 () -> assertEquals(email2, company.getEmail()),
                 () -> assertEquals(address2, company.getAddress())

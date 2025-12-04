@@ -34,70 +34,70 @@ public class Availability {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "staff_id", nullable = false, unique = true)
-    private int staff_id;
+    @Column(name = "staffId", nullable = false, unique = true)
+    private int staffId;
 
     @NotNull
-    @Column(name = "staff_type", nullable = false)
-    private String staff_type;
+    @Column(name = "staffType", nullable = false)
+    private String staffType;
 
     @NotNull
-    @Column(name = "day_of_week", nullable = false)
-    private String day_of_week;
+    @Column(name = "dayOfWeek", nullable = false)
+    private String dayOfWeek;
 
     @NotNull
-    @Column(name= "start_time", nullable = false, columnDefinition = "TIME(0)")
-    private LocalTime start_time;
+    @Column(name= "startTime", nullable = false, columnDefinition = "TIME(0)")
+    private LocalTime startTime;
 
     @NotNull
-    @Column(name = "end_time",  nullable = false, columnDefinition = "TIME(0)")
-    private LocalTime end_time;
+    @Column(name = "endTime",  nullable = false, columnDefinition = "TIME(0)")
+    private LocalTime endTime;
 
     //Test Constructor Only!
     protected Availability() {}
 
     // constructor
-    public Availability(int staff_id, String staff_type, String day_of_week, LocalTime start_time, LocalTime end_time) {
+    public Availability(int staffId, String staffType, String dayOfWeek, LocalTime startTime, LocalTime endTime) {
         //input validation
-        if (!(staff_type.equals("Provider") || staff_type.equals("Nurse"))) {
-            throw new IllegalArgumentException("staff_type must be either 'Provider' or 'Nurse'.");
+        if (!(staffType.equals("Provider") || staffType.equals("Nurse"))) {
+            throw new IllegalArgumentException("staffType must be either 'Provider' or 'Nurse'.");
         }
-        if (!(day_of_week.equals("Mon") || day_of_week.equals("Tue") || day_of_week.equals("Wed") || day_of_week.equals("Thu") || day_of_week.equals("Fri") || day_of_week.equals("Sat") || day_of_week.equals("Sun"))) {
-            throw new IllegalArgumentException("day_of_week must be either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.");
+        if (!(dayOfWeek.equals("Mon") || dayOfWeek.equals("Tue") || dayOfWeek.equals("Wed") || dayOfWeek.equals("Thu") || dayOfWeek.equals("Fri") || dayOfWeek.equals("Sat") || dayOfWeek.equals("Sun"))) {
+            throw new IllegalArgumentException("dayOfWeek must be either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.");
         }
-        if (start_time.isAfter(end_time)) {
-            throw new IllegalArgumentException("start_time must be before end_time");
+        if (startTime.isAfter(endTime)) {
+            throw new IllegalArgumentException("startTime must be before endTime");
         }
 
-        this.staff_id = staff_id;
-        this.staff_type = staff_type;
-        this.day_of_week = day_of_week;
-        this.start_time = start_time;
-        this.end_time = end_time;
+        this.staffId = staffId;
+        this.staffType = staffType;
+        this.dayOfWeek = dayOfWeek;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     // getter methods
-    public int getStaff_id() {return staff_id;}
-    public String getStaff_type() {return staff_type;}
-    public String getDay_of_week() {return day_of_week;}
-    public LocalTime getStart_time() {return start_time;}
-    public LocalTime getEnd_time() {return end_time;}
+    public int getStaffId() {return staffId;}
+    public String getStaffType() {return staffType;}
+    public String getDayOfWeek() {return dayOfWeek;}
+    public LocalTime getStartTime() {return startTime;}
+    public LocalTime getEndTime() {return endTime;}
 
     //setter methods
-    public void setStaff_id(int staff_id) {this.staff_id = staff_id;}
-    public void setStaff_type(String staff_type) {this.staff_type = staff_type;}
-    public void setDay_of_week(String day_of_week) {this.day_of_week = day_of_week;}
-    public void setStart_time(LocalTime start_time) {this.start_time = start_time;}
-    public void setEnd_time(LocalTime  end_time) {this.end_time = end_time;}
+    public void setStaffId(int staffId) {this.staffId = staffId;}
+    public void setStaffType(String staffType) {this.staffType = staffType;}
+    public void setDayOfWeek(String dayOfWeek) {this.dayOfWeek = dayOfWeek;}
+    public void setStartTime(LocalTime startTime) {this.startTime = startTime;}
+    public void setEndTime(LocalTime  endTime) {this.endTime = endTime;}
 
     // toString method
     public String toString() {
         return "Availability:\n" +
-                "\nAV id: " + staff_id +
-                "\nstaff_type: " + staff_type +
-                "\nday_of_week: " + day_of_week +
-                "\nstart_time: " + start_time +
-                "\nend_time: " + end_time + "\n";
+                "\nAV id: " + staffId +
+                "\nstaffType: " + staffType +
+                "\nday_of_week: " + dayOfWeek +
+                "\nstart_time: " + startTime +
+                "\nend_time: " + endTime + "\n";
     }
 
 

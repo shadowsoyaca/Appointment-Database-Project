@@ -52,7 +52,7 @@ public class InsuranceControllerUnitTest {
         ResponseEntity<Insurance> response = controller.addInsurance(input);
 
         assertEquals(1, response.getBody().getId());
-        assertEquals("StateFarm", response.getBody().getInsurance_name());
+        assertEquals("StateFarm", response.getBody().getInsuranceName());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class InsuranceControllerUnitTest {
         ResponseEntity<Insurance> response = controller.getById(5);
 
         assertEquals(5, response.getBody().getId());
-        assertEquals("BlueCross", response.getBody().getInsurance_name());
+        assertEquals("BlueCross", response.getBody().getInsuranceName());
     }
 
     @Test
@@ -93,11 +93,10 @@ public class InsuranceControllerUnitTest {
         ResponseEntity<List<Insurance>> response = controller.getByInsuranceName("StateFarm");
 
         assertEquals(1, response.getBody().size());
-        assertEquals("StateFarm", response.getBody().get(0).getInsurance_name());
+        assertEquals("StateFarm", response.getBody().get(0).getInsuranceName());
     }
 
-    @Test
-    void testUpdateInsurance() {
+    @Test    void testUpdateInsurance() {
         Insurance original = new Insurance(3, "OldName", "555", "old@mail.com", "Old St");
         Insurance updated = new Insurance(3, "NewName", "555", "new@mail.com", "New St");
 
@@ -105,7 +104,7 @@ public class InsuranceControllerUnitTest {
 
         ResponseEntity<Insurance> response = controller.updateInsurance(original);
 
-        assertEquals("NewName", response.getBody().getInsurance_name());
+        assertEquals("NewName", response.getBody().getInsuranceName());
     }
 
     @Test

@@ -10,19 +10,19 @@
  *             primary way of accessing specific Patient records. This is immutable.
  *             The number combination is created from the
  *             auto-increment feature from MySQL.
- *      - "first_name", "last_name", "phone", and (Optional) "email"  are inherited from
+ *      - "firstName", "lastName", "phone", and (Optional) "email"  are inherited from
  *              Person.java.
  *      - "DoB": the patient's date of birth.
  *      - "gender": (Optional) the patient's gender identity and expression
  *      - "age": patient's age, can be 0 if they are only a few months old.
  *      - "weight": patient's weight in pounds in the format of a double.
  *      - "height": patient's height in feet in the format of a double.
- *      - "insurance_id": the patient's insurance provider. Can be null if they do not have
+ *      - "insuranceId": the patient's insurance provider. Can be null if they do not have
  *              one. The id must have a "IN" lead before the number sequence. (Optional)
- *      - "emergencyContact_id": the patient's emergency contact. Can be null if they do not
+ *      - "emergencyContactId": the patient's emergency contact. Can be null if they do not
  *              have one. The id must start with "EC" before the number sequence. (Optional)
  *
- *      Designer Note: As email, gender, insurance_id, and emergency_contact_id are optional,
+ *      Designer Note: As email, gender, insuranceId, and emergencyContactId are optional,
  *              the builder pattern constructor is used over the traditional constructor.
  *              - In addition, the import of LocalDate is used for defining the Date of Birth.
  *              - Import for NullString applied for displaying nulls as "N/A"
@@ -74,11 +74,11 @@ public class Patient extends Person {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "insurance_id")
-    private Integer insurance_id;
+    @Column(name = "insuranceId")
+    private Integer insuranceId;
 
-    @Column(name = "emergency_contact_id")
-    private Integer emergencyContact_id;
+    @Column(name = "emergencyContactId")
+    private Integer emergencyContactId;
 
 
     //Test Constructor ONLY!
@@ -88,15 +88,15 @@ public class Patient extends Person {
 
     //private constructor used only by builder
     private Patient(Builder builder) {
-        super(builder.first_name, builder.last_name, builder.phone, builder.email);
+        super(builder.firstName, builder.lastName, builder.phone, builder.email);
         this.id = builder.id;
         this.DoB = builder.DoB;
         this.age = builder.age;
         this.weight = builder.weight;
         this.height = builder.height;
         this.gender = builder.gender;
-        this.insurance_id = builder.insurance_id;
-        this.emergencyContact_id = builder.emergencyContact_id;
+        this.insuranceId = builder.insuranceId;
+        this.emergencyContactId = builder.emergencyContactId;
 
     }
 
@@ -125,12 +125,12 @@ public class Patient extends Person {
         return gender;
     }
 
-    public Integer getInsurance_id() {
-        return insurance_id;
+    public Integer getInsuranceId() {
+        return insuranceId;
     }
 
-    public Integer getEmergencyContact_id() {
-        return emergencyContact_id;
+    public Integer getEmergencyContactId() {
+        return emergencyContactId;
     }
 
     //setter methods
@@ -140,8 +140,8 @@ public class Patient extends Person {
     public void setWeight(double weight) {this.weight = weight;}
     public void setHeight(double height) {this.height = height;}
     public void setGender(String gender) {this.gender = gender;}
-    public void setInsurance_id(Integer in_id) {this.insurance_id = in_id;}
-    public void setEmergencyContact_id(Integer ec_id) {this.emergencyContact_id = ec_id;}
+    public void setInsuranceId(Integer inId) {this.insuranceId = inId;}
+    public void setEmergencyContactId(Integer ecId) {this.emergencyContactId = ecId;}
 
     //toString
     public String toString() {
@@ -153,16 +153,16 @@ public class Patient extends Person {
                 "Weight: " + weight + "\n" +
                 "Height: " + height + "\n" +
                 "Gender: " + NullString.check(gender) + "\n" +
-                "Insurance Id: " + NullString.check(insurance_id) + "\n" +
-                "Emergency Contact ID: " + NullString.check(emergencyContact_id) +
+                "Insurance Id: " + NullString.check(insuranceId) + "\n" +
+                "Emergency Contact ID: " + NullString.check(emergencyContactId) +
                 "\n";
     }
 
     public static class Builder {
         //required
         private int id;
-        private String first_name;
-        private String last_name;
+        private String firstName;
+        private String lastName;
         private LocalDate DoB;
         private int age;
         private double weight;
@@ -172,14 +172,14 @@ public class Patient extends Person {
         //optional
         private String gender;
         private String email;
-        private Integer insurance_id;
-        private Integer emergencyContact_id;
+        private Integer insuranceId;
+        private Integer emergencyContactId;
 
         //constructor that utilizes only the required variables.
-        public Builder(int id, String first_name, String last_name, LocalDate DoB, int age, double weight, double height, String phone) {
+        public Builder(int id, String firstName, String lastName, LocalDate DoB, int age, double weight, double height, String phone) {
             this.id = id;
-            this.first_name = first_name;
-            this.last_name = last_name;
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.phone = phone;
             this.DoB = DoB;
             this.age = age;
@@ -198,13 +198,13 @@ public class Patient extends Person {
             return this;
         }
 
-        public Builder insurance_id(Integer in_id) {
-            this.insurance_id = in_id;
+        public Builder insuranceId(Integer inId) {
+            this.insuranceId = inId;
             return this;
         }
 
-        public Builder emergencyContact_id(Integer ec_id) {
-            this.emergencyContact_id = ec_id;
+        public Builder emergencyContactId(Integer ecId) {
+            this.emergencyContactId = ecId;
             return this;
         }
         //combining provided variables

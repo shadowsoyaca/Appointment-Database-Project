@@ -38,20 +38,20 @@ public class Medication {
     private int id;
 
     @NotNull
-    @Column(name = "medication_name", nullable = false)
-    private String medication_name;
+    @Column(name = "medicationName", nullable = false)
+    private String medicationName;
 
     @NotNull
-    @Column(name = "manufacturer_id", nullable = false)
-    private int manufacturer_id;
+    @Column(name = "manufacturerId", nullable = false)
+    private int manufacturerId;
 
     @NotNull
     @Column(name = "strength", nullable = false)
     private double strength;
 
     @NotNull
-    @Column(name = "type_of_med", nullable = false)
-    private String type_of_med;
+    @Column(name = "typeOfMed", nullable = false)
+    private String typeOfMed;
 
     @NotNull
     @Column(name = "consumption", nullable = false)
@@ -61,29 +61,29 @@ public class Medication {
     protected Medication() {}
 
     //constructor
-    public Medication(int id, String name, int mn_id, double str, String type, String con){
+    public Medication(int id, String name, int mnId, double str, String type, String con){
         this.id = id;
-        this.medication_name = name;
-        this.manufacturer_id = mn_id;
+        this.medicationName = name;
+        this.manufacturerId = mnId;
         this.strength = str;
-        this.type_of_med = type;
+        this.typeOfMed = type;
         this.consumption = con;
     }
 
     //getter
     public int getId() {return id;}
-    public String getMedName() {return medication_name;}
-    public int getManufacturer_id() {return manufacturer_id;}
+    public String getMedName() {return medicationName;}
+    public int getManufacturerId() {return manufacturerId;}
     public double getStrength() {return strength;}
-    public String getType() {return type_of_med;}
+    public String getType() {return typeOfMed;}
     public String getConsumption() {return consumption;}
 
     //setter method
     public void setId(int id) {this.id = id;}
-    public void setMedName(String medication_name) {this.medication_name = medication_name;}
+    public void setMedName(String medicationName) {this.medicationName = medicationName;}
     public void setStrength(double strength) {this.strength = strength;}
-    public void setType(String type_of_med) {this.type_of_med = type_of_med;}
-    public void setManufacturer_id(int manufacturer_id) {this.manufacturer_id = manufacturer_id;}
+    public void setType(String typeOfMed) {this.typeOfMed = typeOfMed;}
+    public void setManufacturerId(int manufacturerId) {this.manufacturerId = manufacturerId;}
     public void setConsumption(String consumption) {this.consumption = consumption;}
 
     //toString
@@ -91,10 +91,10 @@ public class Medication {
     public String toString() {
         return "Medication:" +
                 "\nMed ID: " + this.id +
-                "\nMed Name: " + this.medication_name +
-                "\nManufacturer id: " +  this.manufacturer_id +
+                "\nMed Name: " + this.medicationName +
+                "\nManufacturer id: " +  this.manufacturerId +
                 "\nStrength: " +  this.strength +
-                "\nType of Medication: " +  this.type_of_med +
+                "\nType of Medication: " +  this.typeOfMed +
                 "\nConsumption Method: " +   this.consumption +
                 "\n";
     }

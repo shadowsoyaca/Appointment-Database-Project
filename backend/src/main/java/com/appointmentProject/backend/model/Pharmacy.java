@@ -40,8 +40,8 @@ public class Pharmacy {
     private int id;
 
     @NotNull
-    @Column(name = "pharmacy_name", nullable = false)
-    private String pharmacy_name;
+    @Column(name = "pharmacyName", nullable = false)
+    private String pharmacyName;
 
     @NotNull
     @Column(name = "phone", nullable = false)
@@ -56,56 +56,56 @@ public class Pharmacy {
     private String address;
 
     @NotNull
-    @Column(name = "opening_time", nullable = false, columnDefinition = "TIME(0)")
-    private LocalTime  start_time;
+    @Column(name = "openingTime", nullable = false, columnDefinition = "TIME(0)")
+    private LocalTime  startTime;
 
     @NotNull
-    @Column(name = "closing_time",  nullable = false, columnDefinition = "TIME(0)")
-    private LocalTime end_time;
+    @Column(name = "closingTime",  nullable = false, columnDefinition = "TIME(0)")
+    private LocalTime endTime;
 
     //Test COnstructor only!
     protected Pharmacy() {}
 
     //constructor
-    public Pharmacy(int id, String name, String phone, String email, String address, LocalTime start_time, LocalTime end_time){
+    public Pharmacy(int id, String name, String phone, String email, String address, LocalTime startTime, LocalTime endTime){
         this.id = id;
-        this.pharmacy_name = name;
+        this.pharmacyName = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.start_time = start_time;
-        this.end_time = end_time;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     //getters
     public int getId(){return id;}
-    public String getName(){return pharmacy_name;}
+    public String getName(){return pharmacyName;}
     public String getPhone(){return phone;}
     public String getEmail(){return email;}
     public String getAddress(){return address;}
-    public LocalTime getStartTime(){return start_time;}
-    public LocalTime getEndTime(){return end_time;}
+    public LocalTime getStartTime(){return startTime;}
+    public LocalTime getEndTime(){return endTime;}
 
     //setters
     public void setId(int id){this.id = id;}
-    public void setName(String name){this.pharmacy_name = name;}
+    public void setName(String name){this.pharmacyName = name;}
     public void setPhone(String phone){this.phone = phone;}
     public void setEmail(String email){this.email = email;}
     public void setAddress(String address){this.address = address;}
-    public void setStartTime(LocalTime  start_time){this.start_time = start_time;}
-    public void setEndTime(LocalTime  end_time){this.end_time = end_time;}
+    public void setStartTime(LocalTime  startTime){this.startTime = startTime;}
+    public void setEndTime(LocalTime  endTime){this.endTime = endTime;}
 
     //toString
     @Override
     public String toString(){
         return "Pharmacy:" +
                 "\nPharmacy id: " + this.id +
-                "\nName: " + this.pharmacy_name +
+                "\nName: " + this.pharmacyName +
                 "\nPhone: " + this.phone +
                 "\nEmail: " + this.email +
                 "\nAddress: " + this.address +
-                "\nOpens: " + this.start_time +
-                "\nCloses: " + this.end_time +
+                "\nOpens: " + this.startTime +
+                "\nCloses: " + this.endTime +
                 "\n";
     }
 

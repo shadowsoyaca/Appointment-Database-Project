@@ -32,26 +32,26 @@ public class AvailabilityTest {
 
             //getter test
             assertAll(
-                    () -> assertEquals(staff1, availability.getStaff_id()),
-                    () -> assertEquals(type1, availability.getStaff_type()),
-                    () -> assertEquals(day1, availability.getDay_of_week()),
-                    () -> assertEquals(start1, availability.getStart_time()),
-                    () -> assertEquals(end1, availability.getEnd_time())
+                    () -> assertEquals(staff1, availability.getStaffId()),
+                    () -> assertEquals(type1, availability.getStaffType()),
+                    () -> assertEquals(day1, availability.getDayOfWeek()),
+                    () -> assertEquals(start1, availability.getStartTime()),
+                    () -> assertEquals(end1, availability.getEndTime())
             );
 
             //setter test
-            availability.setStaff_id(staff2);
-            availability.setStaff_type(type2);
-            availability.setDay_of_week(day2);
-            availability.setStart_time(start2);
-            availability.setEnd_time(end2);
+            availability.setStaffId(staff2);
+            availability.setStaffType(type2);
+            availability.setDayOfWeek(day2);
+            availability.setStartTime(start2);
+            availability.setEndTime(end2);
 
             assertAll(
-                    () -> assertEquals(staff2, availability.getStaff_id()),
-                    () -> assertEquals(type2, availability.getStaff_type()),
-                    () -> assertEquals(day2, availability.getDay_of_week()),
-                    () -> assertEquals(start2, availability.getStart_time()),
-                    () -> assertEquals(end2, availability.getEnd_time())
+                    () -> assertEquals(staff2, availability.getStaffId()),
+                    () -> assertEquals(type2, availability.getStaffType()),
+                    () -> assertEquals(day2, availability.getDayOfWeek()),
+                    () -> assertEquals(start2, availability.getStartTime()),
+                    () -> assertEquals(end2, availability.getEndTime())
             );
         }
 

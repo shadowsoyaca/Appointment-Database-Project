@@ -52,12 +52,12 @@ public class Prescription {
     private int id;
 
     @NotNull
-    @Column(name = "medication_id", nullable = false)
-    private int medication_id;
+    @Column(name = "medicationId", nullable = false)
+    private int medicationId;
 
     @NotNull
-    @Column(name = "pharmacy_id",  nullable = false)
-    private int pharmacy_id;
+    @Column(name = "pharmacyId",  nullable = false)
+    private int pharmacyId;
 
     @NotNull
     @Column(name = "quantity",  nullable = false)
@@ -68,8 +68,8 @@ public class Prescription {
     private int frequency;
 
     @NotNull
-    @Column(name = "start_date",  nullable = false, columnDefinition = "DATE(0)")
-    private LocalDate start_date;
+    @Column(name = "startDate",  nullable = false, columnDefinition = "DATE(0)")
+    private LocalDate startDate;
 
     @NotNull
     @Column(name = "price", nullable = false)
@@ -81,14 +81,14 @@ public class Prescription {
 
 
     //optional
-    @Column(name = "insurance_id")
-    private Integer insurance_id;
+    @Column(name = "insuranceId")
+    private Integer insuranceId;
 
-    @Column(name = "end_date", columnDefinition = "DATE(0)")
-    private LocalDate end_date;
+    @Column(name = "endDate", columnDefinition = "DATE(0)")
+    private LocalDate endDate;
 
-    @Column(name = "date_picked_up", columnDefinition = "DATETIME(0)")
-    private LocalDateTime date_picked_up;
+    @Column(name = "datePickedUp", columnDefinition = "DATETIME(0)")
+    private LocalDateTime datePickedUp;
 
     //Test Constructor ONly!
     protected Prescription() {}
@@ -96,59 +96,59 @@ public class Prescription {
     //private constructor
     private Prescription(Builder builder) {
         this.id = builder.id;
-        this.medication_id = builder.medication_id;
-        this.pharmacy_id = builder.pharmacy_id;
+        this.medicationId = builder.medicationId;
+        this.pharmacyId = builder.pharmacyId;
         this.quantity = builder.quantity;
         this.frequency = builder.frequency;
-        this.start_date = builder.start_date;
+        this.startDate = builder.startDate;
         this.price = builder.price;
         this.status = builder.status;
-        this.insurance_id = builder.insurance_id;
-        this.end_date = builder.end_date;
-        this.date_picked_up = builder.date_picked_up;
+        this.insuranceId = builder.insuranceId;
+        this.endDate = builder.endDate;
+        this.datePickedUp = builder.datePickedUp;
     }
 
     //getters
     public int getId() {return id;}
-    public int getMedication_id() {return medication_id;}
-    public int getPharmacy_id() {return pharmacy_id;}
+    public int getMedicationId() {return medicationId;}
+    public int getPharmacyId() {return pharmacyId;}
     public int getQuantity() {return quantity;}
     public int getFrequency() {return frequency;}
-    public LocalDate getStartDate() {return start_date;}
+    public LocalDate getStartDate() {return startDate;}
     public double getPrice() {return price;}
     public String getStatus() {return status;}
-    public Integer getInsurance_id() {return insurance_id;}
-    public LocalDate getEndDate() {return end_date;}
-    public  LocalDateTime getDatePickedUp() {return date_picked_up;}
+    public Integer getInsuranceId() {return insuranceId;}
+    public LocalDate getEndDate() {return endDate;}
+    public  LocalDateTime getDatePickedUp() {return datePickedUp;}
 
     //setters
     public void setId(int id) {this.id = id;}
-    public void setMedication_id(int medication_id) {this.medication_id = medication_id;}
+    public void setMedicationId(int medicationId) {this.medicationId = medicationId;}
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void setFrequency(int frequency) {this.frequency = frequency;}
-    public void setPharmacy_id(int pharmacy_id) {this.pharmacy_id = pharmacy_id;}
-    public void setStartDate(LocalDate start_date) {this.start_date = start_date;}
+    public void setPharmacyId(int pharmacyId) {this.pharmacyId = pharmacyId;}
+    public void setStartDate(LocalDate startDate) {this.startDate = startDate;}
     public void setPrice(double price) {this.price = price;}
     public void setStatus(String status) {this.status = status;}
-    public void setInsurance_id(Integer insurance_id) {this.insurance_id = insurance_id;}
-    public void setEndDate(LocalDate  end_date) {this.end_date = end_date;}
-    public void setDate_picked_up(LocalDateTime picked_up) {this.date_picked_up = picked_up;}
+    public void setInsuranceId(Integer insuranceId) {this.insuranceId = insuranceId;}
+    public void setEndDate(LocalDate  endDate) {this.endDate = endDate;}
+    public void setDatePickedUp(LocalDateTime pickedUp) {this.datePickedUp = pickedUp;}
 
     //toString
     @Override
     public String toString(){
         return "Prescription: " +
                "\nPrescription ID: " + id +
-               "\nMedication ID: " + medication_id +
-               "\nPharmacy ID: " + pharmacy_id +
+               "\nMedication ID: " + medicationId +
+               "\nPharmacy ID: " + pharmacyId +
                "\nQuantity: " + quantity +
                "\nFrequency: " + frequency + " daily" +
-               "\nPrescribed Date: " + start_date +
+               "\nPrescribed Date: " + startDate +
                "\nPrice: " + price +
                "\nStatus: " + status +
-               "\nInsurance ID: " + NullString.check(insurance_id) +
-               "\nEnd Date: " + NullString.check(end_date) +
-               "\nDate Picked Up: " + NullString.check(date_picked_up) +
+               "\nInsurance ID: " + NullString.check(insuranceId) +
+               "\nEnd Date: " + NullString.check(endDate) +
+               "\nDate Picked Up: " + NullString.check(datePickedUp) +
                 "\n";
     }
 
@@ -157,41 +157,41 @@ public class Prescription {
 
         //required
         private int id;
-        private int medication_id;
-        private int pharmacy_id;
+        private int medicationId;
+        private int pharmacyId;
         private int quantity;
         private int frequency;
-        private LocalDate start_date;
+        private LocalDate startDate;
         private double price;
         private String status;
 
         //optional
-        private Integer insurance_id;
-        private LocalDate end_date;
-        private LocalDateTime date_picked_up;
+        private Integer insuranceId;
+        private LocalDate endDate;
+        private LocalDateTime datePickedUp;
 
-        public Builder(int id, int med_id, int ph_id, int quan, int freq, LocalDate start, double price, String status){
+        public Builder(int id, int medId, int phId, int quan, int freq, LocalDate start, double price, String status){
             this.id = id;
-            this.medication_id = med_id;
-            this.pharmacy_id = ph_id;
+            this.medicationId = medId;
+            this.pharmacyId = phId;
             this.quantity = quan;
             this.frequency = freq;
-            this.start_date = start;
+            this.startDate = start;
             this.price = price;
             this.status = status;
         }
 
         //optional additions
-        public Builder insurance_id(Integer insurance_id){
-            this.insurance_id = insurance_id;
+        public Builder insuranceId(Integer insuranceId){
+            this.insuranceId = insuranceId;
             return this;
         }
-        public Builder end_date(LocalDate date){
-            this.end_date = date;
+        public Builder endDate(LocalDate date){
+            this.endDate = date;
             return this;
         }
-        public Builder date_picked_up(LocalDateTime date){
-            this.date_picked_up = date;
+        public Builder datePickedUp(LocalDateTime date){
+            this.datePickedUp = date;
             return this;
         }
 

@@ -25,17 +25,17 @@ public class RoomTest {
 
         //getter test
         assertAll(
-                () -> assertEquals(number1, room.getRoom_number()),
-                () -> assertEquals(floor1, room.getFloor_number())
+                () -> assertEquals(number1, room.getRoomNumber()),
+                () -> assertEquals(floor1, room.getFloorNumber())
         );
 
         //setter test
-        room.setRoom_number(number2);
-        room.setFloor_number(floor2);
+        room.setRoomNumber(number2);
+        room.setFloorNumber(floor2);
 
         assertAll(
-                () -> assertEquals(number2, room.getRoom_number()),
-                () -> assertEquals(floor2, room.getFloor_number())
+                () -> assertEquals(number2, room.getRoomNumber()),
+                () -> assertEquals(floor2, room.getFloorNumber())
         );
     }
 

@@ -8,11 +8,13 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Manufacturer.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\Application.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\repository\AccountRepository.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\PatientController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\LabOrderController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\dto\LoginRequest.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Patient.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Appointment.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\AuthService.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\repository\PatientRepository.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\util\PhoneNumberFormatter.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Billing.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\InsuranceService.java
@@ -21,6 +23,7 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\InsuranceController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Insurance.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\LabOrder.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\PatientService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Medication.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\exception\GlobalExceptionHandler.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\TotalCost.java

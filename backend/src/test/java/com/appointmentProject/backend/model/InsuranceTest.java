@@ -37,12 +37,12 @@ public class InsuranceTest {
             () -> ins1.setId(id4),
             () -> assertEquals(id4, ins1.getId()),
                 //Insurance Name Getter
-            () -> assertEquals(insuranceName1,ins1.getInsurance_name()),
-            () -> assertEquals(insuranceName2,ins2.getInsurance_name()),
-            () -> assertEquals(insuranceName3,ins3.getInsurance_name()),
+            () -> assertEquals(insuranceName1,ins1.getInsuranceName()),
+            () -> assertEquals(insuranceName2,ins2.getInsuranceName()),
+            () -> assertEquals(insuranceName3,ins3.getInsuranceName()),
                 //Insurance Name Setter
-            () ->ins2.setInsurance_name(insuranceName3),
-            () -> assertEquals(insuranceName3, ins2.getInsurance_name()),
+            () ->ins2.setInsuranceName(insuranceName3),
+            () -> assertEquals(insuranceName3, ins2.getInsuranceName()),
                 //phone getter
             () -> assertEquals(phone1, ins1.getPhone()),
             () -> assertEquals(phone2, ins2.getPhone()),

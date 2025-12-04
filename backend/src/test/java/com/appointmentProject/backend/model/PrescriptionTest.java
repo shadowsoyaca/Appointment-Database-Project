@@ -39,47 +39,47 @@ public class PrescriptionTest {
 
         Prescription order = new Prescription.Builder(
                 id1, MD_id1, PH_id1, quantity1, freq1, start1, price1, status1)
-                .insurance_id(IN_id1).end_date(end1).date_picked_up(receive1).build();
+                .insuranceId(IN_id1).endDate(end1).datePickedUp(receive1).build();
 
         //getter Test
 
         assertAll(
                 () -> assertEquals(id1,order.getId()),
-                () -> assertEquals(MD_id1,order.getMedication_id()),
-                () -> assertEquals(PH_id1,order.getPharmacy_id()),
+                () -> assertEquals(MD_id1,order.getMedicationId()),
+                () -> assertEquals(PH_id1,order.getPharmacyId()),
                 () -> assertEquals(quantity1,order.getQuantity()),
                 () -> assertEquals(freq1,order.getFrequency()),
                 () -> assertEquals(start1,order.getStartDate()),
                 () -> assertEquals(price1,order.getPrice()),
                 () -> assertEquals(status1,order.getStatus()),
-                () -> assertEquals(IN_id1,order.getInsurance_id()),
+                () -> assertEquals(IN_id1,order.getInsuranceId()),
                 () -> assertEquals(end1,order.getEndDate()),
                 () -> assertEquals(receive1,order.getDatePickedUp())
         );
 
         //setter Test
         order.setId(id2);
-        order.setMedication_id(MD_id2);
-        order.setPharmacy_id(PH_id2);
+        order.setMedicationId(MD_id2);
+        order.setPharmacyId(PH_id2);
         order.setQuantity(quantity2);
         order.setFrequency(freq2);
         order.setStartDate(start2);
         order.setPrice(price2);
         order.setStatus(status2);
-        order.setInsurance_id(IN_id2);
+        order.setInsuranceId(IN_id2);
         order.setEndDate(end2);
-        order.setDate_picked_up(receive2);
+        order.setDatePickedUp(receive2);
 
         assertAll(
                 () -> assertEquals(id2,order.getId()),
-                () -> assertEquals(MD_id2,order.getMedication_id()),
-                () -> assertEquals(PH_id2,order.getPharmacy_id()),
+                () -> assertEquals(MD_id2,order.getMedicationId()),
+                () -> assertEquals(PH_id2,order.getPharmacyId()),
                 () -> assertEquals(quantity2,order.getQuantity()),
                 () -> assertEquals(freq2,order.getFrequency()),
                 () -> assertEquals(start2,order.getStartDate()),
                 () -> assertEquals(price2,order.getPrice()),
                 () -> assertEquals(status2,order.getStatus()),
-                () -> assertNull(order.getInsurance_id()),
+                () -> assertNull(order.getInsuranceId()),
                 () -> assertNull(order.getEndDate()),
                 () -> assertNull(order.getDatePickedUp())
         );
@@ -92,9 +92,9 @@ public class PrescriptionTest {
         Prescription order = new Prescription.Builder(
                 33578400, 23122332, 11122345, 52,
                 2, LocalDate.of(2025, 10, 12), 200.00,
-                "RECEIVED").insurance_id(57648802)
-                .end_date(LocalDate.of(2025, 11, 7))
-                .date_picked_up(LocalDateTime.of(2025, 10, 12, 13, 22)).build();
+                "RECEIVED").insuranceId(57648802)
+                .endDate(LocalDate.of(2025, 11, 7))
+                .datePickedUp(LocalDateTime.of(2025, 10, 12, 13, 22)).build();
 
         String expectedA =
                 "Prescription: " +
@@ -116,8 +116,8 @@ public class PrescriptionTest {
         //NullString Interaction Test
         order.setStatus("Ready for Pickup");
         order.setEndDate(null);
-        order.setInsurance_id(null);
-        order.setDate_picked_up(null);
+        order.setInsuranceId(null);
+        order.setDatePickedUp(null);
 
         String expectedB =
                 "Prescription: " +

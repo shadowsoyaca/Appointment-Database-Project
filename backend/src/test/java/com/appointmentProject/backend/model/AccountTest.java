@@ -33,20 +33,20 @@ public class AccountTest {
                 () -> assertEquals(name1, acc.getUsername()),
                 () -> assertEquals(pass1, acc.getPassword()),
                 () -> assertEquals(email1, acc.getEmail()),
-                () -> assertEquals(aut1, acc.getUser_type())
+                () -> assertEquals(aut1, acc.getUserType())
         );
 
         //setter tests
         acc.setUsername(name2);
         acc.setPassword(pass2);
         acc.setEmail(email2);
-        acc.setUser_type(aut2);
+        acc.setUserType(aut2);
 
         assertAll(
                 () -> assertEquals(name2, acc.getUsername()),
                 () -> assertEquals(pass2, acc.getPassword()),
                 () -> assertEquals(email2, acc.getEmail()),
-                () -> assertEquals(aut2, acc.getUser_type())
+                () -> assertEquals(aut2, acc.getUserType())
         );
 
     }
