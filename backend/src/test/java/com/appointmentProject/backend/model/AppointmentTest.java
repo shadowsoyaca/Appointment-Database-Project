@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 
-
 /***************************************************************************
  *   AppointmentTest.java
  *
@@ -44,7 +43,8 @@ public class AppointmentTest {
                 billing_id1,
                 date1,
                 room1,
-                purpose1
+                purpose1,
+                "30"
         )
                 .nurseId(nurse1)
                 .prescriptionId(prescipt1)
@@ -53,7 +53,6 @@ public class AppointmentTest {
                 .endTime(end1)
                 .build();
         assertAll(
-                //getter test
                 () -> assertEquals(id1, appt.getId()),
                 () -> assertEquals(patient_id1, appt.getPatientId()),
                 () -> assertEquals(provider_id1, appt.getProviderId()),
@@ -68,7 +67,6 @@ public class AppointmentTest {
                 () -> assertEquals(end1, appt.getEndTime())
         );
 
-        //Setter Test
         appt.setId(id2);
         appt.setPatientId(patient_id2);
         appt.setProviderId(provider_id2);
@@ -98,26 +96,23 @@ public class AppointmentTest {
         );
     }
 
-    //Tests the toString and the NullString Utility
+
     @Test
     void testToString() {
 
+        int id1 = 12345678;
+        int patient_id1 = 12345098;
+        int provider_id1 = 12345432;
+        int billing_id1 = 9;
+        LocalDateTime date2 = LocalDateTime.parse("1996-03-22T12:30");
+        String room1 = "123";
+        String purpose1 = "Physical";
 
-        //Test Model
-        //REQUIRED
-        int id1 = 12345678, id2 = 98765432;
-        int patient_id1 = 12345098, patient_id2 = 98700000;
-        int provider_id1 = 12345432, provider_id2 = 78659401;
-        int billing_id1 = 9, billing_id2 = 10;
-        LocalDateTime date1 = LocalDateTime.now(), date2 = LocalDateTime.parse("1996-03-22T12:30");
-        String room1 = "123", room2 = "456";
-        String purpose1 = "Physical", purpose2 = "Flu Shot";
-        //OPTIONAL
-        Integer nurse1 = 54328099, nurse2 = null;
-        Integer prescipt1 = 55603944, prescipt2 = null;
-        Integer lab1 = 43216789, lab2 = null;
-        LocalTime start1 = LocalTime.parse("12:30"), start2 = null;
-        LocalTime end1 = LocalTime.parse("13:30"), end2 = null;
+        Integer nurse1 = 54328099;
+        Integer prescipt1 = 55603944;
+        Integer lab1 = 43216789;
+        LocalTime start1 = LocalTime.parse("12:30");
+        LocalTime end1 = LocalTime.parse("13:30");
 
         Appointment appt = new Appointment.Builder(
                 id1,
@@ -126,7 +121,8 @@ public class AppointmentTest {
                 billing_id1,
                 date2,
                 room1,
-                purpose1
+                purpose1,
+                "30"
         )
                 .nurseId(nurse1)
                 .prescriptionId(prescipt1)
@@ -134,7 +130,7 @@ public class AppointmentTest {
                 .startTime(start1)
                 .endTime(end1)
                 .build();
-        //Normal Print
+
         String expectedA =
                 "Appointment: " +
                         "\nAppointment ID: 12345678" +
@@ -143,6 +139,7 @@ public class AppointmentTest {
                         "\nNurse ID: 54328099" +
                         "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
+                        "\nAppointment Length: 30" +
                         "\nAppointment Start Time: 12:30" +
                         "\nAppointment End Time: 13:30" +
                         "\nRoom Number: 123" +
@@ -152,12 +149,11 @@ public class AppointmentTest {
 
         assertEquals(expectedA, appt.toString());
 
-        //Null String Involved Print
-        appt.setNurseId(nurse2);
-        appt.setPrescriptionId(prescipt2);
-        appt.setLabOrderId(lab2);
-        appt.setStartTime(start2);
-        appt.setEndTime(end2);
+        appt.setNurseId(null);
+        appt.setPrescriptionId(null);
+        appt.setLabOrderId(null);
+        appt.setStartTime(null);
+        appt.setEndTime(null);
 
         String expectedB =
                 "Appointment: " +
@@ -167,6 +163,7 @@ public class AppointmentTest {
                         "\nNurse ID: N/A" +
                         "\nBilling ID: 9" +
                         "\nScheduled Appointment: 1996-03-22T12:30" +
+                        "\nAppointment Length: 30" +
                         "\nAppointment Start Time: N/A" +
                         "\nAppointment End Time: N/A" +
                         "\nRoom Number: 123" +
