@@ -64,6 +64,14 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.2</version> 
 		</dependency>
+		
+		<!-- Jakarta Validation API -->
+		<dependency>
+    		<groupId>jakarta.validation</groupId>
+   			 <artifactId>jakarta.validation-api</artifactId>
+   			 <version>3.0.2</version>
+		</dependency>
+
 
         <!-- (e) Testing stack (JUnit, Spring Boot Test, and Mockito) -->
         <dependency>

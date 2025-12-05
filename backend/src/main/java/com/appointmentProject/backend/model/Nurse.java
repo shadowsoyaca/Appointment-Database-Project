@@ -23,7 +23,8 @@ package com.appointmentProject.backend.model;
 
 import com.appointmentProject.backend.abstractmodel.Person;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "nurse")
@@ -39,6 +40,11 @@ public class Nurse extends Person {
     @NotNull
     @Column(name = "address", nullable = false)
     private String address;
+    
+    //No arg constructor
+    public Nurse() {
+        super(); //calls Person
+    }
 
     //Constructor
     public Nurse(int id, String firstName, String lastName, String phone, String email, String address) {
