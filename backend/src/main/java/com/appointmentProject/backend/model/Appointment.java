@@ -1,8 +1,7 @@
 package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.util.NullString;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -45,44 +44,47 @@ public class Appointment {
     private int id;
 
     @NotNull
-    @Column(name = "patientId", nullable = false)
+    @Column(name = "patient_id", nullable = false)
     private int patientId;
 
     @NotNull
-    @Column(name = "providerId", nullable = false)
+    @Column(name = "provider_id", nullable = false)
     private int providerId;
 
     @NotNull
-    @Column(name = "billingId", nullable = false)
+    @Column(name = "billing_id", nullable = false)
     private int billingId;
 
     @NotNull
-    @Column(name = "appointmentDate", nullable = false, columnDefinition = "DATETIME(0)")
+    @Column(name = "appointment_date", nullable = false, columnDefinition = "DATETIME(0)")
     private LocalDateTime appointmentDate;
 
     @NotNull
-    @Column(name = "roomNumber", nullable = false, length = 4)
+    @Column(name = "room_number", nullable = false, length = 4)
     private String roomNumber;
 
     @NotNull
-    @Column(name = "reasonForVisiting", nullable = false)
+    @Column(name = "reason_for_visiting", nullable = false)
     private String reasonForVisiting;
 
+    @NotNull
+    @Column(name = "appointment_length", nullable = false)
+    private String appointmentLength;
 
     //optional variables
-    @Column(name = "nurseId")
+    @Column(name = "nurse_id")
     private Integer nurseId;
 
-    @Column(name = "prescriptionId")
+    @Column(name = "prescription_id")
     private Integer prescriptionId;
 
-    @Column(name = "labOrderId")
+    @Column(name = "lab_order_id")
     private Integer labOrderId;
 
-    @Column(name = "startTime", columnDefinition = "TIME(0)")
-    private LocalTime  startTime;
+    @Column(name = "start_time", columnDefinition = "TIME(0)")
+    private LocalTime startTime;
 
-    @Column(name = "endTime", columnDefinition = "TIME(0)")
+    @Column(name = "end_time", columnDefinition = "TIME(0)")
     private LocalTime endTime;
 
     //Test Constructor ONLY!
@@ -97,6 +99,7 @@ public class Appointment {
         this.appointmentDate = builder.appointmentDate;
         this.roomNumber = builder.roomNumber;
         this.reasonForVisiting = builder.reasonForVisiting;
+        this.appointmentLength = builder.appointmentLength;
         this.nurseId = builder.nurseId;
         this.prescriptionId = builder.prescriptionId;
         this.labOrderId = builder.labOrderId;
@@ -112,6 +115,7 @@ public class Appointment {
     public LocalDateTime getAppointmentDate() {return appointmentDate;}
     public String getRoomNumber() {return roomNumber;}
     public String getReasonForVisiting() {return reasonForVisiting;}
+    public String getAppointmentLength() {return appointmentLength;}
     public Integer getNurseId() {return nurseId;}
     public Integer getPrescriptionId() {return prescriptionId;}
     public Integer getLabOrderId() {return labOrderId;}
@@ -126,6 +130,7 @@ public class Appointment {
     public void setBillingId(int blId) {this.billingId = blId;}
     public void setRoomNumber(String room) {this.roomNumber = room;}
     public void setReasonForVisiting(String purpose) {this.reasonForVisiting = purpose;}
+    public void setAppointmentLength(String appointmentLength) {this.appointmentLength = appointmentLength;}
     public void setNurseId(Integer nrId) {this.nurseId = nrId;}
     public void setPrescriptionId(Integer prId) {this.prescriptionId = prId;}
     public void setLabOrderId(Integer lbId) {this.labOrderId = lbId;}
@@ -142,6 +147,7 @@ public class Appointment {
                 "\nNurse ID: " + NullString.check(nurseId) +
                 "\nBilling ID: " + billingId +
                 "\nScheduled Appointment: " + appointmentDate +
+                "\nAppointment Length: " + appointmentLength +
                 "\nAppointment Start Time: " + NullString.check(startTime) +
                 "\nAppointment End Time: " + NullString.check(endTime) +
                 "\nRoom Number: " + roomNumber +
@@ -161,6 +167,7 @@ public class Appointment {
         private LocalDateTime appointmentDate;
         private String roomNumber;
         private String reasonForVisiting;
+        private String appointmentLength;
 
         //optional variables
         private Integer nurseId;
@@ -170,7 +177,7 @@ public class Appointment {
         private LocalTime endTime;
 
         //required constructor only
-        public Builder(int id, int patientId, int providerId, int billingId, LocalDateTime appointmentDate, String roomNumber, String purpose) {
+        public Builder(int id, int patientId, int providerId, int billingId, LocalDateTime appointmentDate, String roomNumber, String purpose, String appointmentLength) {
             this.id = id;
             this.patientId = patientId;
             this.providerId = providerId;
@@ -178,6 +185,7 @@ public class Appointment {
             this.appointmentDate = appointmentDate;
             this.roomNumber = roomNumber;
             this.reasonForVisiting = purpose;
+            this.appointmentLength = appointmentLength;
         }
 
         //method checks for optional variables
