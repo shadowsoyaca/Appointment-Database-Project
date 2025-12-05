@@ -1,3 +1,9 @@
+package com.appointmentProject.backend.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalTime;
+
 /***************************************************************************************
  * Availability.java
  *
@@ -6,35 +12,36 @@
  *
  *      Contains identifying variables of Availability and is used by the service layer
  *      for retrieval and updates.
- *      - "staff_id": is a unique identifier that differentiates between Availabilities. It is
- *          also the primary way of accessing specific Availability records. This is
- *          immutable. The number combination is created by the auto-increment feature in MySQL.
- *      - "staff_type": specifies the type of staff member. Either "Provider" or "Nurse".
- *      - "day_of_week": specifies the day of week.
- *      - "start_time": the start time of the Availability in military time.
- *      - "end_time": the end time of the Availability in military time.
+ *      - "id": auto-increment primary key for database operations
+ *      - "staffId": identifies the staff member
+ *      - "staffType": specifies the type of staff (Provider or Nurse)
+ *      - "dayOfWeek": specifies the day of week
+ *      - "startTime": the start of the availability window
+ *      - "endTime": the end of the availability window
  *
- * @author Jack Mitchell
- * @version 1.2
+ * @version 1.3
  * @since 10/30/2025
+ * @author Jack Mitchell
  *******************************************************************************************/
-
-package com.appointmentProject.backend.model;
-import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-
-import java.time.LocalTime;
-import java.lang.IllegalArgumentException;
-
 @Entity
-@Table(name = "availability")
+@Table(
+        name = "availability",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = { "staffId", "staffType", "dayOfWeek" })
+        }
+)
 public class Availability {
 
-    // variables
+    // PRIMARY KEY (added for JPA compatibility)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "staffId", nullable = false, unique = true)
+    @Column(name = "id", nullable = false, unique = true)
+    private int id;
+
+    // staff information
+    @NotNull
+    @Column(name = "staffId", nullable = false)
     private int staffId;
 
     @NotNull
@@ -46,27 +53,29 @@ public class Availability {
     private String dayOfWeek;
 
     @NotNull
-    @Column(name= "startTime", nullable = false, columnDefinition = "TIME(0)")
+    @Column(name = "startTime", nullable = false, columnDefinition = "TIME(0)")
     private LocalTime startTime;
 
     @NotNull
-    @Column(name = "endTime",  nullable = false, columnDefinition = "TIME(0)")
+    @Column(name = "endTime", nullable = false, columnDefinition = "TIME(0)")
     private LocalTime endTime;
 
-    //Test Constructor Only!
+    // Test Constructor Only
     protected Availability() {}
 
-    // constructor
+    // Full constructor
     public Availability(int staffId, String staffType, String dayOfWeek, LocalTime startTime, LocalTime endTime) {
-        //input validation
-        if (!(staffType.equals("Provider") || staffType.equals("Nurse"))) {
+
+        if (!staffType.equals("Provider") && !staffType.equals("Nurse")) {
             throw new IllegalArgumentException("staffType must be either 'Provider' or 'Nurse'.");
         }
-        if (!(dayOfWeek.equals("Mon") || dayOfWeek.equals("Tue") || dayOfWeek.equals("Wed") || dayOfWeek.equals("Thu") || dayOfWeek.equals("Fri") || dayOfWeek.equals("Sat") || dayOfWeek.equals("Sun"))) {
-            throw new IllegalArgumentException("dayOfWeek must be either 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', or 'Sun'.");
+        if (!(dayOfWeek.equals("Mon") || dayOfWeek.equals("Tue") || dayOfWeek.equals("Wed") ||
+              dayOfWeek.equals("Thu") || dayOfWeek.equals("Fri") || dayOfWeek.equals("Sat") ||
+              dayOfWeek.equals("Sun"))) {
+            throw new IllegalArgumentException("dayOfWeek must be Mon–Sun.");
         }
         if (startTime.isAfter(endTime)) {
-            throw new IllegalArgumentException("startTime must be before endTime");
+            throw new IllegalArgumentException("startTime must be before endTime.");
         }
 
         this.staffId = staffId;
@@ -76,29 +85,29 @@ public class Availability {
         this.endTime = endTime;
     }
 
-    // getter methods
-    public int getStaffId() {return staffId;}
-    public String getStaffType() {return staffType;}
-    public String getDayOfWeek() {return dayOfWeek;}
-    public LocalTime getStartTime() {return startTime;}
-    public LocalTime getEndTime() {return endTime;}
+    // GETTERS
+    public int getId() { return id; }
+    public int getStaffId() { return staffId; }
+    public String getStaffType() { return staffType; }
+    public String getDayOfWeek() { return dayOfWeek; }
+    public LocalTime getStartTime() { return startTime; }
+    public LocalTime getEndTime() { return endTime; }
 
-    //setter methods
-    public void setStaffId(int staffId) {this.staffId = staffId;}
-    public void setStaffType(String staffType) {this.staffType = staffType;}
-    public void setDayOfWeek(String dayOfWeek) {this.dayOfWeek = dayOfWeek;}
-    public void setStartTime(LocalTime startTime) {this.startTime = startTime;}
-    public void setEndTime(LocalTime  endTime) {this.endTime = endTime;}
+    // SETTERS
+    public void setStaffId(int staffId) { this.staffId = staffId; }
+    public void setStaffType(String staffType) { this.staffType = staffType; }
+    public void setDayOfWeek(String dayOfWeek) { this.dayOfWeek = dayOfWeek; }
+    public void setStartTime(LocalTime startTime) { this.startTime = startTime; }
+    public void setEndTime(LocalTime endTime) { this.endTime = endTime; }
 
-    // toString method
+    // toString
     public String toString() {
         return "Availability:\n" +
-                "\nAV id: " + staffId +
-                "\nstaffType: " + staffType +
-                "\nday_of_week: " + dayOfWeek +
-                "\nstart_time: " + startTime +
-                "\nend_time: " + endTime + "\n";
+                "\nID: " + id +
+                "\nStaff ID: " + staffId +
+                "\nStaff Type: " + staffType +
+                "\nDay of Week: " + dayOfWeek +
+                "\nStart Time: " + startTime +
+                "\nEnd Time: " + endTime + "\n";
     }
-
-
 }
