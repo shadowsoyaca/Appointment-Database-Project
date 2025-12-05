@@ -32,8 +32,8 @@ public class EmergencyContactTest {
         //getter tests
         assertAll(
                 () -> assertEquals(id1, ec.getId()),
-                () -> assertEquals(first1, ec.getFirst_name()),
-                () -> assertEquals(last1, ec.getLast_name()),
+                () -> assertEquals(first1, ec.getFirstName()),
+                () -> assertEquals(last1, ec.getLastName()),
                 () -> assertEquals(phone1, ec.getPhone()),
                 () -> assertEquals(email1, ec.getEmail()),
                 () -> assertEquals(address1, ec.getAddress())
@@ -41,16 +41,16 @@ public class EmergencyContactTest {
 
         //setter tests
         ec.setId(id2);
-        ec.setFirst_name(first2);
-        ec.setLast_name(last2);
+        ec.setFirstName(first2);
+        ec.setLastName(last2);
         ec.setPhone(phone2);
         ec.setEmail(email2);
         ec.setAddress(address2);
 
         assertAll(
                 () -> assertEquals(id2, ec.getId()),
-                () -> assertEquals(first2, ec.getFirst_name()),
-                () -> assertEquals(last2, ec.getLast_name()),
+                () -> assertEquals(first2, ec.getFirstName()),
+                () -> assertEquals(last2, ec.getLastName()),
                 () -> assertEquals(phone2, ec.getPhone()),
                 () -> assertEquals(email2, ec.getEmail()),
                 () -> assertNull(ec.getAddress())

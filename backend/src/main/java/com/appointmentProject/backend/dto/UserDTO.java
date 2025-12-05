@@ -11,7 +11,7 @@ public class UserDTO {
     public UserDTO(Account account) {
         this.username = account.getUsername();
         this.email = account.getEmail();
-        this.role = account.getUser_type().name();
+        this.role = account.getUserType().name();
     }
 
     public String getUsername() { return username; }

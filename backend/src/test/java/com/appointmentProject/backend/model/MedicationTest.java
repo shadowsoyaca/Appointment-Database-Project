@@ -31,7 +31,7 @@ public class MedicationTest {
         assertAll(
                 () -> assertEquals(id1, med.getId()),
                 () -> assertEquals(name1, med.getMedName()),
-                () -> assertEquals(manufacturer1, med.getManufacturer_id()),
+                () -> assertEquals(manufacturer1, med.getManufacturerId()),
                 () -> assertEquals(strength1, med.getStrength()),
                 () -> assertEquals(type1, med.getType()),
                 () -> assertEquals(method1, med.getConsumption())
@@ -40,7 +40,7 @@ public class MedicationTest {
         //setter test
         med.setId(id2);
         med.setMedName(name2);
-        med.setManufacturer_id(manufacturer2);
+        med.setManufacturerId(manufacturer2);
         med.setStrength(strength2);
         med.setType(type2);
         med.setConsumption(method2);
@@ -48,7 +48,7 @@ public class MedicationTest {
         assertAll(
                 () -> assertEquals(id2, med.getId()),
                 () -> assertEquals(name2, med.getMedName()),
-                () -> assertEquals(manufacturer2, med.getManufacturer_id()),
+                () -> assertEquals(manufacturer2, med.getManufacturerId()),
                 () -> assertEquals(strength2, med.getStrength()),
                 () -> assertEquals(type2, med.getType()),
                 () -> assertEquals(method2, med.getConsumption())

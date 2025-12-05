@@ -31,8 +31,8 @@ public class NurseTest {
         //getter tests
         assertAll(
                 () -> assertEquals(id1, nurse.getId()),
-                () -> assertEquals(first1, nurse.getFirst_name()),
-                () -> assertEquals(last1, nurse.getLast_name()),
+                () -> assertEquals(first1, nurse.getFirstName()),
+                () -> assertEquals(last1, nurse.getLastName()),
                 () -> assertEquals(phone1, nurse.getPhone()),
                 () -> assertEquals(email1, nurse.getEmail()),
                 () -> assertEquals(address1, nurse.getAddress())
@@ -40,16 +40,16 @@ public class NurseTest {
 
         //setter tests
         nurse.setId(id2);
-        nurse.setFirst_name(first2);
-        nurse.setLast_name(last2);
+        nurse.setFirstName(first2);
+        nurse.setLastName(last2);
         nurse.setPhone(phone2);
         nurse.setEmail(email2);
         nurse.setAddress(address2);
 
         assertAll(
                 () -> assertEquals(id2, nurse.getId()),
-                () -> assertEquals(first2, nurse.getFirst_name()),
-                () -> assertEquals(last2, nurse.getLast_name()),
+                () -> assertEquals(first2, nurse.getFirstName()),
+                () -> assertEquals(last2, nurse.getLastName()),
                 () -> assertEquals(phone2, nurse.getPhone()),
                 () -> assertEquals(email2, nurse.getEmail()),
                 () -> assertEquals(address2, nurse.getAddress())

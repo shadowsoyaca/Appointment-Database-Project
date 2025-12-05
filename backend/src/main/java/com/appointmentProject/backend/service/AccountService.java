@@ -51,7 +51,7 @@ public class AccountService {
         // Step 2: Update mutable fields
         current.setPassword(updated.getPassword());
         current.setEmail(updated.getEmail());
-        current.setUser_type(updated.getUser_type());
+        current.setUserType(updated.getUserType());
 
         // Step 3: Save and return updated account
         return accountRepository.save(current);

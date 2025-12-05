@@ -10,7 +10,7 @@
  *          primary way of accessing specific nurse records. This is immutable.
  *          The number combination is created by the auto-increment feature
  *          in MySQL.
- *      - "first_name", "last_name", "phone", and "email" are inherited from Person.java.
+ *      - "firstName", "lastName", "phone", and "email" are inherited from Person.java.
  *      - "address": the Nurse's address.
  *
  *
@@ -41,8 +41,8 @@ public class Nurse extends Person {
     private String address;
 
     //Constructor
-    public Nurse(int id, String first_name, String last_name, String phone, String email, String address) {
-        super(first_name, last_name, phone, email);
+    public Nurse(int id, String firstName, String lastName, String phone, String email, String address) {
+        super(firstName, lastName, phone, email);
         this.id = id;
         this.address = address;
     }

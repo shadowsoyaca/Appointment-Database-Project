@@ -36,13 +36,13 @@ public class PatientTest {
 
         Patient patient = new Patient.Builder(
                 id1, first1, last1, dob1, age1, weight1, height1, phone1).gender(gender1)
-                .email(email1).insurance_id(IN_id1).emergencyContact_id(EC_id1).build();
+                .email(email1).insuranceId(IN_id1).emergencyContactId(EC_id1).build();
 
         //getter test
         assertAll(
                 () -> assertEquals(id1, patient.getId()),
-                () -> assertEquals(first1, patient.getFirst_name()),
-                () -> assertEquals(last1, patient.getLast_name()),
+                () -> assertEquals(first1, patient.getFirstName()),
+                () -> assertEquals(last1, patient.getLastName()),
                 () -> assertEquals(dob1, patient.getDoB()),
                 () -> assertEquals(age1, patient.getAge()),
                 () -> assertEquals(weight1, patient.getWeight()),
@@ -50,14 +50,14 @@ public class PatientTest {
                 () -> assertEquals(phone1, patient.getPhone()),
                 () -> assertEquals(gender1, patient.getGender()),
                 () -> assertEquals(email1, patient.getEmail()),
-                () -> assertEquals(IN_id1, patient.getInsurance_id()),
-                () -> assertEquals(EC_id1, patient.getEmergencyContact_id())
+                () -> assertEquals(IN_id1, patient.getInsuranceId()),
+                () -> assertEquals(EC_id1, patient.getEmergencyContactId())
         );
 
         //setter test
         patient.setId(id2);
-        patient.setFirst_name(first2);
-        patient.setLast_name(last2);
+        patient.setFirstName(first2);
+        patient.setLastName(last2);
         patient.setDoB(dob2);
         patient.setAge(age2);
         patient.setWeight(weight2);
@@ -65,13 +65,13 @@ public class PatientTest {
         patient.setPhone(phone2);
         patient.setGender(gender2);
         patient.setEmail(email2);
-        patient.setInsurance_id(IN_id2);
-        patient.setEmergencyContact_id(EC_id2);
+        patient.setInsuranceId(IN_id2);
+        patient.setEmergencyContactId(EC_id2);
 
         assertAll(
                 () -> assertEquals(id2, patient.getId()),
-                () -> assertEquals(first2, patient.getFirst_name()),
-                () -> assertEquals(last2, patient.getLast_name()),
+                () -> assertEquals(first2, patient.getFirstName()),
+                () -> assertEquals(last2, patient.getLastName()),
                 () -> assertEquals(dob2, patient.getDoB()),
                 () -> assertEquals(age2, patient.getAge()),
                 () -> assertEquals(weight2, patient.getWeight()),
@@ -79,8 +79,8 @@ public class PatientTest {
                 () -> assertEquals(phone2, patient.getPhone()),
                 () -> assertNull(patient.getGender()),
                 () -> assertNull(patient.getEmail()),
-                () -> assertNull(patient.getInsurance_id()),
-                () -> assertNull(patient.getEmergencyContact_id())
+                () -> assertNull(patient.getInsuranceId()),
+                () -> assertNull(patient.getEmergencyContactId())
         );
     }
 
@@ -93,8 +93,8 @@ public class PatientTest {
         Patient patient = new Patient.Builder(
                 23948805, "Leon", "Kennedy", LocalDate.of(1988,5, 22),
                 38, 173.48, 5.8, "3210034897").gender("Male")
-                .email("lkennedy@R4evil.com").insurance_id(31908744)
-                .emergencyContact_id(69229700).build();
+                .email("lkennedy@R4evil.com").insuranceId(31908744)
+                .emergencyContactId(69229700).build();
 
         String expectedA =
                 "Patient:" +
@@ -116,8 +116,8 @@ public class PatientTest {
         //NullString Involvement Test
         patient.setGender(null);
         patient.setEmail(null);
-        patient.setInsurance_id(null);
-        patient.setEmergencyContact_id(null);
+        patient.setInsuranceId(null);
+        patient.setEmergencyContactId(null);
 
         String expectedB =
                 "Patient:" +

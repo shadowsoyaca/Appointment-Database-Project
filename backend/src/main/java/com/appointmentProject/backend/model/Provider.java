@@ -10,7 +10,7 @@
  *           primary way of accessing specific Provider records. This is immutable.
  *           The number combination is created using the
  *           auto-increment feature in MySQL.
- *      - "first_name", "last_name", "phone", and "email" are inherited from Person.java.
+ *      - "firstName", "lastName", "phone", and "email" are inherited from Person.java.
  *      - "specialty": the area of expertise of the provider. For example, one provider
  *           may be identified as "Family Practice" while another is identified as a
  *           "NeuroSurgeon".
@@ -52,8 +52,8 @@ public class Provider extends Person {
     protected Provider() {}
 
     //constructor
-    public Provider(int id, String first_name, String last_name, String phone, String email, String specialty, String address) {
-        super(first_name, last_name, phone, email);
+    public Provider(int id, String firstName, String lastName, String phone, String email, String specialty, String address) {
+        super(firstName, lastName, phone, email);
         this.id = id;
         this.specialty = specialty;
         this.address = address;

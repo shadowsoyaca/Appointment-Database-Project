@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /***********************************************************************************************
  *   LabOrderControllerUnitTest.java
  *
- *      TRUE unit tests for LabOrderController — LabOrderService is mocked.
+ *      A unit test determining if the controller test is functioning.
  *
  * @author Matthew Kiyono
  * @version 1.0

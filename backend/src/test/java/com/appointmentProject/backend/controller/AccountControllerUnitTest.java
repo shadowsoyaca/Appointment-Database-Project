@@ -20,9 +20,7 @@ import static org.mockito.Mockito.*;
 /***************************************************************************************
  *   AccountControllerUnitTest.java
  *
- *      A unit test determining if the AccountController is functioning correctly.
- *
- *      These are TRUE unit tests because the AccountService is mocked — no database calls.
+ *      A unit test determining if the controller test is functioning.
  *
  * @author Matthew Kiyono
  * @version 1.0

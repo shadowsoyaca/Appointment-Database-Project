@@ -66,7 +66,7 @@ public class InsuranceRepositoryTest {
         assertEquals(1, results.size(), "Size should be no bigger than 1");
 
         for (Insurance in : results) {
-            assertEquals("StateFarm", in.getInsurance_name(), "Returned Insurance name should be StateFarm ");
+            assertEquals("StateFarm", in.getInsuranceName(), "Returned Insurance name should be StateFarm ");
         }
     }
 

@@ -56,31 +56,31 @@ public class Account {
 
         @NotNull
         @Enumerated(EnumType.STRING)
-        @Column(name = "user_type", nullable = false)
-        private authorization user_type;
+        @Column(name = "userType", nullable = false)
+        private authorization userType;
 
     //Test constructor only!
     protected Account() {}
 
     //Constructor
-    public Account(String username, String password, String email, authorization user_type){
+    public Account(String username, String password, String email, authorization userType){
         this.username = username;
         this.password = password;
         this.email = email;
-        this.user_type = user_type;
+        this.userType = userType;
     }
 
     //getters
     public String getUsername() {return username;}
     public String getPassword() {return password;}
     public String getEmail() {return email;}
-    public authorization getUser_type() {return user_type;}
+    public authorization getUserType() {return userType;}
 
     //setters
     public void setUsername(String username) {this.username = username;}
     public void setPassword(String password) {this.password = password;}
     public void setEmail(String email) {this.email = email;}
-    public void setUser_type(authorization user_type) {this.user_type = user_type;}
+    public void setUserType(authorization userType) {this.userType = userType;}
 
     //toString
     @Override
@@ -89,7 +89,7 @@ public class Account {
                 "\nUsername: " + this.username +
                 "\nPassword: " + this.password +
                 "\nEmail: " + this.email +
-                "\nUserType: " + this.user_type +
+                "\nUserType: " + this.userType +
                 "\n";
     }
 }

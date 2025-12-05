@@ -52,7 +52,7 @@ public class EmergencyContact extends Person {
 
     //private constructor for builder
     private EmergencyContact(Builder builder) {
-        super(builder.first_name, builder.last_name, builder.phone, builder.email);
+        super(builder.firstName, builder.lastName, builder.phone, builder.email);
         this.id = builder.id;
         this.address = builder.address;
     }
@@ -77,18 +77,18 @@ public class EmergencyContact extends Person {
     public static class Builder{
         //required
         private int id;
-        private String first_name;
-        private String last_name;
+        private String firstName;
+        private String lastName;
         private String  phone;
         //optional
         private String email;
         private String address;
 
         //this constructor only utilizes the required variables
-        public Builder(int id, String first_name, String last_name, String phone){
+        public Builder(int id, String firstName, String lastName, String phone){
             this.id = id;
-            this.first_name = first_name;
-            this.last_name = last_name;
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.phone = phone;
         }
 

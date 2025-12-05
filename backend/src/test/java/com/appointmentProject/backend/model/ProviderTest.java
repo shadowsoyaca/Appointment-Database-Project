@@ -33,8 +33,8 @@ public class ProviderTest {
         //getter tests
         assertAll(
                 () -> assertEquals(id1, doc.getId()),
-                () -> assertEquals(first1, doc.getFirst_name()),
-                () -> assertEquals(last1, doc.getLast_name()),
+                () -> assertEquals(first1, doc.getFirstName()),
+                () -> assertEquals(last1, doc.getLastName()),
                 () -> assertEquals(phone1, doc.getPhone()),
                 () -> assertEquals(email1, doc.getEmail()),
                 () -> assertEquals(special1, doc.getSpecialty()),
@@ -43,8 +43,8 @@ public class ProviderTest {
 
         //setter tests
         doc.setId(id2);
-        doc.setFirst_name(first2);
-        doc.setLast_name(last2);
+        doc.setFirstName(first2);
+        doc.setLastName(last2);
         doc.setPhone(phone2);
         doc.setEmail(email2);
         doc.setSpecialty(special2);
@@ -52,8 +52,8 @@ public class ProviderTest {
 
         assertAll(
                 () -> assertEquals(id2, doc.getId()),
-                () -> assertEquals(first2, doc.getFirst_name()),
-                () -> assertEquals(last2, doc.getLast_name()),
+                () -> assertEquals(first2, doc.getFirstName()),
+                () -> assertEquals(last2, doc.getLastName()),
                 () -> assertEquals(phone2, doc.getPhone()),
                 () -> assertEquals(email2, doc.getEmail()),
                 () -> assertEquals(special2, doc.getSpecialty()),

@@ -46,55 +46,55 @@ public class AppointmentTest {
                 room1,
                 purpose1
         )
-                .nurse_id(nurse1)
-                .prescription_id(prescipt1)
-                .lab_order_id(lab1)
-                .start_time(start1)
-                .end_time(end1)
+                .nurseId(nurse1)
+                .prescriptionId(prescipt1)
+                .labOrderId(lab1)
+                .startTime(start1)
+                .endTime(end1)
                 .build();
         assertAll(
                 //getter test
                 () -> assertEquals(id1, appt.getId()),
-                () -> assertEquals(patient_id1, appt.getPatient_id()),
-                () -> assertEquals(provider_id1, appt.getProvider_id()),
-                () -> assertEquals(billing_id1, appt.getBilling_id()),
-                () -> assertEquals(date1, appt.getAppointment_date()),
-                () -> assertEquals(room1, appt.getRoom_number()),
-                () -> assertEquals(purpose1, appt.getReason_for_visiting()),
-                () -> assertEquals(nurse1, appt.getNurse_id()),
-                () -> assertEquals(prescipt1, appt.getPrescription_id()),
-                () -> assertEquals(lab1, appt.getLab_order_id()),
-                () -> assertEquals(start1, appt.getStart_time()),
-                () -> assertEquals(end1, appt.getEnd_time())
+                () -> assertEquals(patient_id1, appt.getPatientId()),
+                () -> assertEquals(provider_id1, appt.getProviderId()),
+                () -> assertEquals(billing_id1, appt.getBillingId()),
+                () -> assertEquals(date1, appt.getAppointmentDate()),
+                () -> assertEquals(room1, appt.getRoomNumber()),
+                () -> assertEquals(purpose1, appt.getReasonForVisiting()),
+                () -> assertEquals(nurse1, appt.getNurseId()),
+                () -> assertEquals(prescipt1, appt.getPrescriptionId()),
+                () -> assertEquals(lab1, appt.getLabOrderId()),
+                () -> assertEquals(start1, appt.getStartTime()),
+                () -> assertEquals(end1, appt.getEndTime())
         );
 
         //Setter Test
         appt.setId(id2);
-        appt.setPatient_id(patient_id2);
-        appt.setProvider_id(provider_id2);
-        appt.setBilling_id(billing_id2);
-        appt.setAppointment_date(date2);
-        appt.setRoom_number(room2);
-        appt.setReason_for_visiting(purpose2);
-        appt.setNurse_id(nurse2);
-        appt.setPrescription_id(prescipt2);
-        appt.setLab_order_id(lab2);
-        appt.setStart_time(start2);
-        appt.setEnd_time(end2);
+        appt.setPatientId(patient_id2);
+        appt.setProviderId(provider_id2);
+        appt.setBillingId(billing_id2);
+        appt.setAppointmentDate(date2);
+        appt.setRoomNumber(room2);
+        appt.setReasonForVisiting(purpose2);
+        appt.setNurseId(nurse2);
+        appt.setPrescriptionId(prescipt2);
+        appt.setLabOrderId(lab2);
+        appt.setStartTime(start2);
+        appt.setEndTime(end2);
 
         assertAll(
                 () -> assertEquals(id2, appt.getId()),
-                () -> assertEquals(patient_id2, appt.getPatient_id()),
-                () -> assertEquals(provider_id2, appt.getProvider_id()),
-                () -> assertEquals(billing_id2, appt.getBilling_id()),
-                () -> assertEquals(date2, appt.getAppointment_date()),
-                () -> assertEquals(room2, appt.getRoom_number()),
-                () -> assertEquals(purpose2, appt.getReason_for_visiting()),
-                () -> assertNull(appt.getNurse_id()),
-                () -> assertNull(appt.getPrescription_id()),
-                () -> assertNull(appt.getLab_order_id()),
-                () -> assertNull(appt.getStart_time()),
-                () -> assertNull(appt.getEnd_time())
+                () -> assertEquals(patient_id2, appt.getPatientId()),
+                () -> assertEquals(provider_id2, appt.getProviderId()),
+                () -> assertEquals(billing_id2, appt.getBillingId()),
+                () -> assertEquals(date2, appt.getAppointmentDate()),
+                () -> assertEquals(room2, appt.getRoomNumber()),
+                () -> assertEquals(purpose2, appt.getReasonForVisiting()),
+                () -> assertNull(appt.getNurseId()),
+                () -> assertNull(appt.getPrescriptionId()),
+                () -> assertNull(appt.getLabOrderId()),
+                () -> assertNull(appt.getStartTime()),
+                () -> assertNull(appt.getEndTime())
         );
     }
 
@@ -128,11 +128,11 @@ public class AppointmentTest {
                 room1,
                 purpose1
         )
-                .nurse_id(nurse1)
-                .prescription_id(prescipt1)
-                .lab_order_id(lab1)
-                .start_time(start1)
-                .end_time(end1)
+                .nurseId(nurse1)
+                .prescriptionId(prescipt1)
+                .labOrderId(lab1)
+                .startTime(start1)
+                .endTime(end1)
                 .build();
         //Normal Print
         String expectedA =
@@ -153,11 +153,11 @@ public class AppointmentTest {
         assertEquals(expectedA, appt.toString());
 
         //Null String Involved Print
-        appt.setNurse_id(nurse2);
-        appt.setPrescription_id(prescipt2);
-        appt.setLab_order_id(lab2);
-        appt.setStart_time(start2);
-        appt.setEnd_time(end2);
+        appt.setNurseId(nurse2);
+        appt.setPrescriptionId(prescipt2);
+        appt.setLabOrderId(lab2);
+        appt.setStartTime(start2);
+        appt.setEndTime(end2);
 
         String expectedB =
                 "Appointment: " +

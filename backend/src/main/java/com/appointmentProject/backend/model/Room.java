@@ -11,8 +11,8 @@ import org.antlr.v4.runtime.misc.NotNull;
  *
  *     Represents a Room entity from the database in object
  *     format for transferring from the database to the frontend.
- *      - "room_number": the number that is assigned to the room (3-4 char length)
- *      - "floor_number": the floor the room is on.
+ *      - "roomNumber": the number that is assigned to the room (3-4 char length)
+ *      - "floorNumber": the floor the room is on.
  *
  *
  * @author Matthew Kiyono
@@ -26,36 +26,36 @@ public class Room {
     //variables
     @Id
     @NotNull
-    @Column(name = "room_number", unique = true, nullable = false)
-    private String room_number;
+    @Column(name = "roomNumber", unique = true, nullable = false)
+    private String roomNumber;
 
     @NotNull
-    @Column(name = "floor_number", nullable = false)
-    private int floor_number;
+    @Column(name = "floorNumber", nullable = false)
+    private int floorNumber;
 
     //Test Constructor Only!
     protected Room() {}
 
     //constructor
-    public Room(String room_number, int floor_number) {
-        this.room_number = room_number;
-        this.floor_number = floor_number;
+    public Room(String roomNumber, int floorNumber) {
+        this.roomNumber = roomNumber;
+        this.floorNumber = floorNumber;
     }
 
     //getter methods
-    public String getRoom_number() {return room_number;}
-    public int getFloor_number() {return floor_number;}
+    public String getRoomNumber() {return roomNumber;}
+    public int getFloorNumber() {return floorNumber;}
 
     //setter methods
-    public void setRoom_number(String room_number) {this.room_number = room_number;}
-    public void setFloor_number(int floor_number) {this.floor_number = floor_number;}
+    public void setRoomNumber(String room_number) {this.roomNumber = roomNumber;}
+    public void setFloorNumber(int floor_number) {this.floorNumber = floorNumber;}
 
     //toString method
     @Override
     public String toString() {
         return "Room:" +
-                "\nNumber: " +  room_number +
-                "\nFloor: " + floor_number + "\n";
+                "\nNumber: " +  roomNumber +
+                "\nFloor: " + floorNumber + "\n";
     }
 
 }

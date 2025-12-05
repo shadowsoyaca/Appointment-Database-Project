@@ -67,7 +67,7 @@ public class InsuranceService {
         Insurance current = exists.get();
 
         //3. Apply new values
-        current.setInsurance_name(update.getInsurance_name());
+        current.setInsuranceName(update.getInsuranceName());
         current.setPhone(update.getPhone());
         current.setEmail(update.getEmail());
         current.setAddress(update.getAddress());

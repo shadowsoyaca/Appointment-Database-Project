@@ -45,45 +45,45 @@ public class Appointment {
     private int id;
 
     @NotNull
-    @Column(name = "patient_id", nullable = false)
-    private int patient_id;
+    @Column(name = "patientId", nullable = false)
+    private int patientId;
 
     @NotNull
-    @Column(name = "provider_id", nullable = false)
-    private int provider_id;
+    @Column(name = "providerId", nullable = false)
+    private int providerId;
 
     @NotNull
-    @Column(name = "billing_id", nullable = false)
-    private int billing_id;
+    @Column(name = "billingId", nullable = false)
+    private int billingId;
 
     @NotNull
-    @Column(name = "appointment_date", nullable = false, columnDefinition = "DATETIME(0)")
-    private LocalDateTime appointment_date;
+    @Column(name = "appointmentDate", nullable = false, columnDefinition = "DATETIME(0)")
+    private LocalDateTime appointmentDate;
 
     @NotNull
-    @Column(name = "room_number", nullable = false, length = 4)
-    private String room_number;
+    @Column(name = "roomNumber", nullable = false, length = 4)
+    private String roomNumber;
 
     @NotNull
-    @Column(name = "reason_for_visiting", nullable = false)
-    private String reason_for_visiting;
+    @Column(name = "reasonForVisiting", nullable = false)
+    private String reasonForVisiting;
 
 
     //optional variables
-    @Column(name = "nurse_id")
-    private Integer nurse_id;
+    @Column(name = "nurseId")
+    private Integer nurseId;
 
-    @Column(name = "prescription_id")
-    private Integer prescription_id;
+    @Column(name = "prescriptionId")
+    private Integer prescriptionId;
 
-    @Column(name = "lab_order_id")
-    private Integer lab_order_id;
+    @Column(name = "labOrderId")
+    private Integer labOrderId;
 
-    @Column(name = "start_time", columnDefinition = "TIME(0)")
-    private LocalTime  start_time;
+    @Column(name = "startTime", columnDefinition = "TIME(0)")
+    private LocalTime  startTime;
 
-    @Column(name = "end_time", columnDefinition = "TIME(0)")
-    private LocalTime end_time;
+    @Column(name = "endTime", columnDefinition = "TIME(0)")
+    private LocalTime endTime;
 
     //Test Constructor ONLY!
     protected Appointment() {}
@@ -91,63 +91,63 @@ public class Appointment {
     //Constructor
     private Appointment(Builder builder) {
         this.id = builder.id;
-        this.patient_id = builder.patient_id;
-        this.provider_id = builder.provider_id;
-        this.billing_id = builder.billing_id;
-        this.appointment_date = builder.appointment_date;
-        this.room_number = builder.room_number;
-        this.reason_for_visiting = builder.reason_for_visiting;
-        this.nurse_id = builder.nurse_id;
-        this.prescription_id = builder.prescription_id;
-        this.lab_order_id = builder.lab_order_id;
-        this.start_time = builder.start_time;
-        this.end_time = builder.end_time;
+        this.patientId = builder.patientId;
+        this.providerId = builder.providerId;
+        this.billingId = builder.billingId;
+        this.appointmentDate = builder.appointmentDate;
+        this.roomNumber = builder.roomNumber;
+        this.reasonForVisiting = builder.reasonForVisiting;
+        this.nurseId = builder.nurseId;
+        this.prescriptionId = builder.prescriptionId;
+        this.labOrderId = builder.labOrderId;
+        this.startTime = builder.startTime;
+        this.endTime = builder.endTime;
     }
 
     //getter methods
     public int getId() {return id;}
-    public int getPatient_id() {return patient_id;}
-    public int getProvider_id() {return provider_id;}
-    public int getBilling_id() {return billing_id;}
-    public LocalDateTime getAppointment_date() {return appointment_date;}
-    public String getRoom_number() {return room_number;}
-    public String getReason_for_visiting() {return reason_for_visiting;}
-    public Integer getNurse_id() {return nurse_id;}
-    public Integer getPrescription_id() {return prescription_id;}
-    public Integer getLab_order_id() {return lab_order_id;}
-    public LocalTime getStart_time() {return start_time;}
-    public LocalTime getEnd_time() {return end_time;}
+    public int getPatientId() {return patientId;}
+    public int getProviderId() {return providerId;}
+    public int getBillingId() {return billingId;}
+    public LocalDateTime getAppointmentDate() {return appointmentDate;}
+    public String getRoomNumber() {return roomNumber;}
+    public String getReasonForVisiting() {return reasonForVisiting;}
+    public Integer getNurseId() {return nurseId;}
+    public Integer getPrescriptionId() {return prescriptionId;}
+    public Integer getLabOrderId() {return labOrderId;}
+    public LocalTime getStartTime() {return startTime;}
+    public LocalTime getEndTime() {return endTime;}
 
     //setter methods
-    public void setAppointment_date(LocalDateTime appointment_date) {this.appointment_date = appointment_date;}
+    public void setAppointmentDate(LocalDateTime appointmentDate) {this.appointmentDate = appointmentDate;}
     public void setId(int id) {this.id = id;}
-    public void setPatient_id(int pT_id) {this.patient_id = pT_id;}
-    public void setProvider_id(int pV_id) {this.provider_id = pV_id;}
-    public void setBilling_id(int bL_id) {this.billing_id = bL_id;}
-    public void setRoom_number(String room) {this.room_number = room;}
-    public void setReason_for_visiting(String purpose) {this.reason_for_visiting = purpose;}
-    public void setNurse_id(Integer nR_id) {this.nurse_id = nR_id;}
-    public void setPrescription_id(Integer PR_id) {this.prescription_id = PR_id;}
-    public void setLab_order_id(Integer LB_id) {this.lab_order_id = LB_id;}
-    public void setStart_time(LocalTime  start_time) {this.start_time = start_time;}
-    public void setEnd_time(LocalTime end_time) {this.end_time = end_time;}
+    public void setPatientId(int ptId) {this.patientId = ptId;}
+    public void setProviderId(int pvId) {this.providerId = pvId;}
+    public void setBillingId(int blId) {this.billingId = blId;}
+    public void setRoomNumber(String room) {this.roomNumber = room;}
+    public void setReasonForVisiting(String purpose) {this.reasonForVisiting = purpose;}
+    public void setNurseId(Integer nrId) {this.nurseId = nrId;}
+    public void setPrescriptionId(Integer prId) {this.prescriptionId = prId;}
+    public void setLabOrderId(Integer lbId) {this.labOrderId = lbId;}
+    public void setStartTime(LocalTime  startTime) {this.startTime = startTime;}
+    public void setEndTime(LocalTime endTime) {this.endTime = endTime;}
 
     //toString
     @Override
     public String toString() {
         return "Appointment: " +
                 "\nAppointment ID: " + id +
-                "\nPatient ID: " + patient_id +
-                "\nProvider ID: " + provider_id +
-                "\nNurse ID: " + NullString.check(nurse_id) +
-                "\nBilling ID: " + billing_id +
-                "\nScheduled Appointment: " + appointment_date +
-                "\nAppointment Start Time: " + NullString.check(start_time) +
-                "\nAppointment End Time: " + NullString.check(end_time) +
-                "\nRoom Number: " + room_number +
-                "\nPrescription ID: " + NullString.check(prescription_id) +
-                "\nLab Order ID: " + NullString.check(lab_order_id) +
-                "\nPurpose of Appointment: " + reason_for_visiting + "\n";
+                "\nPatient ID: " + patientId +
+                "\nProvider ID: " + providerId +
+                "\nNurse ID: " + NullString.check(nurseId) +
+                "\nBilling ID: " + billingId +
+                "\nScheduled Appointment: " + appointmentDate +
+                "\nAppointment Start Time: " + NullString.check(startTime) +
+                "\nAppointment End Time: " + NullString.check(endTime) +
+                "\nRoom Number: " + roomNumber +
+                "\nPrescription ID: " + NullString.check(prescriptionId) +
+                "\nLab Order ID: " + NullString.check(labOrderId) +
+                "\nPurpose of Appointment: " + reasonForVisiting + "\n";
     }
 
     //Builder Constructor
@@ -155,50 +155,50 @@ public class Appointment {
 
         //required variables
         private int id;
-        private int patient_id;
-        private int provider_id;
-        private int billing_id;
-        private LocalDateTime appointment_date;
-        private String room_number;
-        private String reason_for_visiting;
+        private int patientId;
+        private int providerId;
+        private int billingId;
+        private LocalDateTime appointmentDate;
+        private String roomNumber;
+        private String reasonForVisiting;
 
         //optional variables
-        private Integer nurse_id;
-        private Integer prescription_id;
-        private Integer lab_order_id;
-        private LocalTime start_time;
-        private LocalTime end_time;
+        private Integer nurseId;
+        private Integer prescriptionId;
+        private Integer labOrderId;
+        private LocalTime startTime;
+        private LocalTime endTime;
 
         //required constructor only
-        public Builder(int id, int patient_id, int provider_id, int billing_id, LocalDateTime appointment_date, String room_number, String purpose) {
+        public Builder(int id, int patientId, int providerId, int billingId, LocalDateTime appointmentDate, String roomNumber, String purpose) {
             this.id = id;
-            this.patient_id = patient_id;
-            this.provider_id = provider_id;
-            this.billing_id = billing_id;
-            this.appointment_date = appointment_date;
-            this.room_number = room_number;
-            this.reason_for_visiting = purpose;
+            this.patientId = patientId;
+            this.providerId = providerId;
+            this.billingId = billingId;
+            this.appointmentDate = appointmentDate;
+            this.roomNumber = roomNumber;
+            this.reasonForVisiting = purpose;
         }
 
         //method checks for optional variables
-        public Builder nurse_id(Integer nurse_id) {
-            this.nurse_id = nurse_id;
+        public Builder nurseId(Integer nurseId) {
+            this.nurseId = nurseId;
             return this;
         }
-        public Builder prescription_id(Integer prescription_id) {
-            this.prescription_id = prescription_id;
+        public Builder prescriptionId(Integer prescriptionId) {
+            this.prescriptionId = prescriptionId;
             return this;
         }
-        public Builder lab_order_id(Integer lab_order_id) {
-            this.lab_order_id = lab_order_id;
+        public Builder labOrderId(Integer labOrderId) {
+            this.labOrderId = labOrderId;
             return this;
         }
-        public Builder start_time(LocalTime start_time) {
-            this.start_time = start_time;
+        public Builder startTime(LocalTime startTime) {
+            this.startTime = startTime;
             return this;
         }
-        public Builder end_time(LocalTime end_time) {
-            this.end_time = end_time;
+        public Builder endTime(LocalTime endTime) {
+            this.endTime = endTime;
             return this;
         }
 
