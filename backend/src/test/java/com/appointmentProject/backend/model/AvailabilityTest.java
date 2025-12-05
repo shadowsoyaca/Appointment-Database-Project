@@ -57,18 +57,22 @@ public class AvailabilityTest {
 
         @Test
         void testToString(){
-            Availability availability = new Availability(3, "Provider",
-                    "Thu", LocalTime.of(8,45), LocalTime.of(16, 45));
-
+            Availability availability = new Availability(
+                    3, "Provider", "Thu",
+                    LocalTime.of(8,45),
+                    LocalTime.of(16,45)
+            );
 
             String expected =
                     "Availability:\n" +
-                            "\nAV id: 3" +
-                            "\nstaff_type: Provider" +
-                            "\nday_of_week: Thu" +
-                            "\nstart_time: 08:45" +
-                            "\nend_time: 16:45" + "\n";
+                    "\nID: 0" +
+                    "\nStaff ID: 3" +
+                    "\nStaff Type: Provider" +
+                    "\nDay of Week: Thu" +
+                    "\nStart Time: 08:45" +
+                    "\nEnd Time: 16:45\n";
 
             assertEquals(expected, availability.toString());
         }
+        
 }
