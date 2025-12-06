@@ -1,6 +1,8 @@
 package com.appointmentProject.backend.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicUpdate;
+
 import java.time.LocalDateTime;
 
 /****************************************************************************************************
@@ -18,7 +20,8 @@ import java.time.LocalDateTime;
  * @since 12/03/2025
  ****************************************************************************************************/
 @Entity
-@Table(name = "LabOrder")
+@Table(name = "laborder")
+@DynamicUpdate
 public class LabOrder {
 
     // -------------------- Fields --------------------

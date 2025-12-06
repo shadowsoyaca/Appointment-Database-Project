@@ -26,6 +26,12 @@ public class ProviderDashboardController {
     }
 
     @FXML
+    public void handleManageAccount() {
+        AccountManagementController.setPreviousPage("/fxml/provider_dashboard.fxml");
+        SceneNavigator.switchTo("/fxml/account_management.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }

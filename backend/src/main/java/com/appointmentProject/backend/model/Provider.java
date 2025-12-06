@@ -28,9 +28,11 @@ package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.abstractmodel.Person;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "provider")
+@DynamicUpdate
 public class Provider extends Person {
 
     //non-inherited variables

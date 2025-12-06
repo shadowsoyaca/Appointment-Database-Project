@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.appointmentProject.backend.util.NullString;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 /***************************************************************************************
  * Prescription.java
@@ -42,6 +43,7 @@ import org.antlr.v4.runtime.misc.NotNull;
  *******************************************************************************************/
 @Entity
 @Table(name = "prescription")
+@DynamicUpdate
 public class Prescription {
 
     //required

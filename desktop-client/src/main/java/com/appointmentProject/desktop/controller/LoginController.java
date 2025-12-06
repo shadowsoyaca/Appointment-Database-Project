@@ -13,6 +13,7 @@ package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
 
+import com.appointmentProject.desktop.SessionData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -61,6 +62,9 @@ public class LoginController {
             in.close();
 
             System.out.println("[LOGIN] Backend response: " + response);
+
+            SessionData.currentUsername = username;
+
 
             switch (response) {
                 case "ADMIN":

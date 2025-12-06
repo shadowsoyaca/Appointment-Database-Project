@@ -22,12 +22,14 @@
 package com.appointmentProject.backend.model;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalTime;
 import java.lang.IllegalArgumentException;
 
 @Entity
 @Table(name = "availability")
+@DynamicUpdate
 public class Availability {
 
     // variables

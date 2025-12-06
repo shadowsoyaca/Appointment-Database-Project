@@ -25,6 +25,12 @@ public class ReceptionistDashboardController {
     }
 
     @FXML
+    public void handleManageAccount() {
+        AccountManagementController.setPreviousPage("/fxml/receptionist_dashboard.fxml");
+        SceneNavigator.switchTo("/fxml/account_management.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }

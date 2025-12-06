@@ -25,6 +25,13 @@ public class AdminDashboardController {
         System.out.println("Admin Dashboard Loaded.");
     }
 
+
+    @FXML
+    public void handleManageAccount() {
+        AccountManagementController.setPreviousPage("/fxml/admin_dashboard.fxml");
+        SceneNavigator.switchTo("/fxml/account_management.fxml");
+    }
+
     @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");

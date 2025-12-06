@@ -62,6 +62,30 @@ public class AccountService {
         return accRepo.findByUsernameAndPassword(username, password);
     }
 
+    //Checks if Email exists
+    public boolean emailExists(String email) {
+        return accRepo.findByEmail(email).isPresent();
+    }
+
+    //Updates the Email
+    public boolean updateEmail(String username, String newEmail) {
+
+        // email already used?
+        if (accRepo.findByEmail(newEmail).isPresent()) {
+            return false;
+        }
+
+        Optional<Account> opt = accRepo.findByUsername(username);
+        if (opt.isEmpty()) {
+            return false;
+        }
+
+        Account acc = opt.get();
+        acc.setEmail(newEmail);
+        accRepo.save(acc);
+        return true;
+    }
+
 
     // UPDATE
     public Account updateAccount(Account account) {
@@ -81,4 +105,29 @@ public class AccountService {
         }
         accRepo.deleteById(username);
     }
+
+    //Update Password
+    public boolean updatePassword(String username, String oldPassword, String newPassword) {
+
+        // 1. Lookup user
+        Optional<Account> opt = accRepo.findByUsername(username);
+        if (opt.isEmpty()) {
+            return false; // no such user
+        }
+
+        Account acc = opt.get();
+
+        // 2. Verify old password matches
+        if (!acc.getPassword().equals(oldPassword)) {
+            return false; // wrong old password
+        }
+
+        // 3. Update password
+        acc.setPassword(newPassword);
+        accRepo.save(acc);
+        return true;
+    }
+
+
+
 }

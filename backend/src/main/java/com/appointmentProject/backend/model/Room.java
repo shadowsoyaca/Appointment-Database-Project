@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 /******************************************************************************
  * Room.java
@@ -21,6 +22,7 @@ import org.antlr.v4.runtime.misc.NotNull;
  ********************************************************************************/
 @Entity
 @Table(name = "room")
+@DynamicUpdate
 public class Room {
 
     //variables
