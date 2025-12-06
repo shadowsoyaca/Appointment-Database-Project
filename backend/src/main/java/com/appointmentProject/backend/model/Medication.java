@@ -25,9 +25,11 @@ package com.appointmentProject.backend.model;
 
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "medication")
+@DynamicUpdate
 public class Medication {
 
     //variables

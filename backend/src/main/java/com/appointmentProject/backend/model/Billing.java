@@ -51,8 +51,11 @@ package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.util.NullString;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+@Table(name = "billing")
+@DynamicUpdate
 public class Billing {
 
     //required variables

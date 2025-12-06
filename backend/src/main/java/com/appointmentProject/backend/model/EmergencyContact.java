@@ -28,10 +28,12 @@ import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.DynamicUpdate;
 
  @Entity
  @Table(name = "emergencycontact")
  @AttributeOverride(name = "email", column = @Column(name = "email", nullable = true))
+ @DynamicUpdate
 public class EmergencyContact extends Person {
 
     //required variables

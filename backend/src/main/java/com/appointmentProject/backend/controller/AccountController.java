@@ -71,4 +71,32 @@ public class AccountController {
         accService.deleteAccountByUsername(username);
         return ResponseEntity.ok("Account removed successfully.");
     }
+
+    // 6. Check Email
+    @GetMapping("/check-email")
+    public boolean checkEmail(@RequestParam("email") String email) {
+        return accService.emailExists(email);
+    }
+
+    //7. Update Email
+    @PutMapping("/update-email")
+    public boolean updateEmail(
+            @RequestParam("username") String username,
+            @RequestParam("newEmail") String newEmail
+    ) {
+        return accService.updateEmail(username, newEmail);
+    }
+
+    //Update Password
+    @PutMapping("/update-password")
+    public boolean updatePassword(
+            @RequestParam("username") String username,
+            @RequestParam("oldPassword") String oldPassword,
+            @RequestParam("newPassword") String newPassword
+    ) {
+        return accService.updatePassword(username, oldPassword, newPassword);
+    }
+
+
+
 }
