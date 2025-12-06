@@ -1,26 +1,37 @@
 package com.appointmentProject.backend.controller;
 
-import com.appointmentProject.backend.dto.LoginRequest;
-import com.appointmentProject.backend.dto.UserDTO;
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.service.AuthService;
-import org.springframework.http.ResponseEntity;
+import com.appointmentProject.backend.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*")
+import com.appointmentProject.backend.model.Account;
+import com.appointmentProject.backend.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
-    private final AuthService service;
+    @Autowired
+    private AccountService accService;
 
-    public AuthController(AuthService service) {
-        this.service = service;
-    }
+    @GetMapping("/login")
+    public String login(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
+    ) {
 
-    @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody LoginRequest request) {
-        Account account = service.login(request);
-        return ResponseEntity.ok(new UserDTO(account));
+        // Try to find a matching account
+        Account acc = accService.findByUsernameAndPassword(username, password);
+
+        if (acc == null) {
+            return "INVALID";
+        }
+
+        // Return the userType enum as a string
+        return acc.getUserType().toString();
     }
 }

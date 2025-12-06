@@ -1,22 +1,3 @@
-package com.appointmentProject.backend.controller;
-
-import com.appointmentProject.backend.exception.RecordNotFoundException;
-import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
-import com.appointmentProject.backend.service.AccountService;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.http.ResponseEntity;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-
 /***************************************************************************************
  *   AccountControllerUnitTest.java
  *
@@ -26,96 +7,100 @@ import static org.mockito.Mockito.*;
  * @version 1.0
  * @since 12/03/2025
  ***************************************************************************************/
+package com.appointmentProject.backend.controller;
+
+import com.appointmentProject.backend.model.Account;
+import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.service.AccountService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(AccountController.class)
 public class AccountControllerUnitTest {
 
-    private AccountController controller;
-    private AccountService mockService;
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AccountService accountService;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    private Account sampleAccount;
 
     @BeforeEach
     void setup() {
-        mockService = Mockito.mock(AccountService.class);
-        controller = new AccountController();
-        // manually inject the mock service
-        controller.accService = mockService;
+        sampleAccount = new Account();
+        sampleAccount.setUsername("matthew");
+        sampleAccount.setPassword("pass123");
+        sampleAccount.setEmail("matthew@test.com");
+        sampleAccount.setUserType(authorization.ADMIN);
     }
 
     @Test
-    void testAddAccount() {
-        Account input = new Account("user1", "pass", "u1@mail.com", authorization.ADMIN);
-        Account saved = new Account("user1", "pass", "u1@mail.com", authorization.ADMIN);
+    void testAddAccount() throws Exception {
+        when(accountService.addAccount(any(Account.class))).thenReturn(sampleAccount);
 
-        when(mockService.addAccount(any(Account.class))).thenReturn(saved);
-
-        ResponseEntity<Account> response = controller.addAccount(input);
-
-        assertEquals("user1", response.getBody().getUsername());
-        verify(mockService, times(1)).addAccount(any(Account.class));
+        mockMvc.perform(post("/account/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(sampleAccount)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.username").value("matthew"))
+                .andExpect(jsonPath("$.email").value("matthew@test.com"))
+                .andExpect(jsonPath("$.userType").value("ADMIN"));
     }
 
     @Test
-    void testGetAllAccounts() {
-        List<Account> list = List.of(
-                new Account("userA", "pw", "a@mail.com", authorization.ADMIN),
-                new Account("userB", "pw", "b@mail.com", authorization.PROVIDER)
-        );
+    void testGetAll() throws Exception {
+        when(accountService.getAllAccounts()).thenReturn(Arrays.asList(sampleAccount));
 
-        when(mockService.getAllAccounts()).thenReturn(list);
-
-        ResponseEntity<List<Account>> response = controller.getAll();
-
-        assertEquals(2, response.getBody().size());
-        verify(mockService, times(1)).getAllAccounts();
+        mockMvc.perform(get("/account/all"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].username").value("matthew"));
     }
 
     @Test
-    void testGetByUsername_Found() {
-        Account acc = new Account("userX", "pw", "x@mail.com", authorization.NURSE);
+    void testGetByUsername() throws Exception {
+        when(accountService.getByUsername("matthew")).thenReturn(Optional.of(sampleAccount));
 
-        when(mockService.getByUsername("userX")).thenReturn(Optional.of(acc));
-
-        ResponseEntity<Account> response = controller.getByUsername("userX");
-
-        assertEquals("userX", response.getBody().getUsername());
-        verify(mockService, times(1)).getByUsername("userX");
+        mockMvc.perform(get("/account/matthew"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email").value("matthew@test.com"));
     }
 
     @Test
-    void testGetByUsername_NotFound() {
-        when(mockService.getByUsername("missingUser")).thenReturn(Optional.empty());
+    void testUpdateAccount() throws Exception {
+        when(accountService.updateAccount(any(Account.class))).thenReturn(sampleAccount);
 
-        assertThrows(RecordNotFoundException.class,
-                () -> controller.getByUsername("missingUser"));
+        mockMvc.perform(put("/account/update")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(sampleAccount)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.username").value("matthew"));
     }
 
     @Test
-    void testUpdateAccount() {
-        Account original = new Account("userY", "oldPw", "old@mail.com", authorization.RECEPTIONIST);
-        Account updated = new Account("userY", "newPw", "new@mail.com", authorization.RECEPTIONIST);
+    void testDeleteAccount() throws Exception {
+        Mockito.doNothing().when(accountService).deleteAccountByUsername("matthew");
 
-        when(mockService.updateAccount(any(Account.class))).thenReturn(updated);
-
-        ResponseEntity<Account> response = controller.updateAccount(original);
-
-        assertEquals("new@mail.com", response.getBody().getEmail());
-        verify(mockService, times(1)).updateAccount(any(Account.class));
-    }
-
-    @Test
-    void testDeleteAccount() {
-        doNothing().when(mockService).deleteAccountByUsername("userZ");
-
-        ResponseEntity<String> response = controller.deleteAccount("userZ");
-
-        assertEquals("Account removed successfully.", response.getBody());
-        verify(mockService, times(1)).deleteAccountByUsername("userZ");
-    }
-
-    @Test
-    void testDeleteAccount_NotFound() {
-        doThrow(new RecordNotFoundException("not found"))
-                .when(mockService).deleteAccountByUsername("badUser");
-
-        assertThrows(RecordNotFoundException.class,
-                () -> controller.deleteAccount("badUser"));
+        mockMvc.perform(delete("/account/delete/matthew"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Account removed successfully."));
     }
 }

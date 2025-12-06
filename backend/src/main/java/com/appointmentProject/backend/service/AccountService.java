@@ -26,55 +26,59 @@ import java.util.Optional;
  * @version 1.0
  * @since 12/03/2025
  ******************************************************************************************************************/
+
+import com.appointmentProject.backend.exception.RecordNotFoundException;
+import com.appointmentProject.backend.model.Account;
+import com.appointmentProject.backend.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AccountService {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountRepository accRepo;
 
-    // 1. INSERT
+    // CREATE
     public Account addAccount(Account account) {
-        // TODO: add validation/format checks as needed
-        return accountRepository.save(account);
+        return accRepo.save(account);
     }
 
-    // 2. UPDATE
-    public Account updateAccount(Account updated) {
-        // Step 1: Ensure the account exists
-        Account current = accountRepository.findById(updated.getUsername())
-                .orElseThrow(() ->
-                        new RecordNotFoundException(
-                                "Account with username " + updated.getUsername() + " was not found."
-                        )
-                );
-
-        // Step 2: Update mutable fields
-        current.setPassword(updated.getPassword());
-        current.setEmail(updated.getEmail());
-        current.setUserType(updated.getUserType());
-
-        // Step 3: Save and return updated account
-        return accountRepository.save(current);
-    }
-
-    // 3. DELETE
-    public void deleteAccountByUsername(String username) {
-        Account current = accountRepository.findById(username)
-                .orElseThrow(() ->
-                        new RecordNotFoundException(
-                                "Account with username " + username + " was not found."
-                        )
-                );
-        accountRepository.delete(current);
-    }
-
-    // 4. SELECT ALL
+    // READ ALL
     public List<Account> getAllAccounts() {
-        return accountRepository.findAll();
+        return accRepo.findAll();
     }
 
-    // 5. SELECT BY USERNAME
+    // READ ONE
     public Optional<Account> getByUsername(String username) {
-        return accountRepository.findByUsername(username);
+        return accRepo.findByUsername(username);
+    }
+
+    // LOGIN LOOKUP
+    public Account findByUsernameAndPassword(String username, String password) {
+        return accRepo.findByUsernameAndPassword(username, password);
+    }
+
+
+    // UPDATE
+    public Account updateAccount(Account account) {
+        Optional<Account> existing = accRepo.findByUsername(account.getUsername());
+
+        if (existing.isEmpty()) {
+            throw new RecordNotFoundException("Account with username " + account.getUsername() + " does not exist.");
+        }
+
+        return accRepo.save(account);
+    }
+
+    // DELETE
+    public void deleteAccountByUsername(String username) {
+        if (!accRepo.existsById(username)) {
+            throw new RecordNotFoundException("Cannot delete. No account found with username " + username);
+        }
+        accRepo.deleteById(username);
     }
 }

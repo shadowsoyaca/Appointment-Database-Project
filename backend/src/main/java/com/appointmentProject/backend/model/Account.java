@@ -56,11 +56,11 @@ public class Account {
 
         @NotNull
         @Enumerated(EnumType.STRING)
-        @Column(name = "userType", nullable = false)
+        @Column(name = "user_type", nullable = false)
         private authorization userType;
 
     //Test constructor only!
-    protected Account() {}
+    public Account() {}
 
     //Constructor
     public Account(String username, String password, String email, authorization userType){

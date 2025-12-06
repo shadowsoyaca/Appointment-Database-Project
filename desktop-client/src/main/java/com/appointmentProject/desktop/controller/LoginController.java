@@ -12,10 +12,17 @@
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 public class LoginController {
 
@@ -33,38 +40,54 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // TEMPORARY: Local Login Simulation
-        switch (username) {
+        System.out.println("[LOGIN] Username: " + username);
+        System.out.println("[LOGIN] Password: " + password);
 
-            case "admin":
-                if (password.equals("admin")) {
+        try {
+            String urlString = "http://localhost:8080/api/auth/login?username="
+                    + username + "&password=" + password;
+
+            System.out.println("[LOGIN] Request URL: " + urlString);
+
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            int status = conn.getResponseCode();
+            System.out.println("[LOGIN] HTTP status: " + status);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String response = in.readLine(); // expect ADMIN / PROVIDER / NURSE / RECEPTIONIST / INVALID
+            in.close();
+
+            System.out.println("[LOGIN] Backend response: " + response);
+
+            switch (response) {
+                case "ADMIN":
                     SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
                     return;
-                }
-                break;
 
-            case "provider":
-                if (password.equals("provider")) {
+                case "PROVIDER":
                     SceneNavigator.switchTo("/fxml/provider_dashboard.fxml");
                     return;
-                }
-                break;
 
-            case "nurse":
-                if (password.equals("nurse")) {
+                case "NURSE":
                     SceneNavigator.switchTo("/fxml/nurse_dashboard.fxml");
                     return;
-                }
-                break;
 
-            case "receptionist":
-                if (password.equals("receptionist")) {
+                case "RECEPTIONIST":
                     SceneNavigator.switchTo("/fxml/receptionist_dashboard.fxml");
                     return;
-                }
-                break;
-        }
 
-        errorLabel.setText("Incorrect username or password.");
+                case "INVALID":
+                default:
+                    errorLabel.setText("Invalid username or password.");
+                    return;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            errorLabel.setText("Login error: " + e.getClass().getSimpleName());
+        }
     }
 }

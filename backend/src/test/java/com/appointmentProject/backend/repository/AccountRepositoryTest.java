@@ -1,20 +1,3 @@
-package com.appointmentProject.backend.repository;
-
-import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 /*************************************************************************************************
  *  AccountRepositoryTest.java
  *
@@ -26,49 +9,87 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  * @since 12/03/2025
  *************************************************************************************************/
-@SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+
+package com.appointmentProject.backend.repository;
+
+import com.appointmentProject.backend.model.Account;
+import com.appointmentProject.backend.model.Account.authorization;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DataJpaTest
 public class AccountRepositoryTest {
 
     @Autowired
     private AccountRepository accountRepository;
 
-    @Autowired
-    private EntityManager entityManager;
+    private Account testAccount;
 
     @BeforeEach
-    @Transactional
-    void resetDatabase() {
-        entityManager.createQuery("DELETE FROM Account").executeUpdate();
+    void setup() {
+        testAccount = new Account();
+        testAccount.setUsername("john123");
+        testAccount.setPassword("password");
+        testAccount.setEmail("john@example.com");
+        testAccount.setUserType(authorization.ADMIN);
+
+        accountRepository.save(testAccount);
     }
 
     @Test
-    void testSaveAndFindByUsername() {
-        // 1. Create entity
-        Account a = new Account("userRepo", "pw", "repo@mail.com", authorization.ADMIN);
+    void testFindByUsername() {
+        Optional<Account> foundOpt = accountRepository.findByUsername("john123");
 
-        // 2. Save entity
-        accountRepository.save(a);
+        assertTrue(foundOpt.isPresent());
+        Account found = foundOpt.get();
 
-        // 3. Call repository method
-        Optional<Account> result = accountRepository.findByUsername("userRepo");
-
-        // 4. Assert
-        assertTrue(result.isPresent());
-        assertEquals("repo@mail.com", result.get().getEmail());
+        assertEquals("john@example.com", found.getEmail());
     }
 
     @Test
-    void testFindAll() {
-        Account a = new Account("user1", "pw", "u1@mail.com", authorization.ADMIN);
-        Account b = new Account("user2", "pw", "u2@mail.com", authorization.PROVIDER);
+    void testFindByEmail() {
+        Optional<Account> foundOpt = accountRepository.findByEmail("john@example.com");
 
-        accountRepository.save(a);
-        accountRepository.save(b);
+        assertTrue(foundOpt.isPresent());
+        Account found = foundOpt.get();
 
-        List<Account> results = accountRepository.findAll();
+        assertEquals("john123", found.getUsername());
+    }
 
-        assertNotNull(results);
-        assertTrue(results.size() >= 2);
+    @Test
+    void testFindByUsernameAndPassword() {
+        Account found = accountRepository.findByUsernameAndPassword("john123", "password");
+        assertNotNull(found);
+        assertEquals(authorization.ADMIN, found.getUserType());
+    }
+
+    @Test
+    void testUpdateAccount() {
+        Optional<Account> foundOpt = accountRepository.findByUsername("john123");
+        assertTrue(foundOpt.isPresent());
+
+        Account found = foundOpt.get();
+        found.setPassword("newpass");
+
+        accountRepository.save(found);
+
+        Optional<Account> updatedOpt = accountRepository.findByUsername("john123");
+        assertTrue(updatedOpt.isPresent());
+
+        assertEquals("newpass", updatedOpt.get().getPassword());
+    }
+
+    @Test
+    void testDeleteAccount() {
+        accountRepository.deleteById("john123");
+
+        Optional<Account> foundOpt = accountRepository.findByUsername("john123");
+        assertTrue(foundOpt.isEmpty());
     }
 }
