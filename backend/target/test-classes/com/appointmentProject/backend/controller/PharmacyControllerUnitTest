@@ -1,0 +1,107 @@
+package com.appointmentProject.backend.controller;
+
+import com.appointmentProject.backend.exception.RecordNotFoundException;
+import com.appointmentProject.backend.model.Pharmacy;
+import com.appointmentProject.backend.service.PharmacyService;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import org.springframework.http.ResponseEntity;
+
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+public class PharmacyControllerUnitTest {
+
+    private PharmacyController controller;
+    private PharmacyService mockService;
+
+    private Pharmacy samplePharmacy;
+
+    @BeforeEach
+    void setup() {
+        mockService = Mockito.mock(PharmacyService.class);
+        controller = new PharmacyController();
+        controller.pharmacyService = mockService;
+
+        samplePharmacy = new Pharmacy(1, "CVS", "5551231234", "cvs@corp.com",
+                "123 Main St", LocalTime.of(8,0), LocalTime.of(22,0));
+    }
+
+    @Test
+    void testAddPharmacy() {
+        when(mockService.addPharmacy(any(Pharmacy.class))).thenReturn(samplePharmacy);
+
+        ResponseEntity<Pharmacy> response = controller.addPharmacy(samplePharmacy);
+
+        assertEquals("CVS", response.getBody().getName());
+    }
+
+    @Test
+    void testGetAllPharmacies() {
+        when(mockService.getAllPharmacies()).thenReturn(List.of(samplePharmacy));
+
+        ResponseEntity<List<Pharmacy>> response = controller.getAllPharmacies();
+
+        assertEquals(1, response.getBody().size());
+    }
+
+    @Test
+    void testGetById_Found() {
+        when(mockService.getPharmacyById(1)).thenReturn(Optional.of(samplePharmacy));
+
+        ResponseEntity<Pharmacy> response = controller.getById(1);
+
+        assertEquals(1, response.getBody().getId());
+    }
+
+    @Test
+    void testGetById_NotFound() {
+        when(mockService.getPharmacyById(99)).thenReturn(Optional.empty());
+
+        assertThrows(RecordNotFoundException.class,
+                () -> controller.getById(99));
+    }
+
+    @Test
+    void testGetByName() {
+        when(mockService.getByName("CVS")).thenReturn(List.of(samplePharmacy));
+
+        ResponseEntity<List<Pharmacy>> response = controller.getByName("CVS");
+
+        assertEquals(1, response.getBody().size());
+    }
+
+    @Test
+    void testUpdatePharmacy() {
+        when(mockService.updatePharmacy(any(Pharmacy.class))).thenReturn(samplePharmacy);
+
+        ResponseEntity<Pharmacy> response = controller.updatePharmacy(samplePharmacy);
+
+        assertEquals("CVS", response.getBody().getName());
+    }
+
+    @Test
+    void testDeletePharmacy_Success() {
+        when(mockService.getPharmacyById(1)).thenReturn(Optional.of(samplePharmacy));
+
+        ResponseEntity<String> response = controller.deletePharmacy(1);
+
+        assertEquals("Pharmacy deleted successfully.", response.getBody());
+        verify(mockService, times(1)).removePharmacy(samplePharmacy);
+    }
+
+    @Test
+    void testDeletePharmacy_NotFound() {
+        when(mockService.getPharmacyById(99)).thenReturn(Optional.empty());
+
+        assertThrows(RecordNotFoundException.class,
+                () -> controller.deletePharmacy(99));
+    }
+}
