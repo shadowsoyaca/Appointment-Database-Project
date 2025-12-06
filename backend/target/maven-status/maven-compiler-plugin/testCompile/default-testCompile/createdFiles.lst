@@ -12,6 +12,7 @@ com\appointmentProject\backend\repository\InsuranceRepositoryTest.class
 com\appointmentProject\backend\repository\PatientRepositoryTest.class
 com\appointmentProject\backend\service\PatientServiceTest.class
 com\appointmentProject\backend\model\PharmacyTest.class
+com\appointmentProject\backend\controller\AuthControllerUnitTest.class
 com\appointmentProject\backend\model\EmergencyContactTest.class
 com\appointmentProject\backend\controller\InsuranceControllerUnitTest.class
 com\appointmentProject\backend\model\AvailabilityTest.class
