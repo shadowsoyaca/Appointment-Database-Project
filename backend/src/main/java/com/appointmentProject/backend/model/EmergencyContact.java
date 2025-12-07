@@ -27,7 +27,8 @@ package com.appointmentProject.backend.model;
 import com.appointmentProject.backend.abstractmodel.Person;
 import com.appointmentProject.backend.util.NullString;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
+
 
  @Entity
  @Table(name = "emergencycontact")
