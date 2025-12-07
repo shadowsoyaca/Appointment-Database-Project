@@ -1,3 +1,9 @@
+package com.appointmentProject.backend.model;
+
+import com.appointmentProject.backend.abstractmodel.Person;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 /******************************************************************************************
  * Provider.java
  *
@@ -23,12 +29,6 @@
  * @since 10/20/2025
  *
  *****************************************************************************************/
-
-package com.appointmentProject.backend.model;
-import com.appointmentProject.backend.abstractmodel.Person;
-import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-
 @Entity
 @Table(name = "provider")
 public class Provider extends Person {
