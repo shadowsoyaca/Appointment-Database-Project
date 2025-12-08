@@ -1,19 +1,20 @@
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ManagePartnersController"
-      alignment="CENTER"
-      spacing="20"
-      style="-fx-padding: 40;">
-    
-    <Button fx:id="btnPharmacies"
-            text="Pharmacies"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="20" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.appointmentProject.desktop.controller.ManagePartnersController">
+
+    <Button text="Manage Pharmacies" fx:id="pharmaciesBtn"
             onAction="#handlePharmacies" />
 
-    <Button fx:id="btnManufacturers"
-            text="Manufacturers"
+    <Button text="Manage Manufacturers" fx:id="manufacturersBtn"
             onAction="#handleManufacturers" />
 
-    <Button fx:id="btnInsurances"
-            text="Insurances"
+    <Button text="Manage Insurances" fx:id="insurancesBtn"
             onAction="#handleInsurances" />
 
 </VBox>
