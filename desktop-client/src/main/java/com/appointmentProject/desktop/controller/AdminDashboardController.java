@@ -29,4 +29,10 @@ public class AdminDashboardController {
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }
+    
+    @FXML
+    private void handleManagePartners() {
+        SceneNavigator.switchTo("/fxml/manage_partners.fxml");
+    }
+
 }

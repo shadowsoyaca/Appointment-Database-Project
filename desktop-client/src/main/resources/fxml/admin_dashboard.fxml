@@ -17,5 +17,11 @@
 
     <Button text="Log Out"
             onAction="#handleLogout" />
+            
+    <Button fx:id="btnManagePartners"
+        text="Manage Partners"
+        onAction="#handleManagePartners"
+        style="-fx-font-size: 14px; -fx-padding: 8px 16px;" />
+            
 </VBox>
 
