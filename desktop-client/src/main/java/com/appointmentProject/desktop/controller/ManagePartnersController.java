@@ -3,6 +3,7 @@ package com.appointmentProject.desktop.controller;
 import com.appointmentProject.desktop.SceneNavigator;
 import javafx.fxml.FXML;
 
+
 public class ManagePartnersController {
 
     @FXML
