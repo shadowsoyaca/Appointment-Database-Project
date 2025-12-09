@@ -34,5 +34,9 @@ public class AdminDashboardController {
     private void handleManagePartners() {
         SceneNavigator.switchTo("/fxml/manage_partners.fxml");
     }
+    @FXML
+    private void handleManagePharmacies() {
+        SceneNavigator.switchTo("/fxml/pharmacies.fxml");
+    }
 
 }
