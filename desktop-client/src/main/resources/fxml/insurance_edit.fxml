@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.insurance.InsuranceEditController"
+      spacing="12"
+      style="-fx-padding: 20;">
+
+    <Label text="Edit Insurance"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label fx:id="messageLabel" textFill="red" />
+
+    <!-- ID shown but not editable -->
+    <TextField fx:id="idField" editable="false" style="-fx-opacity: 0.5;" />
+
+    <TextField fx:id="insuranceNameField" promptText="Insurance Name" />
+    <TextField fx:id="phoneField" promptText="Phone (formatted OK)" />
+    <TextField fx:id="emailField" promptText="Email" />
+    <TextField fx:id="addressField" promptText="Address" />
+
+    <HBox spacing="10">
+        <Button text="Save" onAction="#handleSaveInsurance" />
+        <Button text="Delete" onAction="#handleDeleteInsurance" />
+        <Button text="Back" onAction="#handleBack" />
+    </HBox>
+</VBox>
