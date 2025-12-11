@@ -17,7 +17,9 @@ package com.appointmentProject.desktop.controller.dashboard;
 
 import com.appointmentProject.desktop.SceneNavigator;
 import com.appointmentProject.desktop.controller.appointment.ManageAppointmentController;
+import com.appointmentProject.desktop.controller.billing.BillingListController;
 import com.appointmentProject.desktop.controller.emergencycontact.ManageContactsController;
+import com.appointmentProject.desktop.controller.laborder.LabOrderListController;
 import com.appointmentProject.desktop.controller.patient.ManagePatientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,13 +69,13 @@ public class AdminDashboardController {
 
     @FXML
     private void handleManageBillings() {
-        ManageContactsController.previousPage = "/fxml/admin_dashboard.fxml";
+        BillingListController.previousPage = "/fxml/admin_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/billing_list.fxml");
     }
 
     @FXML
     private void handleManageLabOrders() {
-        ManageContactsController.previousPage = "/fxml/admin_dashboard.fxml";
+        LabOrderListController.previousPage = "/fxml/admin_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/laborder_list.fxml");
     }
 

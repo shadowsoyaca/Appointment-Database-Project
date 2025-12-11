@@ -37,6 +37,7 @@ public class BillingListController {
     @FXML private Label messageLabel;
     @FXML private TextField searchField;
 
+    public static String previousPage = "/fxml/login.fxml";
     private final ObservableList<BillingRow> masterList = FXCollections.observableArrayList();
 
     public static class BillingRow {
