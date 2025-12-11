@@ -55,6 +55,12 @@ public class ReceptionistDashboardController {
         SceneNavigator.switchTo("/fxml/manage_contacts.fxml");
     }
 
+    @FXML
+    private void handleManageBillings() {
+        ManageContactsController.previousPage = "/fxml/receptionist_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/billing_list.fxml");
+    }
+
 
     @FXML
     private void handleLogout() {
