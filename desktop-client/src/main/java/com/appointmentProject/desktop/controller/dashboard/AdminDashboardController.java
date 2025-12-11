@@ -72,6 +72,12 @@ public class AdminDashboardController {
     }
 
     @FXML
+    private void handleManageLabOrders() {
+        ManageContactsController.previousPage = "/fxml/admin_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/laborder_list.fxml");
+    }
+
+    @FXML
     private void handleManageRooms() {
         SceneNavigator.switchTo("/fxml/room_list.fxml");
     }
