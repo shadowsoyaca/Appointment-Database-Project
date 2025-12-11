@@ -24,4 +24,6 @@
         <Button text="Create" onAction="#handleCreateInsurance" />
         <Button text="Back" onAction="#handleBack" />
     </HBox>
+
+
 </VBox>

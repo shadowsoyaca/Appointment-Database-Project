@@ -152,3 +152,4 @@ public class InsuranceEditController {
         SceneNavigator.switchTo("/fxml/insurance_list.fxml");
     }
 }
+

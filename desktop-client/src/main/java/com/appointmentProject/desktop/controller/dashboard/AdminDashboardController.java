@@ -73,6 +73,7 @@ public class AdminDashboardController {
         SceneNavigator.switchTo("/fxml/insurance_list.fxml");
     }
 
+
     @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");

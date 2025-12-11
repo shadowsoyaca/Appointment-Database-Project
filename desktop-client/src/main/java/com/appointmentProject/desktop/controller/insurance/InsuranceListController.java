@@ -88,6 +88,7 @@ public class InsuranceListController {
         });
     }
 
+
     private void loadInsurance() {
         try {
             URL url = new URL("http://localhost:8080/insurance/all");
