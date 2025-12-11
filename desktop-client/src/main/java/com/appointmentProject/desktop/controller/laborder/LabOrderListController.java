@@ -203,7 +203,7 @@ public class LabOrderListController {
 
     @FXML
     public void handleBack() {
-        SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
+        SceneNavigator.switchTo(previousPage);
     }
 
     @FXML
