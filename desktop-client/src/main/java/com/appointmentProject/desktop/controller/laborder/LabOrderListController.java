@@ -187,7 +187,13 @@ public class LabOrderListController {
 
         ObservableList<LabOrderRow> filtered = masterList.filtered(n ->
                 String.valueOf(n.getAppointmentId()).toLowerCase().contains(lower) ||
+                        String.valueOf(n.getProviderRequesterId()).toLowerCase().contains(lower) ||
+                        String.valueOf(n.getProviderReceiverId()).toLowerCase().contains(lower) ||
+                        String.valueOf(n.getNurseId()).toLowerCase().contains(lower) ||
+                        String.valueOf(n.getPatientId()).toLowerCase().contains(lower) ||
+                        String.valueOf(n.getDateOfCompletion()).toLowerCase().contains(lower) ||
                         n.getTestingPurpose().toLowerCase().contains(lower) ||
+                        String.valueOf(n.getResults()).toLowerCase().contains(lower) ||
                         String.valueOf(n.getId()).contains(lower)
         );
 
