@@ -109,10 +109,9 @@ public class CreateAppointmentController {
                 return;
             }
 
-            // Backend returned an error → show field error
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(conn.getErrorStream()));
-            String msg = br.readLine(); // "FIELD_KEY: message"
+            String msg = br.readLine();
 
             if (msg != null && msg.contains(":")) {
                 String[] parts = msg.split(":", 2);

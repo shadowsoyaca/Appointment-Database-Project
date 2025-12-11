@@ -16,6 +16,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ManageAppointmentController {
 
@@ -24,6 +26,9 @@ public class ManageAppointmentController {
     public static String successMessage = null;
 
     @FXML private TableView<AppointmentRow> appointmentsTable;
+    private Map<Integer, String> patientNameMap = new HashMap<>();
+    private Map<Integer, String> providerNameMap = new HashMap<>();
+
 
     @FXML private TableColumn<AppointmentRow, Integer> idCol;
     @FXML private TableColumn<AppointmentRow, String> patientNameCol;
@@ -43,13 +48,19 @@ public class ManageAppointmentController {
     private static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm");
 
     @FXML
-    private void initialize() {
-        setupCreateButtonVisibility();
+    public void initialize() {
+        loadPatientNames();
+        loadProviderNames();
+
         setupColumns();
-        loadData();
-        setupSearch();
+        loadData();       // this loads appointments
+        setupSearch();    // this hooks up search filtering
+
+        setupCreateButtonVisibility();
         showSuccessMessageIfAny();
     }
+
+
 
     private void setupCreateButtonVisibility() {
         boolean isAdmin =
@@ -104,8 +115,12 @@ public class ManageAppointmentController {
                 int patientId = obj.get("patientId").getAsInt();
                 int providerId = obj.get("providerId").getAsInt();
 
-                String patientName = fetchName("http://localhost:8080/patients/" + patientId);
-                String providerName = fetchName("http://localhost:8080/providers/" + providerId);
+                String patientName = patientNameMap.getOrDefault(patientId, "Unknown");
+                System.out.println("Loaded patient names: " + patientNameMap);
+                String providerName = providerNameMap.getOrDefault(providerId, "Unknown");
+                System.out.println("Loaded provider names: " + providerNameMap);
+
+
 
                 LocalDateTime dt = LocalDateTime.parse(obj.get("appointmentDate").getAsString());
                 String apptDateDisplay = DATE_FMT.format(dt);
@@ -138,23 +153,6 @@ public class ManageAppointmentController {
         }
     }
 
-    private String fetchName(String endpoint) {
-        try {
-            HttpURLConnection conn = (HttpURLConnection) new URL(endpoint).openConnection();
-            conn.setRequestMethod("GET");
-
-            JsonObject obj = JsonParser.parseReader(
-                    new BufferedReader(new InputStreamReader(conn.getInputStream()))
-            ).getAsJsonObject();
-
-            return obj.get("firstName").getAsString() + " " +
-                    obj.get("lastName").getAsString();
-
-        } catch (Exception e) {
-            return "Unknown";
-        }
-    }
-
     private void setupSearch() {
         FilteredList<AppointmentRow> filtered = new FilteredList<>(masterList, p -> true);
 
@@ -173,6 +171,53 @@ public class ManageAppointmentController {
         sorted.comparatorProperty().bind(appointmentsTable.comparatorProperty());
         appointmentsTable.setItems(sorted);
     }
+
+    private void loadPatientNames() {
+        try {
+            URL url = new URL("http://localhost:8080/patient/all");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            JsonArray arr = JsonParser.parseReader(br).getAsJsonArray();
+
+            for (JsonElement e : arr) {
+                JsonObject obj = e.getAsJsonObject();
+                int id = obj.get("id").getAsInt();
+                String first = obj.get("firstName").getAsString();
+                String last = obj.get("lastName").getAsString();
+
+                patientNameMap.put(id, first + " " + last);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Could not load patient names: " + e.getMessage());
+        }
+    }
+
+    private void loadProviderNames() {
+        try {
+            URL url = new URL("http://localhost:8080/provider/all");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            JsonArray arr = JsonParser.parseReader(br).getAsJsonArray();
+
+            for (JsonElement e : arr) {
+                JsonObject obj = e.getAsJsonObject();
+                int id = obj.get("id").getAsInt();
+                String first = obj.get("firstName").getAsString();
+                String last = obj.get("lastName").getAsString();
+
+                providerNameMap.put(id, first + " " + last);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Could not load provider names: " + e.getMessage());
+        }
+    }
+
 
     @FXML
     private void handleCreateAppointment() {
