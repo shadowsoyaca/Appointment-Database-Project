@@ -45,6 +45,10 @@
             onAction="#handleManageBillings"
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
+    <Button text="Manage Lab Orders"
+            onAction="#handleManageLabOrders"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
     <Button text="Manage Rooms"
             onAction="#handleManageRooms"
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
