@@ -25,6 +25,7 @@ package com.appointmentProject.desktop.controller.dashboard;
  ********************************************************************/
 import com.appointmentProject.desktop.SceneNavigator;
 import com.appointmentProject.desktop.controller.ViewStaffController;
+import com.appointmentProject.desktop.controller.appointment.ManageAppointmentController;
 import com.appointmentProject.desktop.controller.patient.ManagePatientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +47,13 @@ public class NurseDashboardController {
         AccountManagementController.setPreviousPage("/fxml/nurse_dashboard.fxml");
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
+
+    @FXML
+    private void handleManageAppointments() {
+        ManageAppointmentController.previousPage = "/fxml/nurse_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_appointments.fxml");
+    }
+
 
     @FXML
     public void handleViewStaff() {

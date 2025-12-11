@@ -47,44 +47,44 @@ public class Appointment {
     private int id;
 
     @NotNull
-    @Column(name = "patientId", nullable = false)
+    @Column(name = "patient_id", nullable = false)
     private int patientId;
 
     @NotNull
-    @Column(name = "providerId", nullable = false)
+    @Column(name = "provider_id", nullable = false)
     private int providerId;
 
     @NotNull
-    @Column(name = "billingId", nullable = false)
+    @Column(name = "billing_id", nullable = false)
     private int billingId;
 
     @NotNull
-    @Column(name = "appointmentDate", nullable = false, columnDefinition = "DATETIME(0)")
+    @Column(name = "appointment_date", nullable = false, columnDefinition = "DATETIME(0)")
     private LocalDateTime appointmentDate;
 
     @NotNull
-    @Column(name = "roomNumber", nullable = false, length = 4)
+    @Column(name = "room_number", nullable = false, length = 4)
     private String roomNumber;
 
     @NotNull
-    @Column(name = "reasonForVisiting", nullable = false)
+    @Column(name = "reason_for_visiting", nullable = false)
     private String reasonForVisiting;
 
 
     //optional variables
-    @Column(name = "nurseId")
+    @Column(name = "nurse_id")
     private Integer nurseId;
 
-    @Column(name = "prescriptionId")
+    @Column(name = "prescription_id")
     private Integer prescriptionId;
 
-    @Column(name = "labOrderId")
+    @Column(name = "lab_order_id")
     private Integer labOrderId;
 
-    @Column(name = "startTime", columnDefinition = "TIME(0)")
+    @Column(name = "start_time", columnDefinition = "TIME(0)")
     private LocalTime  startTime;
 
-    @Column(name = "endTime", columnDefinition = "TIME(0)")
+    @Column(name = "end_time", columnDefinition = "TIME(0)")
     private LocalTime endTime;
 
     //Test Constructor ONLY!
@@ -92,7 +92,6 @@ public class Appointment {
 
     //Constructor
     private Appointment(Builder builder) {
-        this.id = builder.id;
         this.patientId = builder.patientId;
         this.providerId = builder.providerId;
         this.billingId = builder.billingId;
@@ -156,7 +155,6 @@ public class Appointment {
     public static class Builder {
 
         //required variables
-        private int id;
         private int patientId;
         private int providerId;
         private int billingId;
@@ -172,8 +170,7 @@ public class Appointment {
         private LocalTime endTime;
 
         //required constructor only
-        public Builder(int id, int patientId, int providerId, int billingId, LocalDateTime appointmentDate, String roomNumber, String purpose) {
-            this.id = id;
+        public Builder(int patientId, int providerId, int billingId, LocalDateTime appointmentDate, String roomNumber, String purpose) {
             this.patientId = patientId;
             this.providerId = providerId;
             this.billingId = billingId;

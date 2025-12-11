@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.appointmentProject.desktop.controller.appointment.CreateAppointmentController">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Create Appointment"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="10" vgap="8">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Patient ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="patientIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label fx:id="patientIdError" style="-fx-text-fill: red;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+            <Label text="Provider ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="providerIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label fx:id="providerIdError" style="-fx-text-fill: red;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+            <Label text="Billing ID:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="billingIdField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label fx:id="billingIdError" style="-fx-text-fill: red;" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+            <Label text="Nurse ID (optional):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="nurseIdField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label fx:id="nurseIdError" style="-fx-text-fill: red;" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+            <Label text="Prescription ID (optional):" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="prescriptionIdField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label fx:id="prescriptionIdError" style="-fx-text-fill: red;" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+            <Label text="Lab Order ID (optional):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="labOrderIdField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label fx:id="labOrderIdError" style="-fx-text-fill: red;" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+
+            <Label text="Appointment Date (yyyy-MM-dd HH:mm):"
+                   GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="appointmentDateField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label fx:id="appointmentDateError" style="-fx-text-fill: red;"
+                   GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+
+            <Label text="Room Number:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="roomNumberField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+            <Label fx:id="roomNumberError" style="-fx-text-fill: red;"
+                   GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+
+            <Label text="Reason for Visiting:"
+                   GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <TextField fx:id="reasonField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+            <Label fx:id="reasonError" style="-fx-text-fill: red;"
+                   GridPane.rowIndex="8" GridPane.columnIndex="2"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <Button text="Save" onAction="#handleSave"/>
+            <Button text="Cancel" onAction="#handleCancel"/>
+            <Label fx:id="formError" style="-fx-text-fill: red;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
