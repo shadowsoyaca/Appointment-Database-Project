@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.appointmentProject.desktop.controller.appointment.ManageAppointmentController">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Manage Appointments"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10">
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="Search appointments..."/>
+
+                <!-- This expands the space between Search and the buttons -->
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <!-- Only visible for Admin + Receptionist -->
+                <Button fx:id="createAppointmentButton"
+                        text="Create Appointment"
+                        onAction="#handleCreateAppointment"/>
+
+                <Button text="Back" onAction="#handleBack"/>
+            </HBox>
+
+            <Label fx:id="messageLabel"
+                   style="-fx-text-fill: green; -fx-font-weight: bold;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="appointmentsTable">
+            <columns>
+                <TableColumn fx:id="idCol" text="ID" prefWidth="60"/>
+                <TableColumn fx:id="patientNameCol" text="Patient" prefWidth="150"/>
+                <TableColumn fx:id="providerNameCol" text="Provider" prefWidth="150"/>
+                <TableColumn fx:id="appointmentDateCol" text="Appointment Date" prefWidth="200"/>
+                <TableColumn fx:id="roomNumberCol" text="Room" prefWidth="100"/>
+                <TableColumn fx:id="startTimeCol" text="Start Time" prefWidth="100"/>
+                <TableColumn fx:id="endTimeCol" text="End Time" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

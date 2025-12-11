@@ -16,6 +16,7 @@
 package com.appointmentProject.desktop.controller.dashboard;
 
 import com.appointmentProject.desktop.SceneNavigator;
+import com.appointmentProject.desktop.controller.appointment.ManageAppointmentController;
 import com.appointmentProject.desktop.controller.emergencycontact.ManageContactsController;
 import com.appointmentProject.desktop.controller.patient.ManagePatientController;
 import javafx.event.ActionEvent;
@@ -33,6 +34,13 @@ public class AdminDashboardController {
         AccountManagementController.setPreviousPage("/fxml/admin_dashboard.fxml");
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
+
+    @FXML
+    private void handleManageAppointments() {
+        ManageAppointmentController.previousPage = "/fxml/admin_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_appointments.fxml");
+    }
+
 
     @FXML
     public void handleManageUsers() {

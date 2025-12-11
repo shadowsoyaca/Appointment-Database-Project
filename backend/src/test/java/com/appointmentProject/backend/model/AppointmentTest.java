@@ -38,7 +38,6 @@ public class AppointmentTest {
         LocalTime end1 =  LocalTime.parse("13:30"), end2 = null;
 
         Appointment appt = new Appointment.Builder(
-                id1,
                 patient_id1,
                 provider_id1,
                 billing_id1,
@@ -120,7 +119,6 @@ public class AppointmentTest {
         LocalTime end1 = LocalTime.parse("13:30"), end2 = null;
 
         Appointment appt = new Appointment.Builder(
-                id1,
                 patient_id1,
                 provider_id1,
                 billing_id1,

@@ -20,6 +20,10 @@
     <Label text="Provider Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
+    <Button text="View Appointments"
+            onAction="#handleManageAppointments"
+            style="-fx-font-size: 16px; -fx-padding: 8 16;" />
+
     <Button text="View Staff"
             onAction="#handleViewStaff"
             style="-fx-font-size: 16px; -fx-padding: 8 16;" />

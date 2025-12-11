@@ -4,8 +4,10 @@ com\appointmentProject\desktop\controller\nurse\NurseCreateController.class
 com\appointmentProject\desktop\SceneNavigator.class
 com\appointmentProject\desktop\controller\provider\ProviderListController.class
 com\appointmentProject\desktop\controller\ViewStaffController.class
+com\appointmentProject\desktop\controller\appointment\CreateAppointmentController.class
 com\appointmentProject\desktop\controller\dashboard\ProviderDashboardController.class
 com\appointmentProject\desktop\controller\patient\PatientCreateController.class
+com\appointmentProject\desktop\model\AppointmentRow.class
 com\appointmentProject\desktop\controller\ViewStaffController$StaffRow.class
 com\appointmentProject\desktop\controller\nurse\NurseEditController.class
 com\appointmentProject\desktop\controller\provider\ProviderCreateController.class
@@ -32,6 +34,7 @@ com\appointmentProject\desktop\controller\account\ManageUsersController.class
 com\appointmentProject\desktop\controller\patient\ManagePatientController$PatientRow.class
 com\appointmentProject\desktop\controller\patient\PatientDetailsController.class
 com\appointmentProject\desktop\controller\provider\ProviderEditController.class
+com\appointmentProject\desktop\controller\appointment\ManageAppointmentController.class
 com\appointmentProject\desktop\controller\emergencycontact\ManageContactsController.class
 com\appointmentProject\desktop\controller\emergencycontact\ContactEditController.class
 com\appointmentProject\desktop\controller\dashboard\ReceptionistDashboardController.class
