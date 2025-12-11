@@ -85,6 +85,4 @@ public class InsuranceController {
                         new RecordNotFoundException("Cannot delete — ID " + id + " does not exist.")
                 );
     }
-
-
 }

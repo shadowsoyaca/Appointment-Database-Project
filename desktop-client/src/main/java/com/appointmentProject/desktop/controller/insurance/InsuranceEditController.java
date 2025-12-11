@@ -146,10 +146,8 @@ public class InsuranceEditController {
             messageLabel.setText("Error deleting insurance.");
         }
     }
-
     @FXML
     private void handleBack() {
         SceneNavigator.switchTo("/fxml/insurance_list.fxml");
     }
 }
-
