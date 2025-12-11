@@ -13,6 +13,10 @@ package com.appointmentProject.desktop.controller.dashboard;
 import com.appointmentProject.desktop.SceneNavigator;
 import com.appointmentProject.desktop.controller.ViewStaffController;
 import com.appointmentProject.desktop.controller.appointment.ManageAppointmentController;
+import com.appointmentProject.desktop.controller.emergencycontact.ManageContactsController;
+import com.appointmentProject.desktop.controller.laborder.LabOrderCreateController;
+import com.appointmentProject.desktop.controller.laborder.LabOrderEditController;
+import com.appointmentProject.desktop.controller.laborder.LabOrderListController;
 import com.appointmentProject.desktop.controller.patient.ManagePatientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +50,12 @@ public class ProviderDashboardController {
     private void handleManagePatients(ActionEvent event) {
         ManagePatientController.previousPage = "/fxml/provider_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
+
+    @FXML
+    private void handleManageLabOrders(ActionEvent event) {
+        ManageContactsController.previousPage = "/fxml/provider_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/laborder_list.fxml");
     }
 
 
