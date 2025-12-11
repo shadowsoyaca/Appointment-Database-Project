@@ -33,7 +33,6 @@ public class InsuranceCreateController {
             body.addProperty("email", emailField.getText().trim());
             body.addProperty("address", addressField.getText().trim());
 
-
             URL url = new URL("http://localhost:8080/insurance/add");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");

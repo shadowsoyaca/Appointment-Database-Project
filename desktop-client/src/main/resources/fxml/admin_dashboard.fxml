@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
@@ -10,48 +11,62 @@
       alignment="CENTER"
       spacing="20">
 
-    <!--TOP BAR (Manage Account Button) -->
-    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 0 10 0 10;" >
+    <!-- TOP BAR -->
+    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 0 10 0 10;">
         <Button text="Manage Account"
                 onAction="#handleManageAccount"
-                style="-fx-font-size: 14px; -fx-padding: 0 10 0 10;" />
+                style="-fx-font-size: 14px; -fx-padding: 0 10;" />
     </HBox>
 
-    <!-- Buttons -->
+    <!-- TITLE -->
     <Label text="Admin Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-    <Button text="Manage Users"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;"
-            onAction="#handleManageUsers"/>
+    <!-- BUTTON GRID -->
+    <GridPane hgap="20" vgap="15" alignment="CENTER">
 
-    <Button text="Manage Staff"
-            onAction="#handleManageStaff"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <!-- LEFT COLUMN -->
+        <Button text="Manage Users"
+                onAction="#handleManageUsers"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="0" GridPane.columnIndex="0" />
 
-    <Button text="Manage Patients"
-            onAction="#handleManagePatients"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <Button text="Manage Patients"
+                onAction="#handleManagePatients"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="1" GridPane.columnIndex="0" />
 
-    <Button text="Manage Contacts"
-            onAction="#handleManageContacts"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <Button text="Manage Billings"
+                onAction="#handleManageBillings"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="2" GridPane.columnIndex="0" />
 
-    <Button text="Manage Billings"
-            onAction="#handleManageBillings"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <Button text="Manage Insurance"
+                onAction="#handleManageInsurance"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="3" GridPane.columnIndex="0" />
 
-    <Button text="Manage Rooms"
-            onAction="#handleManageRooms"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <!-- RIGHT COLUMN -->
+        <Button text="Manage Staff"
+                onAction="#handleManageStaff"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
-    <Button text="Manage Insurance"
-            onAction="#handleManageInsurance"
-            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <Button text="Manage Contacts"
+                onAction="#handleManageContacts"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
+        <Button text="Manage Rooms"
+                onAction="#handleManageRooms"
+                style="-fx-pref-width: 160;"
+                GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+    </GridPane>
+
+    <!-- LOGOUT BUTTON -->
     <Button text="Log Out"
-            onAction="#handleLogout" />
+            onAction="#handleLogout"
+            style="-fx-padding: 8 20;" />
 
 </VBox>
-
-

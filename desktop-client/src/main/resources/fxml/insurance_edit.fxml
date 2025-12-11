@@ -27,5 +27,4 @@
         <Button text="Delete" onAction="#handleDeleteInsurance" />
         <Button text="Back" onAction="#handleBack" />
     </HBox>
-
 </VBox>
