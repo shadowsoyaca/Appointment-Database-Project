@@ -29,6 +29,9 @@
                         text="Create Appointment"
                         onAction="#handleCreateAppointment"/>
 
+                <Button text="Edit Appointment" onAction="#handleEditAppointment"/>
+                <Label fx:id="editErrorLabel" style="-fx-text-fill: red;"/>
+
                 <Button text="Back" onAction="#handleBack"/>
             </HBox>
 

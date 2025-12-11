@@ -5,7 +5,8 @@ import com.appointmentProject.desktop.model.AppointmentRow;
 import com.google.gson.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.*;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -21,15 +22,15 @@ import java.util.Map;
 
 public class ManageAppointmentController {
 
-    // Static navigation helpers
+    // -------- Static navigation helpers --------
     public static String previousPage = "/fxml/login.fxml";
     public static String successMessage = null;
 
+    // ID of the appointment selected for editing
+    public static int selectedAppointmentId = -1;
+
+    // -------- FXML controls --------
     @FXML private TableView<AppointmentRow> appointmentsTable;
-    private Map<Integer, String> patientNameMap = new HashMap<>();
-    private Map<Integer, String> providerNameMap = new HashMap<>();
-
-
     @FXML private TableColumn<AppointmentRow, Integer> idCol;
     @FXML private TableColumn<AppointmentRow, String> patientNameCol;
     @FXML private TableColumn<AppointmentRow, String> providerNameCol;
@@ -41,26 +42,32 @@ public class ManageAppointmentController {
     @FXML private TextField searchField;
     @FXML private Button createAppointmentButton;
     @FXML private Label messageLabel;
+    @FXML private Label editErrorLabel;
+
+    // Maps for resolving patient/provider names
+    private final Map<Integer, String> patientNameMap = new HashMap<>();
+    private final Map<Integer, String> providerNameMap = new HashMap<>();
 
     private final ObservableList<AppointmentRow> masterList = FXCollections.observableArrayList();
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm");
 
+    // -------- INITIALIZE --------
     @FXML
     public void initialize() {
         loadPatientNames();
         loadProviderNames();
 
         setupColumns();
-        loadData();       // this loads appointments
-        setupSearch();    // this hooks up search filtering
+        loadData();       // load appointments from backend
+        setupSearch();    // hook up search filtering
 
         setupCreateButtonVisibility();
         showSuccessMessageIfAny();
     }
 
-
+    // -------- UI helpers --------
 
     private void setupCreateButtonVisibility() {
         boolean isAdmin =
@@ -93,10 +100,12 @@ public class ManageAppointmentController {
         endTimeCol.setCellValueFactory(d -> d.getValue().endTimeProperty());
     }
 
+    // -------- DATA LOADING --------
+
     private void loadData() {
         try {
             HttpURLConnection conn =
-                    (HttpURLConnection) new URL("http://localhost:8080/appointments/all").openConnection();
+                    (HttpURLConnection) new URL("http://localhost:8080/appointment/all").openConnection();
             conn.setRequestMethod("GET");
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -116,11 +125,7 @@ public class ManageAppointmentController {
                 int providerId = obj.get("providerId").getAsInt();
 
                 String patientName = patientNameMap.getOrDefault(patientId, "Unknown");
-                System.out.println("Loaded patient names: " + patientNameMap);
                 String providerName = providerNameMap.getOrDefault(providerId, "Unknown");
-                System.out.println("Loaded provider names: " + providerNameMap);
-
-
 
                 LocalDateTime dt = LocalDateTime.parse(obj.get("appointmentDate").getAsString());
                 String apptDateDisplay = DATE_FMT.format(dt);
@@ -150,6 +155,7 @@ public class ManageAppointmentController {
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            messageLabel.setText("Failed to load appointments.");
         }
     }
 
@@ -157,7 +163,7 @@ public class ManageAppointmentController {
         FilteredList<AppointmentRow> filtered = new FilteredList<>(masterList, p -> true);
 
         searchField.textProperty().addListener((obs, old, val) -> {
-            String lower = val.toLowerCase();
+            String lower = val == null ? "" : val.toLowerCase();
 
             filtered.setPredicate(row ->
                     row.getPatientName().toLowerCase().contains(lower)
@@ -218,10 +224,28 @@ public class ManageAppointmentController {
         }
     }
 
+    // -------- BUTTON HANDLERS --------
 
     @FXML
     private void handleCreateAppointment() {
         SceneNavigator.switchTo("/fxml/appointment_create.fxml");
+    }
+
+    @FXML
+    private void handleEditAppointment() {
+        editErrorLabel.setText(""); // clear old errors
+
+        AppointmentRow selected = appointmentsTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            editErrorLabel.setText("Please select an appointment to edit.");
+            return;
+        }
+
+        // Store selected ID in this controller's static field
+        selectedAppointmentId = selected.getId();
+
+        SceneNavigator.switchTo("/fxml/appointment_edit.fxml");
     }
 
     @FXML
