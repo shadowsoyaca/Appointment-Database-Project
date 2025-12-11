@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.appointmentProject.desktop.controller.appointment.EditAppointmentController">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+            <Label text="Edit Appointment" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="12" vgap="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- PATIENT -->
+            <Label text="Patient:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="patientDropdown" prefWidth="250"
+                      GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <!-- PROVIDER -->
+            <Label text="Provider:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="providerDropdown" prefWidth="250"
+                      GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- NURSE -->
+            <Label text="Nurse:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="nurseDropdown" prefWidth="250"
+                      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <!-- BILLING -->
+            <Label text="Billing ID:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="billingDropdown" prefWidth="200"
+                      GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- PRESCRIPTION -->
+            <Label text="Prescription ID:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="prescriptionDropdown" prefWidth="200"
+                      GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <!-- LAB ORDER -->
+            <Label text="Lab Order ID:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="labOrderDropdown" prefWidth="200"
+                      GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- DATE -->
+            <Label text="Date:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="datePicker"
+                        GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <!-- APPOINTMENT TIME -->
+            <Label text="Appointment Time:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="timeDropdown" prefWidth="150"
+                      GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+            <!-- START TIME -->
+            <Label text="Start Time:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="startTimeDropdown" prefWidth="150"
+                      GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+            <!-- END TIME -->
+            <Label text="End Time:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="endTimeDropdown" prefWidth="150"
+                      GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+            <!-- ROOM -->
+            <Label text="Room Number:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+            <TextField fx:id="roomField" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+            <!-- REASON -->
+            <Label text="Reason for Visit:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+            <TextArea fx:id="reasonArea" prefHeight="80" prefWidth="260"
+                      GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <Button text="Save" onAction="#handleSave"/>
+            <Button text="Back" onAction="#handleBack"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button fx:id="deleteButton" text="Delete Appointment"
+                    style="-fx-background-color: red; -fx-text-fill: white;"
+                    onAction="#handleDelete"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

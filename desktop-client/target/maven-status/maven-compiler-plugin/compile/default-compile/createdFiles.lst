@@ -1,3 +1,9 @@
+com\appointmentProject\desktop\controller\appointment\EditAppointmentController.class
+com\appointmentProject\desktop\model\UserDTO.class
+com\appointmentProject\desktop\controller\MedicationListController$Row.class
+com\appointmentProject\desktop\controller\nurse\NurseCreateController.class
+com\appointmentProject\desktop\SceneNavigator.class
+com\appointmentProject\desktop\controller\provider\ProviderListController.class
 com\appointmentProject\desktop\controller\ViewStaffController.class
 com\appointmentProject\desktop\controller\appointment\CreateAppointmentController.class
 com\appointmentProject\desktop\controller\dashboard\ProviderDashboardController.class

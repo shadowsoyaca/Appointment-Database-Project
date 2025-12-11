@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -25,13 +26,72 @@ public class AppointmentService {
         this.providerRepo = providerRepo;
     }
 
+    // ---------- READ ----------
+
     public List<Appointment> getAllAppointments() {
         return appointmentRepo.findAll();
     }
 
-    public Appointment create(Appointment a) {
+    public Optional<Appointment> getAppointmentById(int id) {
+        return appointmentRepo.findById(id);
+    }
 
-        // basic required checks (id is auto-generated, so we ignore it here)
+    // ---------- CREATE ----------
+
+    public Appointment create(Appointment a) {
+        validateAppointment(a, false);
+        return appointmentRepo.save(a);
+    }
+
+    // ---------- UPDATE ----------
+
+    public Appointment update(Appointment updated) {
+        if (updated.getId() <= 0) {
+            throw new IllegalArgumentException("APPOINTMENT_ID: Valid ID is required to update.");
+        }
+
+        Appointment existing = appointmentRepo.findById(updated.getId())
+                .orElseThrow(() ->
+                        new IllegalArgumentException("APPOINTMENT_ID: Appointment not found.")
+                );
+
+        // Copy editable fields
+        existing.setPatientId(updated.getPatientId());
+        existing.setProviderId(updated.getProviderId());
+        existing.setBillingId(updated.getBillingId());
+        existing.setNurseId(updated.getNurseId());
+        existing.setPrescriptionId(updated.getPrescriptionId());
+        existing.setLabOrderId(updated.getLabOrderId());
+        existing.setAppointmentDate(updated.getAppointmentDate());
+        existing.setRoomNumber(updated.getRoomNumber());
+        existing.setReasonForVisiting(updated.getReasonForVisiting());
+        existing.setStartTime(updated.getStartTime());
+        existing.setEndTime(updated.getEndTime());
+
+        validateAppointment(existing, true);
+        return appointmentRepo.save(existing);
+    }
+
+    // ---------- DELETE ----------
+
+    public void delete(int id) {
+        if (!appointmentRepo.existsById(id)) {
+            throw new IllegalArgumentException("APPOINTMENT_ID: Appointment not found.");
+        }
+        appointmentRepo.deleteById(id);
+    }
+
+    // ---------- VALIDATION ----------
+
+    /**
+     * Common validation used by both create & update.
+     *
+     * @param a        appointment to validate
+     * @param isUpdate true if called from update()
+     */
+    private void validateAppointment(Appointment a, boolean isUpdate) {
+
+        // ----- Required fields -----
         if (a.getPatientId() <= 0) {
             throw new IllegalArgumentException("PATIENT_ID: Patient ID is required and must be > 0.");
         }
@@ -51,50 +111,69 @@ public class AppointmentService {
             throw new IllegalArgumentException("REASON: Reason for visiting is required.");
         }
 
-        // optional fields already nullable in the model: nurseId, prescriptionId, labOrderId, startTime, endTime
-
-        // TIME RULES (start_time / end_time are null at creation, but we keep the logic in case you reuse it later)
+        // ----- Time rules -----
         LocalDateTime dt = a.getAppointmentDate();
         LocalTime apptTime = dt.toLocalTime();
         LocalTime start = a.getStartTime();
         LocalTime end = a.getEndTime();
 
-        // start_time (if not null) cannot be earlier than appointment_date
         if (start != null && start.isBefore(apptTime)) {
-            throw new IllegalArgumentException("START_TIME: Start time cannot be earlier than the appointment date/time.");
+            throw new IllegalArgumentException(
+                    "START_TIME: Start time cannot be earlier than the appointment date/time.");
         }
 
-        // start_time (if not null) cannot be later than end_time (if not null)
         if (start != null && end != null && start.isAfter(end)) {
-            throw new IllegalArgumentException("START_TIME: Start time cannot be after end time.");
+            throw new IllegalArgumentException(
+                    "START_TIME: Start time cannot be after end time.");
         }
 
-        // end_time (if not null) cannot be earlier than appointment_date OR start_time (if not null)
         if (end != null) {
             if (end.isBefore(apptTime)) {
-                throw new IllegalArgumentException("END_TIME: End time cannot be earlier than the appointment date/time.");
+                throw new IllegalArgumentException(
+                        "END_TIME: End time cannot be earlier than the appointment date/time.");
             }
             if (start != null && end.isBefore(start)) {
-                throw new IllegalArgumentException("END_TIME: End time cannot be earlier than start time.");
+                throw new IllegalArgumentException(
+                        "END_TIME: End time cannot be earlier than start time.");
             }
         }
 
-        // provider_id and appointment_date are a unique combination
-        if (appointmentRepo.existsByProviderIdAndAppointmentDate(a.getProviderId(), a.getAppointmentDate())) {
-            throw new IllegalArgumentException("PROVIDER_ID: This provider already has an appointment at this date/time.");
+        // ----- Uniqueness constraints -----
+        if (!isUpdate) {
+            // CREATE: any appointment at that slot is forbidden
+            if (appointmentRepo.existsByProviderIdAndAppointmentDate(
+                    a.getProviderId(), a.getAppointmentDate())) {
+                throw new IllegalArgumentException(
+                        "PROVIDER_ID: This provider already has an appointment at this date/time.");
+            }
+
+            if (appointmentRepo.existsByRoomNumberAndAppointmentDate(
+                    a.getRoomNumber(), a.getAppointmentDate())) {
+                throw new IllegalArgumentException(
+                        "ROOM_NUMBER: This room is already booked at this date/time.");
+            }
+        } else {
+            // UPDATE: any OTHER appointment at that slot is forbidden
+            if (appointmentRepo.existsByProviderIdAndAppointmentDateAndIdNot(
+                    a.getProviderId(), a.getAppointmentDate(), a.getId())) {
+                throw new IllegalArgumentException(
+                        "PROVIDER_ID: This provider already has another appointment at this date/time.");
+            }
+
+            if (appointmentRepo.existsByRoomNumberAndAppointmentDateAndIdNot(
+                    a.getRoomNumber(), a.getAppointmentDate(), a.getId())) {
+                throw new IllegalArgumentException(
+                        "ROOM_NUMBER: Another appointment is already booked in this room at this date/time.");
+            }
         }
 
-        // room_number and appointment_date are a unique combination
-        if (appointmentRepo.existsByRoomNumberAndAppointmentDate(a.getRoomNumber(), a.getAppointmentDate())) {
-            throw new IllegalArgumentException("ROOM_NUMBER: This room is already booked at this date/time.");
-        }
-
-        // (optional) confirm patient/provider exist
+        // ----- Existence checks -----
         patientRepo.findById(a.getPatientId())
-                .orElseThrow(() -> new IllegalArgumentException("PATIENT_ID: No patient found with this ID."));
-        providerRepo.findById(a.getProviderId())
-                .orElseThrow(() -> new IllegalArgumentException("PROVIDER_ID: No provider found with this ID."));
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "PATIENT_ID: No patient found with this ID."));
 
-        return appointmentRepo.save(a);
+        providerRepo.findById(a.getProviderId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "PROVIDER_ID: No provider found with this ID."));
     }
 }
