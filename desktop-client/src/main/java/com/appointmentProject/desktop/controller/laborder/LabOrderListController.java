@@ -42,6 +42,7 @@ public class LabOrderListController {
     @FXML private Label messageLabel;
     @FXML private TextField searchField;
 
+    public static String previousPage = "/fxml/login.fxml";
     private final ObservableList<LabOrderRow> masterList = FXCollections.observableArrayList();
 
     public static class LabOrderRow {

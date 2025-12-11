@@ -54,7 +54,7 @@ public class ProviderDashboardController {
 
     @FXML
     private void handleManageLabOrders(ActionEvent event) {
-        ManageContactsController.previousPage = "/fxml/provider_dashboard.fxml";
+        LabOrderListController.previousPage = "/fxml/provider_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/laborder_list.fxml");
     }
 

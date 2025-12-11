@@ -13,6 +13,7 @@ package com.appointmentProject.desktop.controller.dashboard;
 import com.appointmentProject.desktop.SceneNavigator;
 import com.appointmentProject.desktop.controller.ViewStaffController;
 import com.appointmentProject.desktop.controller.appointment.ManageAppointmentController;
+import com.appointmentProject.desktop.controller.billing.BillingListController;
 import com.appointmentProject.desktop.controller.emergencycontact.ManageContactsController;
 import com.appointmentProject.desktop.controller.patient.ManagePatientController;
 import javafx.fxml.FXML;
@@ -57,7 +58,7 @@ public class ReceptionistDashboardController {
 
     @FXML
     private void handleManageBillings() {
-        ManageContactsController.previousPage = "/fxml/receptionist_dashboard.fxml";
+        BillingListController.previousPage = "/fxml/receptionist_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/billing_list.fxml");
     }
 
