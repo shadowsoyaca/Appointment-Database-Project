@@ -61,7 +61,7 @@ public class LabOrderCreateController {
 
             if (con.getResponseCode() == 200) {
                 messageLabel.setStyle("-fx-text-fill: green;");
-                messageLabel.setText("Lab Order created successfully!");
+                messageLabel.setText("Lab order created successfully!");
             } else {
                 messageLabel.setText("Creation failed.");
             }
