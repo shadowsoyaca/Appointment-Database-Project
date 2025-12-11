@@ -19,6 +19,7 @@
     <TextField fx:id="emailField" promptText="Email" />
     <TextField fx:id="addressField" promptText="Address" />
 
+
     <HBox spacing="10">
         <Button text="Create" onAction="#handleCreateInsurance" />
         <Button text="Back" onAction="#handleBack" />

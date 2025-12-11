@@ -122,6 +122,7 @@ public class InsuranceEditController {
         }
     }
 
+
     @FXML
     private void handleDeleteInsurance() {
         try {
