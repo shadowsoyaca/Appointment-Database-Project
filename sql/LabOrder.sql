@@ -2,7 +2,6 @@
 Lab Order Rules:
 -	ONLY nurse_id, date_of_completion, and provider_receiver_id can be NULL.
 -	id is unique and can only be 8 characters long.
--	date_of_completion cannot be earlier than the appointment table’s appointment_date field.
 -	price must be greater than 0 and must have a format of only two decimals.
 -	results defaults as 0 (false).
 */

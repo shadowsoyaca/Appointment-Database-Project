@@ -51,7 +51,6 @@ public class LabOrderService {
                         new RecordNotFoundException("LabOrder with ID " + update.getId() + " was not found.")
                 );
 
-        existing.setAppointmentId(update.getAppointmentId());
         existing.setProviderRequesterId(update.getProviderRequesterId());
         existing.setProviderReceiverId(update.getProviderReceiverId());
         existing.setNurseId(update.getNurseId());
@@ -71,11 +70,6 @@ public class LabOrderService {
     // GET BY ID
     public Optional<LabOrder> getLabOrderById(int id) {
         return labRepo.findById(id);
-    }
-
-    // GET BY APPOINTMENT
-    public List<LabOrder> getByAppointmentId(int appointmentId) {
-        return labRepo.findByAppointmentId(appointmentId);
     }
 
     // GET BY PATIENT

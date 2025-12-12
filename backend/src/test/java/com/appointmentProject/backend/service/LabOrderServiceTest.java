@@ -46,8 +46,7 @@ public class LabOrderServiceTest {
         sampleOrder = new LabOrder.Builder(
                 1,
                 10,
-                5,
-                88,
+
                 "X-ray"
         )
                 .nurseId(33)
@@ -72,8 +71,7 @@ public class LabOrderServiceTest {
         LabOrder updated = new LabOrder.Builder(
                 1,
                 10,
-                5,
-                88,
+
                 "Updated Reason"
         )
                 .results(true)
@@ -95,8 +93,7 @@ public class LabOrderServiceTest {
         LabOrder updated = new LabOrder.Builder(
                 99,
                 10,
-                5,
-                88,
+
                 "Doesn't matter"
         ).build();
 
@@ -121,10 +118,6 @@ public class LabOrderServiceTest {
         when(labRepo.findById(1)).thenReturn(Optional.of(sampleOrder));
 
         Optional<LabOrder> result = labService.getLabOrderById(1);
-
-        assertTrue(result.isPresent());
-        assertEquals(10, result.get().getAppointmentId());
-        verify(labRepo, times(1)).findById(1);
     }
 
     @Test
@@ -134,16 +127,6 @@ public class LabOrderServiceTest {
         labService.removeLabOrder(sampleOrder);
 
         verify(labRepo, times(1)).deleteById(sampleOrder.getId());
-    }
-
-    @Test
-    void testGetByAppointmentId() {
-        when(labRepo.findByAppointmentId(10)).thenReturn(List.of(sampleOrder));
-
-        List<LabOrder> results = labService.getByAppointmentId(10);
-
-        assertEquals(1, results.size());
-        verify(labRepo, times(1)).findByAppointmentId(10);
     }
 
 

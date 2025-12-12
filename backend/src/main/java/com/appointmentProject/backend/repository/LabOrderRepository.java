@@ -18,7 +18,6 @@ import java.util.List;
 @Repository
 public interface LabOrderRepository extends JpaRepository<LabOrder, Integer> {
 
-    List<LabOrder> findByAppointmentId(int appointmentId);
 
     List<LabOrder> findByPatientId(int patientId);
 

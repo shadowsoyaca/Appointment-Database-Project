@@ -31,9 +31,6 @@ public class LabOrder {
     private int id;
 
     @Column(nullable = false)
-    private int appointmentId;
-
-    @Column(nullable = false)
     private int providerRequesterId;
 
     @Column
@@ -62,7 +59,6 @@ public class LabOrder {
     // Private constructor for Builder
     private LabOrder(Builder builder) {
         this.id = builder.id;
-        this.appointmentId = builder.appointmentId;
         this.providerRequesterId = builder.providerRequesterId;
         this.providerReceiverId = builder.providerReceiverId;
         this.nurseId = builder.nurseId;
@@ -78,7 +74,6 @@ public class LabOrder {
 
         private int id;  // JPA will override this if entity is persisted
 
-        private int appointmentId;
         private int providerRequesterId;
         private Integer providerReceiverId;
         private Integer nurseId;
@@ -91,20 +86,15 @@ public class LabOrder {
         /**
          * Builder constructor for the required fields.
          *
-         * @param id (ignored by JPA if saving for first time)
-         * @param appointmentId appointment reference
          * @param providerRequesterId provider who requested the test
          * @param patientId patient associated with test
          * @param testingPurpose the purpose of ordering the test
          */
-        public Builder(int id,
-                       int appointmentId,
+        public Builder(
                        int providerRequesterId,
                        int patientId,
                        String testingPurpose) {
 
-            this.id = id;
-            this.appointmentId = appointmentId;
             this.providerRequesterId = providerRequesterId;
             this.patientId = patientId;
             this.testingPurpose = testingPurpose;
@@ -138,7 +128,6 @@ public class LabOrder {
     // -------------------- Getters --------------------
 
     public int getId() { return id; }
-    public int getAppointmentId() { return appointmentId; }
     public int getProviderRequesterId() { return providerRequesterId; }
     public Integer getProviderReceiverId() { return providerReceiverId; }
     public Integer getNurseId() { return nurseId; }
@@ -149,7 +138,7 @@ public class LabOrder {
 
     // -------------------- Setters --------------------
 
-    public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId; }
+
     public void setProviderRequesterId(int providerRequesterId) { this.providerRequesterId = providerRequesterId; }
     public void setProviderReceiverId(Integer providerReceiverId) { this.providerReceiverId = providerReceiverId; }
     public void setNurseId(Integer nurseId) { this.nurseId = nurseId; }
@@ -164,7 +153,6 @@ public class LabOrder {
     public String toString() {
         return "LabOrder{" +
                 "id=" + id +
-                ", appointmentId=" + appointmentId +
                 ", providerRequesterId=" + providerRequesterId +
                 ", providerReceiverId=" + providerReceiverId +
                 ", nurseId=" + nurseId +

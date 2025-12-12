@@ -5,6 +5,7 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\nurse\NurseEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\NurseDashboardController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\laborder\LabOrderListController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\AppointmentRow.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\room\RoomCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\account\CreateUserController.java
@@ -12,12 +13,6 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\EditAccountEmailController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\nurse\NurseCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\SessionData.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\appointment\EditAppointmentController.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\UserSession.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\UserDTO.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\DesktopApp.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\EditPasswordController.java
-C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\patient\AddPatientController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\patient\PatientCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\provider\ProviderEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\provider\ProviderListController.java
@@ -29,12 +24,14 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\room\RoomEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\ProviderDashboardController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\account\ManageUsersController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\laborder\LabOrderCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\room\RoomListController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\patient\PatientEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\provider\ProviderCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingListController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\emergencycontact\ManageContactsController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\laborder\LabOrderEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\appointment\CreateAppointmentController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\api\ApiClient.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ManufacturerListController.java
@@ -44,6 +41,7 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ManageStaffController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\MedicationCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\MedicationEditController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\appointment\EditAppointmentController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\UserSession.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\UserDTO.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\DesktopApp.java

@@ -50,12 +50,6 @@ public class LabOrderController {
                 );
     }
 
-    // GET BY APPOINTMENT
-    @GetMapping("/appointment/{appointmentId}")
-    public ResponseEntity<List<LabOrder>> getByAppointmentId(@PathVariable int appointmentId) {
-        return ResponseEntity.ok(labService.getByAppointmentId(appointmentId));
-    }
-
     // GET BY PATIENT
     @GetMapping("/patient/{patientId}")
     public ResponseEntity<List<LabOrder>> getByPatient(@PathVariable int patientId) {

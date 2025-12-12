@@ -43,8 +43,6 @@ public class LabOrderControllerUnitTest {
         sampleOrder = new LabOrder.Builder(
                 0,
                 10,
-                5,
-                88,
                 "Blood test"
         )
                 .nurseId(20)
@@ -78,8 +76,6 @@ public class LabOrderControllerUnitTest {
         when(mockService.getLabOrderById(1)).thenReturn(Optional.of(sampleOrder));
 
         ResponseEntity<LabOrder> response = controller.getById(1);
-
-        assertEquals(10, response.getBody().getAppointmentId());
         verify(mockService, times(1)).getLabOrderById(1);
     }
 
@@ -91,15 +87,6 @@ public class LabOrderControllerUnitTest {
                 () -> controller.getById(99));
     }
 
-    @Test
-    void testGetByAppointmentId() {
-        when(mockService.getByAppointmentId(10)).thenReturn(List.of(sampleOrder));
-
-        ResponseEntity<List<LabOrder>> response = controller.getByAppointmentId(10);
-
-        assertEquals(1, response.getBody().size());
-        verify(mockService, times(1)).getByAppointmentId(10);
-    }
 
     @Test
     void testUpdateLabOrder() {

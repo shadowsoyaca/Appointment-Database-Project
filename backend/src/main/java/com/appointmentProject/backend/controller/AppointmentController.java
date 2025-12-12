@@ -26,7 +26,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable("id") int id) {
         return service.getAppointmentById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -59,7 +59,7 @@ public class AppointmentController {
     // ---------- DELETE ----------
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable int id) {
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
         try {
             service.delete(id);
             return ResponseEntity.ok("Appointment deleted.");

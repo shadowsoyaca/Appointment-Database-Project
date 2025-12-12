@@ -3,16 +3,16 @@ package com.appointmentProject.desktop.controller.appointment;
 import com.appointmentProject.desktop.SceneNavigator;
 import com.google.gson.JsonObject;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CreateAppointmentController {
@@ -27,87 +27,90 @@ public class CreateAppointmentController {
     @FXML private TextField nurseIdField;
     @FXML private TextField prescriptionIdField;
     @FXML private TextField labOrderIdField;
-    @FXML private TextField appointmentDateField; // yyyy-MM-dd HH:mm
-    @FXML private TextField roomNumberField;
-    @FXML private TextArea  reasonField;
 
-    @FXML private Label messageLabel;
+    @FXML private DatePicker appointmentDatePicker;
+    @FXML private ComboBox<String> appointmentTimeCombo;
+
+    @FXML private TextField roomNumberField;
+    @FXML private TextArea reasonField;
+
+    @FXML private Label formError;
 
     @FXML
     public void initialize() {
-        messageLabel.setText("");
+        formError.setText("");
+
+        // Populate time dropdown in 15-minute intervals
+        for (int hour = 0; hour < 24; hour++) {
+            appointmentTimeCombo.getItems().add(String.format("%02d:00", hour));
+            appointmentTimeCombo.getItems().add(String.format("%02d:15", hour));
+            appointmentTimeCombo.getItems().add(String.format("%02d:30", hour));
+            appointmentTimeCombo.getItems().add(String.format("%02d:45", hour));
+        }
+
+        appointmentTimeCombo.setPromptText("Select time");
     }
 
-    // ---------- BUTTON HANDLERS ----------
-
     @FXML
-    private void handleCreate() {
-        messageLabel.setText("");
+    private void handleSave() {
+        formError.setText("");
 
         try {
-            // ----- Parse & validate required numeric IDs -----
             int patientId = parseRequiredInt(patientIdField, "Patient ID");
             int providerId = parseRequiredInt(providerIdField, "Provider ID");
-            int billingId  = parseRequiredInt(billingIdField,  "Billing ID");
+            int billingId  = parseRequiredInt(billingIdField, "Billing ID");
 
-            // optional IDs
             Integer nurseId        = parseOptionalInt(nurseIdField);
             Integer prescriptionId = parseOptionalInt(prescriptionIdField);
             Integer labOrderId     = parseOptionalInt(labOrderIdField);
 
-            // ----- Appointment date/time -----
-            String dateText = appointmentDateField.getText().trim();
-            if (dateText.isEmpty()) {
-                throw new IllegalArgumentException("Appointment Date is required.");
-            }
+            // Date selection
+            LocalDate date = appointmentDatePicker.getValue();
+            if (date == null)
+                throw new IllegalArgumentException("Appointment date is required.");
 
-            LocalDateTime appointmentDate;
-            try {
-                appointmentDate = LocalDateTime.parse(dateText, DATE_TIME_FMT);
-            } catch (Exception ex) {
-                throw new IllegalArgumentException(
-                        "Appointment Date must be in format yyyy-MM-dd HH:mm (example: 2025-12-11 09:30).");
-            }
+            // Time selection
+            String timeText = appointmentTimeCombo.getValue();
+            if (timeText == null)
+                throw new IllegalArgumentException("Appointment time is required.");
 
-            // ----- Room & reason -----
+            LocalTime time = LocalTime.parse(timeText);
+            LocalDateTime appointmentDate = LocalDateTime.of(date, time);
+
+            // Room
             String room = roomNumberField.getText().trim();
-            if (room.isEmpty()) {
-                throw new IllegalArgumentException("Room Number is required.");
-            }
+            if (room.isEmpty())
+                throw new IllegalArgumentException("Room number is required.");
 
+            // Reason
             String reason = reasonField.getText().trim();
-            if (reason.isEmpty()) {
-                throw new IllegalArgumentException("Reason for visiting is required.");
-            }
+            if (reason.isEmpty())
+                throw new IllegalArgumentException("Reason is required.");
 
-            // ----- Build JSON body -----
+            // Build JSON
             JsonObject body = new JsonObject();
             body.addProperty("patientId", patientId);
             body.addProperty("providerId", providerId);
             body.addProperty("billingId", billingId);
-            if (nurseId != null)        body.addProperty("nurseId", nurseId);
+
+            if (nurseId != null) body.addProperty("nurseId", nurseId);
             if (prescriptionId != null) body.addProperty("prescriptionId", prescriptionId);
-            if (labOrderId != null)     body.addProperty("labOrderId", labOrderId);
+            if (labOrderId != null) body.addProperty("labOrderId", labOrderId);
 
             body.addProperty("appointmentDate", appointmentDate.toString());
+
             body.addProperty("roomNumber", room);
             body.addProperty("reasonForVisiting", reason);
 
-            // Start & end time are null at creation
-            // (backend validation already allows them to be null)
+            // POST
+            sendPost(BASE_URL + "/create", body.toString());
 
-            // ----- Send POST -----
-            String response = sendPost(BASE_URL + "/create", body.toString());
-
-            // If we reach here, HTTP status was 2xx
+            // Success
             ManageAppointmentController.successMessage = "Appointment created successfully.";
             SceneNavigator.switchTo("/fxml/manage_appointments.fxml");
 
-        } catch (IllegalArgumentException ex) {
-            // validation errors
-            messageLabel.setText(ex.getMessage());
         } catch (Exception ex) {
-            messageLabel.setText("Failed to create appointment: " + ex.getMessage());
+            formError.setText(ex.getMessage());
             ex.printStackTrace();
         }
     }
@@ -117,27 +120,22 @@ public class CreateAppointmentController {
         SceneNavigator.switchTo("/fxml/manage_appointments.fxml");
     }
 
-    // ---------- HELPERS ----------
-
     private int parseRequiredInt(TextField field, String label) {
         String text = field.getText().trim();
-        if (text.isEmpty()) {
+        if (text.isEmpty())
             throw new IllegalArgumentException(label + " is required.");
-        }
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException(label + " must be a whole number.");
+        try { return Integer.parseInt(text); }
+        catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(label + " must be a number.");
         }
     }
 
     private Integer parseOptionalInt(TextField field) {
         String text = field.getText().trim();
         if (text.isEmpty()) return null;
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("Optional ID fields must be whole numbers.");
+        try { return Integer.parseInt(text); }
+        catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("Optional fields must be numbers.");
         }
     }
 
@@ -153,22 +151,21 @@ public class CreateAppointmentController {
         }
 
         int status = con.getResponseCode();
-        BufferedReader br;
-
-        if (status >= 200 && status < 300) {
-            br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        } else {
-            // Read error body to include in messageLabel if needed
-            br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-        }
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        status >= 200 && status < 300
+                                ? con.getInputStream()
+                                : con.getErrorStream()
+                )
+        );
 
         StringBuilder sb = new StringBuilder();
         String line;
-        while ((line = br.readLine()) != null) sb.append(line);
+        while ((line = br.readLine()) != null)
+            sb.append(line);
 
-        if (status < 200 || status >= 300) {
+        if (status < 200 || status >= 300)
             throw new IllegalArgumentException("Backend error (" + status + "): " + sb);
-        }
 
         return sb.toString();
     }

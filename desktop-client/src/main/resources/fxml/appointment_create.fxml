@@ -20,56 +20,58 @@
     </top>
 
     <center>
-        <GridPane hgap="10" vgap="8">
+        <GridPane hgap="10" vgap="10">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
+            <!-- Patient ID -->
             <Label text="Patient ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
             <TextField fx:id="patientIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <Label fx:id="patientIdError" style="-fx-text-fill: red;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
 
+            <!-- Provider ID -->
             <Label text="Provider ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <TextField fx:id="providerIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <Label fx:id="providerIdError" style="-fx-text-fill: red;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
 
+            <!-- Billing ID -->
             <Label text="Billing ID:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
             <TextField fx:id="billingIdField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Label fx:id="billingIdError" style="-fx-text-fill: red;" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
 
+            <!-- Nurse ID (optional) -->
             <Label text="Nurse ID (optional):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <TextField fx:id="nurseIdField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <Label fx:id="nurseIdError" style="-fx-text-fill: red;" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
 
+            <!-- Prescription ID (optional) -->
             <Label text="Prescription ID (optional):" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
             <TextField fx:id="prescriptionIdField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <Label fx:id="prescriptionIdError" style="-fx-text-fill: red;" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
 
+            <!-- Lab Order ID (optional) -->
             <Label text="Lab Order ID (optional):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
             <TextField fx:id="labOrderIdField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-            <Label fx:id="labOrderIdError" style="-fx-text-fill: red;" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
 
-            <Label text="Appointment Date (yyyy-MM-dd HH:mm):"
-                   GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-            <TextField fx:id="appointmentDateField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-            <Label fx:id="appointmentDateError" style="-fx-text-fill: red;"
-                   GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+            <!-- Date Picker -->
+            <Label text="Appointment Date:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="appointmentDatePicker" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
 
-            <Label text="Room Number:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
-            <TextField fx:id="roomNumberField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
-            <Label fx:id="roomNumberError" style="-fx-text-fill: red;"
-                   GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+            <!-- Time ComboBox -->
+            <Label text="Appointment Time:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="appointmentTimeCombo" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
 
-            <Label text="Reason for Visiting:"
-                   GridPane.rowIndex="8" GridPane.columnIndex="0"/>
-            <TextField fx:id="reasonField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
-            <Label fx:id="reasonError" style="-fx-text-fill: red;"
-                   GridPane.rowIndex="8" GridPane.columnIndex="2"/>
+            <!-- Room Number -->
+            <Label text="Room Number:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <TextField fx:id="roomNumberField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+            <!-- Reason -->
+            <Label text="Reason for Visiting:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+            <TextArea fx:id="reasonField"
+                      prefRowCount="3"
+                      GridPane.rowIndex="9"
+                      GridPane.columnIndex="1"/>
         </GridPane>
     </center>
 
     <bottom>
-        <HBox spacing="10">
+        <HBox spacing="12">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>

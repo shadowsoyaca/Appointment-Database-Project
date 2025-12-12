@@ -30,7 +30,6 @@ public class LabOrderListController {
 
     @FXML private TableView<LabOrderRow> labOrdersTable;
     @FXML private TableColumn<LabOrderRow, Integer> idCol;
-    @FXML private TableColumn<LabOrderRow, Integer> appointmentIdCol;
     @FXML private TableColumn<LabOrderRow, Integer> providerRequesterIdCol;
     @FXML private TableColumn<LabOrderRow, Integer> providerReceiverIdCol;
     @FXML private TableColumn<LabOrderRow, Integer> nurseIdCol;
@@ -47,7 +46,6 @@ public class LabOrderListController {
 
     public static class LabOrderRow {
         private final int id;
-        private final int appointmentId;
         private final int providerRequesterId;
         private final Integer providerReceiverId;
         private final Integer nurseId;
@@ -57,9 +55,8 @@ public class LabOrderListController {
         private final String testingPurpose;
         private final boolean results;
 
-        public LabOrderRow(int id, int appointmentId, int providerRequesterId, Integer providerReceiverId, Integer nurseId, int patientId, LocalDateTime dateOfCompletion, String testingPurpose, boolean results) {
+        public LabOrderRow(int id, int providerRequesterId, Integer providerReceiverId, Integer nurseId, int patientId, LocalDateTime dateOfCompletion, String testingPurpose, boolean results) {
             this.id = id;
-            this.appointmentId = appointmentId;
             this.providerRequesterId = providerRequesterId;
             this.providerReceiverId = providerReceiverId;
             this.nurseId = nurseId;
@@ -70,7 +67,6 @@ public class LabOrderListController {
         }
 
         public int getId() { return id; }
-        public int getAppointmentId() { return appointmentId; }
         public int getProviderRequesterId() { return providerRequesterId; }
         public Integer getProviderReceiverId() { return providerReceiverId; }
         public Integer getNurseId() { return nurseId; }
@@ -84,7 +80,6 @@ public class LabOrderListController {
     private void initialize() {
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        appointmentIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
         providerRequesterIdCol.setCellValueFactory(new PropertyValueFactory<>("providerRequesterId"));
         providerReceiverIdCol.setCellValueFactory(new PropertyValueFactory<>("providerReceiverId"));
         nurseIdCol.setCellValueFactory(new PropertyValueFactory<>("nurseId"));
@@ -105,7 +100,6 @@ public class LabOrderListController {
         labOrdersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 
         centerAlign(idCol);
-        centerAlign(appointmentIdCol);
         leftAlign(providerRequesterIdCol);
         leftAlign(providerReceiverIdCol);
         leftAlign(nurseIdCol);
@@ -115,7 +109,6 @@ public class LabOrderListController {
         leftAlign(resultsCol);
 
         idCol.setMinWidth(60);
-        appointmentIdCol.setMinWidth(140);
         providerRequesterIdCol.setMinWidth(130);
         providerReceiverIdCol.setMinWidth(130);
         nurseIdCol.setMinWidth(130);
@@ -156,7 +149,6 @@ public class LabOrderListController {
                 JsonObject obj = el.getAsJsonObject();
 
                 int id = obj.get("id").getAsInt();
-                int appointmentId = obj.get("appointmentId").getAsInt();
                 int providerRequesterId = obj.get("providerRequesterId").getAsInt();
                 Integer providerReceiverId = obj.get("providerReceiverId").getAsInt();
                 Integer nurseId = obj.get("nurseId").getAsInt();
@@ -165,7 +157,7 @@ public class LabOrderListController {
                 String testingPurpose = obj.get("testingPurpose").getAsString();
                 boolean results = obj.get("results").getAsBoolean();
 
-                rows.add(new LabOrderRow(id, appointmentId, providerRequesterId, providerReceiverId, nurseId, patientId, dateOfCompletion, testingPurpose, results));
+                rows.add(new LabOrderRow(id, providerRequesterId, providerReceiverId, nurseId, patientId, dateOfCompletion, testingPurpose, results));
             }
 
             masterList.setAll(rows);
@@ -187,7 +179,6 @@ public class LabOrderListController {
         String lower = query.toLowerCase();
 
         ObservableList<LabOrderRow> filtered = masterList.filtered(n ->
-                String.valueOf(n.getAppointmentId()).toLowerCase().contains(lower) ||
                         String.valueOf(n.getProviderRequesterId()).toLowerCase().contains(lower) ||
                         String.valueOf(n.getProviderReceiverId()).toLowerCase().contains(lower) ||
                         String.valueOf(n.getNurseId()).toLowerCase().contains(lower) ||

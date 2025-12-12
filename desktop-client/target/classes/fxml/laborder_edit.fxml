@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.laborder.LabOrderEditController"
+      spacing="12"
+      style="-fx-padding: 20;">
+
+    <Label text="Edit Lab Order"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label fx:id="messageLabel"
+           textFill="red" />
+
+    <TextField fx:id="appointmentIdField" promptText="Appointment ID"/>
+    <TextField fx:id="providerRequesterIdField" promptText="Provider Requester ID"/>
+    <TextField fx:id="providerReceiverIdField" promptText="Provider Receiver ID"/>
+    <TextField fx:id="nurseIdField" promptText="Nurse ID"/>
+    <TextField fx:id="patientIdField" promptText="Patient ID"/>
+    <TextField fx:id="dateOfCompletionField" promptText="Date of Completion"/>
+    <TextField fx:id="testingPurposeField" promptText="Testing Purpose"/>
+    <TextField fx:id="resultsField" promptText="Results"/>
+
+    <HBox spacing="10">
+        <Button text="Save Changes"
+                onAction="#handleSaveLabOrder"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+
+        <Button text="Delete Lab Order"
+                onAction="#handleDeleteLabOrder"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;
+                       -fx-background-color: #cc0000; -fx-text-fill: white;" />
+
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+    </HBox>
+
+</VBox>
